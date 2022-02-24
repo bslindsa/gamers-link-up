@@ -8,8 +8,8 @@ const gameSchema = new Schema({
         trim: true,
     },
     owner: {
-        type: String,
-        required: true,
+        type: Schema.Types.objectID,
+        ref: 'User'
     },
     description: {
         type: String,
@@ -34,6 +34,29 @@ const gameSchema = new Schema({
             name: {
                 type: String
             }
-        }
-    ]
-})
+        },
+    ],
+    requests: [
+        {
+            type: Schema.Types.objectID,
+            ref: 'User'
+        },
+    ],
+},
+    {
+        toJSON: {
+            virtuals: true,
+        },
+        id: false,
+    }
+);
+
+gameSchema
+    .virtual('numRequests')
+    .get(() => {
+        return this.requests.length;
+    });
+
+const Game = model('Game', gameSchema);
+
+module.exports = Game;

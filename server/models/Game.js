@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose');
-const dateFormat = require('../utils/dateFormat');
 
 const gameSchema = new Schema({
     title: {
@@ -8,7 +7,7 @@ const gameSchema = new Schema({
         trim: true,
     },
     owner: {
-        type: Schema.Types.objectID,
+        type: Schema.Types.ObjectId,
         ref: 'User'
     },
     description: {
@@ -27,7 +26,6 @@ const gameSchema = new Schema({
     date_posted: {
         type: Date,
         default: Date.now,
-        get: (timestamp) => dateFormat(timestamp),
     },
     tags: [
         {
@@ -38,7 +36,7 @@ const gameSchema = new Schema({
     ],
     requests: [
         {
-            type: Schema.Types.objectID,
+            type: Schema.Types.ObjectId,
             ref: 'User'
         },
     ],

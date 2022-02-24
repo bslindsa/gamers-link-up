@@ -12,7 +12,7 @@ const typeDefs = gql`
   type Game {
     _id: ID
     title: String
-    owner: String
+    owner: User
     description: String
     platform: String
     price: Number
@@ -33,11 +33,18 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(username: String!): User
+    games: [Game]
+    game(gameId: ID!): Game
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+    addGame(title: String!, description: String, platform: String, price: Number!): Game
+    addTags(gameId: ID!, tagName: String!)
+    editGame(gameId: ID!, title: String, description: String, platform: String, price: Number, tags: [Tag], gameId: ID!): Game
+    deleteGame(gameId: ID!): Game
+    requestGame(gameId: ID!): Game
   }
 `;
 

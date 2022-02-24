@@ -27,7 +27,6 @@ const resolvers = {
 
 
   Mutation: {
-
     addUser: async (parent, { username, email, password }) => {
       const user = await User.create({ username, email, password });
       const token = signToken(user);
@@ -49,7 +48,7 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
-
+    },
     addGame: async (parent, { title, description, platform, price }, context) => {
       if (context.user) {
         const game = await Game.create({
@@ -67,6 +66,13 @@ const resolvers = {
         return game;
       }
       throw new AuthenticationError('You must be logged in.');
+    },
+    addTag: async (parent, {gameId, tagName}) => {
+      const tag = await Game.findOneAndUpdate(
+        {id: gameId},
+        {$addToSet: {tags: tagName}}
+      );
+      return tag;
     },
     deleteGame: async (parent, { gameId }, context) => {
       if (context.user) {

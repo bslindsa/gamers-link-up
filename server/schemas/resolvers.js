@@ -19,7 +19,52 @@ const resolvers = {
     },
   },
   Mutation: {
-    
+    addGame: async (parent, { title, description, platform, price }, context) => {
+      if (context.user) {
+        const game = await Game.create({
+          title,
+          description,
+          platform,
+          price
+        });
+
+        await User.findOneAndUpdate(
+          {id: context.user._id},
+          {$addToSet: {games: game._id}}
+        );
+
+        return game;
+      }
+      throw new AuthenticationError('You must be logged in.');
+    },
+    deleteGame: async (parent, { gameId }, context) => {
+      if (context.user) {
+        const game = await Game.findOneAndDelete({
+          _id: gameId,
+        });
+        await User.findOneAndUpdate(
+          { id: context.user._id },
+          { $pull: { games: game._id } }
+        )
+      }
+    },
+    requestGame: async (parent, { gameId }, context) => {
+      if (context.user) {
+        return Game.findOneAndUpdate(
+          { _id: gameId },
+          {
+            $addToSet: {
+              requests: { username: context.user.username, email: context.user.email }
+            },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
+      throw new AuthenticationError('You must be logged in');
+    },
   },
 };
 

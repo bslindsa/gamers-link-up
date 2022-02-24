@@ -17,11 +17,11 @@ const resolvers = {
     game: async (parent, { gameId }) => {
       return Game.findOne({ _id: gameId });
     },
-    me: async (parent, context) => {
+    me: async (parent, {arg}, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id }).populate('games');
       }
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError('You must be logged in');
     },
   },
 

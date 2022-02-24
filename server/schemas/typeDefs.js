@@ -15,7 +15,6 @@ const typeDefs = gql`
     owner: User
     description: String
     platform: String
-    price: Number
     date_posted: String
     tags: [Tag]!
   }
@@ -35,14 +34,15 @@ const typeDefs = gql`
     user(username: String!): User
     games: [Game]
     game(gameId: ID!): Game
+    me: User
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addGame(title: String!, description: String, platform: String, price: Number!): Game
-    addTag(gameId: ID!, tagName: String!)
-    editGame(gameId: ID!, title: String, description: String, platform: String, price: Number, tags: [Tag], gameId: ID!): Game
+    addGame(title: String!, description: String, platform: String): Game
+    addTag(gameId: ID!, tagName: String!): Game
+    editGame(gameId: ID!, title: String, description: String, platform: String, tags: String): Game
     deleteGame(gameId: ID!): Game
     requestGame(gameId: ID!): Game
   }

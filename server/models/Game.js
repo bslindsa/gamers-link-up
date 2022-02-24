@@ -31,7 +31,7 @@ const gameSchema = new Schema({
     },
     tags: [
         {
-            name: {
+            tagName: {
                 type: String
             }
         },

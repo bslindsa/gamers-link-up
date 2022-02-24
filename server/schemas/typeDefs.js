@@ -42,7 +42,8 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addGame(title: String!, description: String, platform: String): Game
     addTag(gameId: ID!, tagName: String!): Game
-    editGame(gameId: ID!, title: String, description: String, platform: String, tags: String): Game
+    removeTag(gameId: ID! tagName: String!): Game
+    editGame(gameId: ID!, title: String, description: String, platform: String): Game
     deleteGame(gameId: ID!): Game
     requestGame(gameId: ID!): Game
   }

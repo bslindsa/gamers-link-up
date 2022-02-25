@@ -25,8 +25,8 @@ mutation login($email: String!, $password: String!) {
 `;
 
 export const ADD_GAME = gql`
-mutation addGame($title: String!, $description: String, $platform: String) {
-  addGame(title: $title, description: $description, platform: $platform) {
+mutation addGame($title: String!, $description: String!, $price: Float, $platform: String) {
+  addGame(title: $title, description: $description, price: $price, platform: $platform) {
     _id
     title
     description

@@ -43,7 +43,6 @@ function App() {
       <Router>
         <div className="flex-column justify-center align-center min-100-vh bg-primary">
           <Switch>
-
             <Route
               path="/login"
               component={Login}

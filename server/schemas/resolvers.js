@@ -49,15 +49,16 @@ const resolvers = {
 
       return { token, user };
     },
-    addGame: async (parent, { title, description, platform }, context) => {
+    addGame: async (parent, {title, description, price, platform }, context) => {
       if (context.user) {
         const game = await Game.create({
           title,
-          owner: context.user.username,
+          owner: {
+            username: context.user.username,
+          },
           description,
           price,
           platform,
-          date_posted: Date.now,
         });
 
         await User.findOneAndUpdate(

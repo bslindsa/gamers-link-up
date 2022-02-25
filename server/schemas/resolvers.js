@@ -78,7 +78,6 @@ const resolvers = {
     },
     removeTag: async (parent, { gameId, tagName }) => {
       return Game.findOneAndUpdate(
-      const tag = await Game.findOneAndDelete(
         { id: gameId },
         { $pull: { tags: tagName } },
         { new: true }

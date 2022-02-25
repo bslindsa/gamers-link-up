@@ -53,8 +53,11 @@ const resolvers = {
       if (context.user) {
         const game = await Game.create({
           title,
+          owner: context.user.username,
           description,
+          price,
           platform,
+          date_posted: Date.now,
         });
 
         await User.findOneAndUpdate(
@@ -73,7 +76,7 @@ const resolvers = {
       );
       return tag;
     },
-    deleteTag: async (parent, { gameId, tagName }) => {
+    removeTag: async (parent, { gameId, tagName }) => {
       const tag = await Game.findOneAndDelete(
         { id: gameId },
         { $pull: { tags: tagName } }
@@ -112,6 +115,7 @@ const resolvers = {
         { _id: gameId },
         { title },
         { description },
+        { price },
         { platform },
         {
           new: true,

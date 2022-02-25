@@ -16,7 +16,7 @@ const typeDefs = gql`
     description: String
     price: Float
     platform: String
-    date_posted: String
+    datePosted: String
     tags: [String]
   }
 

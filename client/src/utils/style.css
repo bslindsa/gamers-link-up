@@ -17,12 +17,11 @@ h2{
     font-size: 60px;
     background: rgb(10, 155, 75);
     padding: 8px 24px;
-    min-width: 1700px;
+    min-width: 1500px;
     min-height: 200px;
     background-image: url(./assets/a-link-to-the-past.png);
     border-radius: 16px;
     box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
-
 
 }
 
@@ -31,12 +30,18 @@ div:nth-child(1){
     background-size: cover;
 
 }
-div:nth-child(2){
+div:nth-child(2) {
     background-image: url(./assets/steel.jpg);
     background-size: cover;
     max-height: 300px;
     
 }
+/* div:nth-child(2) h2 {
+    background-image: url(./assets/steel.jpg);
+    background-size: cover;
+    max-height: 300px;
+    
+} */
 div:nth-child(3){
     height: 400px;
     background-image: url(./assets/circitorigin.jpg);
@@ -48,7 +53,8 @@ div:nth-child(4){
     background-size: cover;
     /* background-color: aqua; */
     max-height: 300px;
-}
+    
+    }
 div:nth-child(5){
     height: 400px;
     background-image: url(./assets/circitorigin.jpg);
@@ -139,4 +145,54 @@ div:nth-child(20){
     background-image: url(./assets/steel.jpg);
     background-size: cover;
     max-height: 300px;
+}
+#dog h2{
+    background-color: aqua;
+    background-image: none;
+    background-size: cover;
+}
+#dog1 h2{
+    background-color: blue;
+    background-image: none;
+    background-size: cover;
+}
+#dog2 h2{
+    background-color: rgb(124, 180, 20);
+    background-image: none;
+    background-size: cover;
+}
+#dog3 h2{
+    background-color: rgb(228, 37, 155);
+    background-image: none;
+    background-size: cover;
+}
+#dog4 h2{
+    background-color: rgb(1, 12, 12);
+    background-image: none;
+    background-size: cover;
+}
+#dog5 h2{
+    background-color: rgb(49, 155, 84);
+    background-image: none;
+    background-size: cover;
+}
+#dog6 h2{
+    background-color: rgb(190, 238, 238);
+    background-image: none;
+    background-size: cover;
+}
+#dog7 h2{
+    background-color: rgb(68, 7, 7);
+    background-image: none;
+    background-size: cover;
+}
+#dog8 h2{
+    background-color: rgb(78, 112, 16);
+    background-image: none;
+    background-size: cover;
+}
+#dog9 h2{
+    background-color: rgb(255, 145, 0);
+    background-image: none;
+    background-size: cover;
 }

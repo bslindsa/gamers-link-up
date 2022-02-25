@@ -23,7 +23,7 @@ const gameSchema = new Schema({
     price: {
         type: Number,
     },
-    date_posted: {
+    datePosted: {
         type: Date,
         default: Date.now,
     },

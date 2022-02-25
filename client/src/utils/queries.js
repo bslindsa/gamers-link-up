@@ -41,6 +41,7 @@ query game($gameId: String!) {
     title
     description
     platform
+  }
 }
 `;
 

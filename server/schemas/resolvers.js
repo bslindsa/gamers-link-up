@@ -17,7 +17,7 @@ const resolvers = {
     game: async (parent, { gameId }) => {
       return Game.findOne({ _id: gameId });
     },
-    me: async (parent, {arg}, context) => {
+    me: async (parent, { arg }, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id }).populate('games');
       }
@@ -49,30 +49,35 @@ const resolvers = {
 
       return { token, user };
     },
-    addGame: async (parent, { title, description, platform, price }, context) => {
+    addGame: async (parent, { title, description, platform }, context) => {
       if (context.user) {
         const game = await Game.create({
           title,
           description,
           platform,
-          price
         });
 
         await User.findOneAndUpdate(
-          {id: context.user._id},
-          {$addToSet: {games: game._id}}
+          { id: context.user._id },
+          { $addToSet: { games: game._id } }
         );
 
         return game;
       }
       throw new AuthenticationError('You must be logged in.');
     },
-    addTag: async (parent, {gameId, tagName}) => {
+    addTag: async (parent, { gameId, tagName }) => {
       const tag = await Game.findOneAndUpdate(
-        {id: gameId},
-        {$addToSet: {tags: tagName}}
+        { id: gameId },
+        { $addToSet: { tags: tagName } }
       );
       return tag;
+    },
+    deleteTag: async (parent, { gameId, tagName }) => {
+      const tag = await Game.findOneAndDelete(
+        { id: gameId },
+        { $pull: { tags: tagName } }
+      );
     },
     deleteGame: async (parent, { gameId }, context) => {
       if (context.user) {
@@ -102,6 +107,18 @@ const resolvers = {
       }
       throw new AuthenticationError('You must be logged in');
     },
+    editGame: async (parent, { gameId, title, description, platform }, context) => {
+      return await Game.findOneAndUpdate(
+        { _id: gameId },
+        { title },
+        { description },
+        { platform },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    }
   },
 };
 

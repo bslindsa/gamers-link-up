@@ -7,8 +7,9 @@ const gameSchema = new Schema({
         trim: true,
     },
     owner: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
+        type: String,
+        required: true,
+        trim: true
     },
     description: {
         type: String,

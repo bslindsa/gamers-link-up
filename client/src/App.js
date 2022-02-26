@@ -13,6 +13,7 @@ import GameForm from './components/GameForm';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Header from './components/header';
+import Profile from './pages/Profile';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -60,7 +61,11 @@ function App() {
               component={Signup}
             />
             <Route
-              exact path="/gameform"
+              path="/profile"
+              component={Profile}
+            />
+            <Route
+              path="/gameform"
               component={GameForm}
             />
           </Switch>

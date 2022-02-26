@@ -56,11 +56,11 @@ const resolvers = {
           description,
           platform,
           price,
-          owner: context.user,
+          owner: context.user.username
         });
 
         await User.findOneAndUpdate(
-          { id: context.user._id },
+          { _id: context.user._id },
           { $addToSet: { games: game._id } }
         );
 

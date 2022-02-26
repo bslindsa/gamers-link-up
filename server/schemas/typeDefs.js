@@ -12,10 +12,10 @@ const typeDefs = gql`
   type Game {
     _id: ID
     title: String
-    owner: User
+    owner: String
     description: String
-    price: Float
     platform: String
+    price: Float
     datePosted: String
     tags: [String]
     requests: [User]

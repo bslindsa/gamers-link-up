@@ -31,10 +31,7 @@ mutation addGame($title: String!, $description: String, $platform: String, $pric
     description
     platform
     price
-    owner {
-      username
-      email
-    }
+    owner
   }
 }
 `;

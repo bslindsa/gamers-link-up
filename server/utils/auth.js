@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const secret = 'iamastick';
+const secret = 'mysecretssshhhhhhh';
 const expiration = '2h';
 
 module.exports = {
@@ -21,7 +21,7 @@ module.exports = {
     } catch {
       console.log('Invalid token');
     }
-    console.log(req);
+    // console.log(req);
     return req;
   },
   signToken: function ({ email, username, _id }) {

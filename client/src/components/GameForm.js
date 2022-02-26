@@ -49,11 +49,9 @@ const GameForm = () => {
 
             setFormState({
                 title: '',
-                owner: '',
                 description: '',
                 platform: '',
                 price: '',
-                datePosted: ''
             });
         } catch (err) {
             console.error(err);

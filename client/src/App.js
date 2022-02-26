@@ -8,11 +8,11 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
-// import Home from './pages/Home/Home';
-import GameForm from './pages/GameForm';
+// import Home from './pages/home/Home';
+import GameForm from './components/GameForm';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-// import Header from './components/header';
+import Header from './components/header';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -43,7 +43,7 @@ function App() {
     <ApolloProvider client={client}>
 
       <Router>
-        {/* <Header /> */}
+        <Header />
         <div>
           {/* <div className="flex-column justify-center align-center min-100-vh bg-primary"> */}
           <Switch>

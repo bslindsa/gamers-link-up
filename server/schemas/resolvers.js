@@ -86,9 +86,10 @@ const resolvers = {
       if (context.user) {
         const game = await Game.findOneAndDelete({
           _id: gameId,
+          owner: context.user.username
         });
         await User.findOneAndUpdate(
-          { id: context.user._id },
+          { _id: context.user._id },
           { $pull: { games: game._id } }
         )
       }

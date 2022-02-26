@@ -3,64 +3,41 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
 import { ADD_GAME } from '../utils/mutations';
-import { GET_GAMES, GET_ME } from '../utils/queries';
+// import { GET_GAMES, GET_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
 
 const GameForm = () => {
 
     const [formState, setFormState] = useState({
-        title: 'Up',
-        description: 'The movie, actually',
-        platform: 'DVD',
-        price: 5
+        title: '',
+        description: '',
+        platform: '',
+        price: 0
     });
-    const [addGame, { error }] = useMutation(ADD_GAME, {
-        update(cache, { data: { addGame } }) {
-            try {
-                const { games } = cache.readQuery({ query: GET_GAMES });
-
-                cache.writeQuery({
-                    query: GET_GAMES,
-                    data: { games: [addGame, ...games] }
-                });
-
-            } catch (err) {
-                console.error(err);
-            };
-
-            const { me } = cache.readQuery({ query: GET_ME });
-
-            cache.writeQuery({
-                query: GET_ME,
-                data: { me: { ...me, games: [...me.games, addGame] } }
-            });
-        }
-    });
-
+    const [addGame, { error }] = useMutation(ADD_GAME)
+    
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log(formState);
-
+        console.log('Submitting form');
+        // Main addGame issue is in this try statement!!!
         try {
             // eslint-disable-next-line
             const { data } = await addGame({
                 variables: {
                     ...formState,
-                    owner: {
-                        username: Auth.getProfile().data.username,
-                        email: Auth.getProfile().data.email
-                    }
+                    owner: Auth.getProfile().data.username,                    
                 }
             });
-
-            setFormState({
-                title: '',
-                description: '',
-                platform: '',
-                price: 0,
-            });
+            // setFormState({
+            //     title: '',
+            //     description: '',
+            //     platform: '',
+            //     price: 0,
+            // });
+            window.location.reload();
         } catch (err) {
+            console.log('catch');
             console.error(err);
         }
     };

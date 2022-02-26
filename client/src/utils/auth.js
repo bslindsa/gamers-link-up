@@ -5,7 +5,7 @@ class AuthService {
     return decode(this.getToken());
   }
 
-  loggedIn() {
+ loggedIn () {
     const token = this.getToken();
     return token && !this.isTokenExpired(token) ? true : false;
   }
@@ -25,7 +25,7 @@ class AuthService {
 
   login(idToken) {
     localStorage.setItem('id_token', idToken);
-    window.location.assign('/');
+    window.location.assign('/gameform');
     alert('Logged In');
   }
 

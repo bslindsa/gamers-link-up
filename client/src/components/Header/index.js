@@ -13,7 +13,7 @@ const Header = () => {
         <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
           <div className="container flex-row justify-space-between-lg justify-center align-center">
             <div>
-              <Link className="text-light" to="/">
+              <Link className="text-light" to="/gameform">
                 <h1 className="m-0">Trade Your Games</h1>
               </Link>
             </div>

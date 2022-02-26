@@ -68,7 +68,7 @@ const resolvers = {
 
         return game;
       }
-      throw new AuthenticationError('You must be logged in.');
+      // throw new AuthenticationError('You must be logged in.');
     },
     addTag: async (parent, { gameId, tagName }) => {
       const tag = await Game.findOneAndUpdate(

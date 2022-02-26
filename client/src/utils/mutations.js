@@ -31,6 +31,7 @@ mutation addGame($title: String!, $description: String!, $price: Float, $platfor
     title
     description
     platform
+    price
   }
 }
 `;

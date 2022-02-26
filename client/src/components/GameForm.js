@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
+
 import { ADD_GAME } from '../utils/mutations';
 import { GET_GAMES, GET_ME } from '../utils/queries';
 
@@ -11,7 +12,7 @@ const GameForm = () => {
         title: '',
         description: '',
         platform: '',
-        price: ''
+        price: 0
     });
     const [addGame, { error }] = useMutation(ADD_GAME, {
         update(cache, { data: { addGame } }) {
@@ -36,14 +37,16 @@ const GameForm = () => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-
+        console.log(formState);
         try {
             // eslint-disable-next-line
             const { data } = await addGame({
                 variables: { 
                     ...formState,
-                    owner: Auth.getProfile().data.username,
-                    datePosted: Date.now()
+                    owner: {
+                        username: Auth.getProfile().data.username,
+                        email: Auth.getProfile().data.email
+                    }
                 }
             });
 
@@ -51,7 +54,7 @@ const GameForm = () => {
                 title: '',
                 description: '',
                 platform: '',
-                price: '',
+                price: 0,
             });
         } catch (err) {
             console.error(err);
@@ -102,7 +105,7 @@ const GameForm = () => {
                                 className="form-input"
                                 placeholder="Price"
                                 name="price"
-                                type="text"
+                                type="number"
                                 value={formState.price}
                                 onChange={handleChange}
                             />

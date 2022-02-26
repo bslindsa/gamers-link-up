@@ -53,14 +53,10 @@ const resolvers = {
       if (context.user) {
         const game = await Game.create({
           title,
-          owner: {
-            username: context.user.username,
-            email: context.user.email
-          },
           description,
           platform,
           price,
-          datePosted
+          owner: context.user,
         });
 
         await User.findOneAndUpdate(

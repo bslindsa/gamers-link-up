@@ -25,13 +25,16 @@ mutation login($email: String!, $password: String!) {
 `;
 
 export const ADD_GAME = gql`
-mutation addGame($title: String!, $description: String!, $price: Float, $platform: String) {
-  addGame(title: $title, description: $description, price: $price, platform: $platform) {
-    _id
+mutation addGame($title: String!, $description: String, $platform: String, $price: Float) {
+  addGame(title: $title, description: $description, platform: $platform, price: $price) {
     title
     description
     platform
     price
+    owner {
+      username
+      email
+    }
   }
 }
 `;

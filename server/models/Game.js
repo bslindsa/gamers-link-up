@@ -25,7 +25,7 @@ const gameSchema = new Schema({
     },
     datePosted: {
         type: Date,
-        default: Date.now,
+        default: Date.now(),
     },
     tags: [
         {

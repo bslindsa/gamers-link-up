@@ -8,7 +8,7 @@ import GameList from '../components/gameList/index';
 const Profile = () => {
 
     const { loading, data } = useQuery(GET_ME);
-    const games = data?.games || [];
+    const games = data?.me.games || [];
     console.log(data)
     return (
         <div>

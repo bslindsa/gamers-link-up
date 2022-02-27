@@ -19,6 +19,9 @@ const Header = () => {
           <Link className="text-light" to="/">
             <h1 className="m-0">See Available Games</h1>
           </Link>
+          <Link className="text-light" to="/profile">
+            <h1 className="m-0">{Auth.getProfile().data.username}'s Inventory</h1>
+          </Link>
         </div>
         <div>
           {Auth.loggedIn() ? (

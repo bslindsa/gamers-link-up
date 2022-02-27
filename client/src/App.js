@@ -8,7 +8,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
-import Home from './pages/home/Home';
+// import Home from './pages/home/Home';
 import GameForm from './components/gameForm/GameForm';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -48,10 +48,10 @@ function App() {
         <div>
           {/* <div className="flex-column justify-center align-center min-100-vh bg-primary"> */}
           <Switch>
-            <Route
+            {/* <Route
               path="/"
               component={Home}
-            />
+            /> */}
             <Route
               path="/login"
               component={Login}

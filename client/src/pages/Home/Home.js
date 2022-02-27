@@ -9,7 +9,6 @@ import GameList from '../../components/gameList/index';
 const Home = () => {
   const { loading, data } = useQuery(GET_GAMES);
   const games = data?.games || [];
-  console.log(games);
 
   return (
     <div className="flex-row justify-center">

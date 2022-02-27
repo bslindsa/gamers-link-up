@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 // import { Link } from 'react-router-dom';
 
 const GameList = ({ games }) => {
@@ -12,9 +13,11 @@ const GameList = ({ games }) => {
                 {games.map(game => (
                     <div key={game.title} className="game col-5 mb-5">
                         <div className="card">
+                            <Link to={`/games/${game._id}`}>
                             <div className="title">
                                 <h3>{game.title}</h3>
                             </div>
+                            </Link>
                             <div className="title">
                                 <h4>{game.owner}</h4>
                             </div>
@@ -27,6 +30,11 @@ const GameList = ({ games }) => {
                             <div className="title">
                                 <h3>{game.price}</h3>
                             </div>
+                            <div>
+                                <ul>
+                                    {game.tags}
+                                </ul>
+                                </div>
                         </div>
                     </div>
                 ))}

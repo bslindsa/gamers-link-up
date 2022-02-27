@@ -14,6 +14,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Header from './components/header';
 import Profile from './pages/Profile';
+import SingleGame from "./components/singleGame/index";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -48,7 +49,7 @@ function App() {
         <div>
           {/* <div className="flex-column justify-center align-center min-100-vh bg-primary"> */}
           <Switch>
-            
+
             <Route
               path="/login"
               component={Login}
@@ -64,6 +65,10 @@ function App() {
             <Route
               path="/gameform"
               component={GameForm}
+            />
+            <Route
+              path="/games/:gameId"
+              component={SingleGame}
             />
             <Route
               path="/"

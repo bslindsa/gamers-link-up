@@ -15,7 +15,7 @@ const GameList = ({ games }) => {
             </div>
             {games.map(game => (
                 <>
-                    <div key={game._id} className="dog game col-5 mb-5">
+                    <div key={game._id} className="dog game">
                         <div className="card">
                             <Link to={`/games/${game._id}`}>
                                 <div>

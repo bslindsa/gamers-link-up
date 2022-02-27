@@ -20,9 +20,12 @@ const Home = () => {
           {loading ? (
             <div>Loading...</div>
           ) : (
+            <>
+            <h1>It's Dangerous to go Alone. Take these!</h1>
             <GameList
               games={games}
             />
+            </>
           )}
         </div>
       </div>

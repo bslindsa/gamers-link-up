@@ -13,8 +13,9 @@ const Profile = () => {
     return (
         <div>
             <div>
+                <h4>Add a new game to your shop!</h4>
                 <Link to='/gameform'>
-                    <h1>Post a new game to trade/sell</h1>
+                    <button>Post Game</button>
                 </Link>
             </div>
             <div

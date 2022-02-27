@@ -13,19 +13,17 @@ const Header = () => {
     <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
       <div className="container flex-row justify-space-between-lg justify-center align-center">
         <div>
-          <Link className="text-light" to="/gameform">
-            <h1 className="m-0">Trade Your Games</h1>
-          </Link>
           <Link className="text-light" to="/">
             <h1 className="m-0">See Available Games</h1>
           </Link>
-          <Link className="text-light" to="/profile">
-            <h1 className="m-0">{Auth.getProfile().data.username}'s Inventory</h1>
-          </Link>
+
         </div>
         <div>
           {Auth.loggedIn() ? (
             <>
+              <Link className="text-light" to="/profile">
+                <h1 className="m-0">{Auth.getProfile().data.username}'s Inventory</h1>
+              </Link>
               <button className="btn btn-lg btn-light m-2" onClick={logout}>
                 Logout
               </button>

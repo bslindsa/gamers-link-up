@@ -36,7 +36,7 @@ const resolvers = {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError('No user found with this email address');
+        throw new AuthenticationError('Incorrect credentials');
       }
 
       const correctPw = await user.isCorrectPassword(password);
@@ -49,19 +49,18 @@ const resolvers = {
 
       return { token, user };
     },
-    addGame: async (parent, { title, description, platform }, context) => {
+    addGame: async (parent, {title, description, platform, price }, context) => {
       if (context.user) {
         const game = await Game.create({
           title,
-          owner: context.user.username,
           description,
-          price,
           platform,
-          date_posted: Date.now,
+          price,
+          owner: context.user.username
         });
 
         await User.findOneAndUpdate(
-          { id: context.user._id },
+          { _id: context.user._id },
           { $addToSet: { games: game._id } }
         );
 
@@ -87,9 +86,10 @@ const resolvers = {
       if (context.user) {
         const game = await Game.findOneAndDelete({
           _id: gameId,
+          owner: context.user.username
         });
         await User.findOneAndUpdate(
-          { id: context.user._id },
+          { _id: context.user._id },
           { $pull: { games: game._id } }
         )
       }
@@ -111,13 +111,15 @@ const resolvers = {
       }
       throw new AuthenticationError('You must be logged in');
     },
-    editGame: async (parent, { gameId, title, description, platform }, context) => {
+    editGame: async (parent, { gameId, title, description, platform, price }, context) => {
       return await Game.findOneAndUpdate(
         { _id: gameId },
-        { title },
-        { description },
-        { price },
-        { platform },
+        {
+          title,
+          description,
+          platform,
+          price
+        },
         {
           new: true,
           runValidators: true,

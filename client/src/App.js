@@ -8,9 +8,13 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
-import GameForm from './pages/GameForm';
+import Home from './pages/home/Home';
+import GameForm from './components/gameForm/GameForm';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Header from './components/header';
+import Profile from './pages/Profile';
+import SingleGame from "./components/singleGame/index";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -39,9 +43,10 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-
       <Router>
-        <div className="flex-column justify-center align-center min-100-vh bg-primary">
+        <Header />
+        <div>
+          {/* <div className="flex-column justify-center align-center min-100-vh bg-primary"> */}
           <Switch>
 
             <Route
@@ -53,8 +58,20 @@ function App() {
               component={Signup}
             />
             <Route
-              exact path="/"
+              path="/profile"
+              component={Profile}
+            />
+            <Route
+              path="/gameform"
               component={GameForm}
+            />
+            <Route
+              path="/games/:gameId"
+              component={SingleGame}
+            />
+            <Route
+              path="/"
+              component={Home}
             />
           </Switch>
         </div>

@@ -6,7 +6,15 @@ query me {
     _id
     username
     email
-    games
+    games {
+      _id
+      title
+      owner
+      description
+      platform
+      price
+      datePosted
+    }
   }
 }
 `;
@@ -35,24 +43,35 @@ query users {
 `;
 
 export const GET_GAME = gql`
-query game($gameId: String!) {
+query game($gameId: ID!) {
   game(gameId: $gameId) {
     _id
     title
+    owner
     description
     platform
+    datePosted
+    tags
+    requests {
+      username
+    }
   }
 }
 `;
-
 
 export const GET_GAMES = gql`
 query games {
   games {
     _id
     title
+    owner
     description
     platform
+    datePosted
+    tags
+    requests {
+      username
+    }
   }
 }
 `;

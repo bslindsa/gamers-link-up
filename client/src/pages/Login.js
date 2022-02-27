@@ -27,11 +27,10 @@ const Login = (props) => {
       });
 
       Auth.login(data.login.token);
-    } catch (e) {
-      console.error(e);
+    } catch (err) {
+      console.error(err);
     }
 
-    // clear form values
     setFormState({
       email: '',
       password: '',
@@ -46,8 +45,8 @@ const Login = (props) => {
           <div className="card-body">
             {data ? (
               <p>
-                Success! You may now head{' '}
-                <Link to="/">back to the homepage.</Link>
+                Success! Post your next game to yeet{' '}
+                <Link to="/gameform">here.</Link>
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
@@ -76,7 +75,6 @@ const Login = (props) => {
                 </button>
               </form>
             )}
-
             {error && (
               <div className="my-3 p-3 bg-danger text-white">
                 {error.message}

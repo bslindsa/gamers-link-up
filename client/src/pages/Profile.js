@@ -18,22 +18,16 @@ const Profile = () => {
                     <button>Post Game</button>
                 </Link>
             </div>
-            <div
-                className="col-12 col-md-10 mb-3 p-3"
-                style={{ border: '4px groove #1a1a1a' }}
-            >
-                <div className="col-12 col-md-8 mb-3">
-                    {loading ? (
-                        <div>Loading...</div>
-                    ) : (
-                        <GameList
-                            games={games}
-                        />
-                    )}
-                </div>
+            <div>
+                {loading ? (
+                    <div>Loading...</div>
+                ) : (
+                    <GameList
+                        games={games}
+                    />
+                )}
             </div>
         </div>
-
     );
 };
 export default Profile;

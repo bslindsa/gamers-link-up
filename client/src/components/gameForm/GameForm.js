@@ -2,26 +2,34 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-import { ADD_GAME } from '../utils/mutations';
+import { ADD_GAME } from '../../utils/mutations';
 // import { GET_GAMES, GET_ME } from '../utils/queries';
 
-import Auth from '../utils/auth';
+import Auth from '../../utils/auth';
 
 const GameForm = () => {
 
     const [formState, setFormState] = useState({
-        title: '',
-        description: '',
-        platform: '',
-        price: 0,
-        owner: Auth.getProfile().data.username,
+        title: 'DDR',
+        description: 'Old',
+        platform: 'PS2',
+        price: 30,
     });
-    const [addGame, { error }] = useMutation(ADD_GAME)
-    
+    const [addGame, { error }] = useMutation(ADD_GAME);
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        // console.log(`${name}: ${value}`);
+        setFormState({
+            ...formState,
+            [name]: value,
+        });
+        // console.log(formState);
+    };
+
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log('Submitting form');
-        // Main addGame issue is in this try statement!!!
+        console.log(formState);
         try {
             // eslint-disable-next-line
             const { data } = await addGame({
@@ -40,15 +48,6 @@ const GameForm = () => {
             console.log('catch');
             console.error(err);
         }
-    };
-
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-
-        setFormState({
-            ...formState,
-            [name]: value,
-        });
     };
 
     return (

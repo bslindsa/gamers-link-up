@@ -55,7 +55,7 @@ query game($gameId: String!) {
 
 export const GET_GAMES = gql`
 query games {
-  ames {
+  games {
     _id
     title
     owner

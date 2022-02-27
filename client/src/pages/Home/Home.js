@@ -1,16 +1,35 @@
 import React from 'react';
-// import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 
-// import { GET_GAME } from '../utils/queries';
-// import { GameList } from '../components/GameList';
+import { GET_GAMES } from '../../utils/queries';
+import GameList from '../../components/gameList/index';
 
-import './style.css';
+// import './style.css';
 
 const Home = () => {
-  // const { loading, data } = useQuery(GET_GAME);
-  // const games = data?.games || [];
+  const { loading, data } = useQuery(GET_GAMES);
+  const games = data?.games || [];
+  console.log(games);
 
   return (
+    <div className="flex-row justify-center">
+      <div
+        className="col-12 col-md-10 mb-3 p-3"
+        style={{ border: '4px groove #1a1a1a' }}
+      >
+        <div className="col-12 col-md-8 mb-3">
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            <GameList
+              games={games}
+            />
+          )}
+        </div>
+      </div>
+
+    </div>
+
     // <div>
     //   <div id="parallax">
     //     <h2>div1</h2>
@@ -73,26 +92,8 @@ const Home = () => {
     //     <h2>div20</h2>
     //   </div>
     // </div>
-
-
-    <div className="flex-row justify-center">
-      <div
-        className="col-12 col-md-10 mb-3 p-3"
-        style={{ border: '4px groove #1a1a1a' }}
-      >
-      </div>
-      {/* <div className="col-12 col-md-8 mb-3">
-        {loading ? (
-          <div>Loading...</div>
-        ) : (
-          <GameList
-            games={games}
-          />
-        )}
-      </div> */}
-      </div>
   );
-  };
+};
 
 export default Home;
 

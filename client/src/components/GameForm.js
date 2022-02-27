@@ -13,7 +13,8 @@ const GameForm = () => {
         title: '',
         description: '',
         platform: '',
-        price: 0
+        price: 0,
+        owner: Auth.getProfile().data.username,
     });
     const [addGame, { error }] = useMutation(ADD_GAME)
     
@@ -25,8 +26,7 @@ const GameForm = () => {
             // eslint-disable-next-line
             const { data } = await addGame({
                 variables: {
-                    ...formState,
-                    owner: Auth.getProfile().data.username,                    
+                    ...formState,                  
                 }
             });
             // setFormState({

@@ -10,10 +10,10 @@ import Auth from '../../utils/auth';
 const GameForm = () => {
 
     const [formState, setFormState] = useState({
-        title: 'DDR',
-        description: 'Old',
-        platform: 'PS2',
-        price: 30,
+        title: 'Turok',
+        description: 'Too bloody for my kids',
+        platform: 'N64',
+        price: 900,
     });
     const [addGame, { error }] = useMutation(ADD_GAME);
 

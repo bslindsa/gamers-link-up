@@ -9,7 +9,6 @@ import GameList from '../../components/gameList/index';
 const Home = () => {
   const { loading, data } = useQuery(GET_GAMES);
   const games = data?.games || [];
-  console.log(games);
 
   return (
     <div className="flex-row justify-center">
@@ -21,9 +20,12 @@ const Home = () => {
           {loading ? (
             <div>Loading...</div>
           ) : (
+            <>
+            <h1>It's Dangerous to go Alone. Take these!</h1>
             <GameList
               games={games}
             />
+            </>
           )}
         </div>
       </div>

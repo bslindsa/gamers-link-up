@@ -10,7 +10,7 @@ import Auth from '../../utils/auth';
 const SingleGame = () => {
 
     const sendMail = () => {
-        const email = 'bslindsa@gmail.com';
+        const email = 'example@gmail.com';
         const subject = 'Test Email';
         const body = 'This is a test';
         let link = `mailto:${email}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;

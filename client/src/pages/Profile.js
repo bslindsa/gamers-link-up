@@ -9,6 +9,7 @@ const Profile = () => {
 
     const { loading, data } = useQuery(GET_ME);
     const games = data?.me.games || [];
+    const me = data?.me || {};
     console.log(data)
     return (
         <div>
@@ -23,7 +24,7 @@ const Profile = () => {
                     <div>Loading...</div>
                 ) : (
                     <GameList
-                        games={games}
+                        games={games} me={me}
                     />
                 )}
             </div>

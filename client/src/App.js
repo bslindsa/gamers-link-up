@@ -15,7 +15,7 @@ import Signup from './pages/login/Signup';
 import Header from './components/header/index';
 
 import Profile from './pages/profile/Profile';
-import SingleGame from "./components/singleGame/index";
+import SingleGame from "./components/SingleGame/index";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({

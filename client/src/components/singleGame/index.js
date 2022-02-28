@@ -1,6 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import $ from 'jquery';
 
 import { GET_GAME, GET_USER } from "../../utils/queries";
 
@@ -12,56 +11,45 @@ import PayPal from '../Payment/PayPal';
 
 const SingleGame = () => {
 
-    // const sendMail = () => {
-    //     const email = 'example@gmail.com';
-    //     const subject = 'Test Email';
-    //     const body = 'This is a test';
-    //     let link = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    //     window.location.href = link;
-    // }
-
-    function sendMail() {
-
-        const emailFrom = 'gamerslinkup22@gmail.com'
-        const emailTo = 'bslindsa@gmail.com';
-        const toUsername = 'thatguy'
-        const subject = 'Test Email';
-        const body = 'This is a test';
-
-        $.ajax({
-            type: 'POST',
-            url: 'https://mandrillapp.com/api/1.0/messages/send.json',
-            data: {
-                'key': 'a9e67737038f528468098ad6f2f10b0c-us14',
-                'message': {
-                    'from_email': emailFrom,
-                    'to': [
-                        {
-                            'email': emailTo,
-                            'name': toUsername,
-                            'type': 'to'
-                        }
-                    ],
-                    'autotext': 'true',
-                    'subject': subject,
-                    'html': body
-                }
-            }
-        }).done(function (response) {
-            console.log(response); // if you're into that sorta thing
-        });
-    }
-
     const [buy, setBuy] = useState(false)
 
     const { gameId } = useParams();
 
-    const { loading, data } = useQuery(GET_GAME, {
-        variables: { gameId: gameId },
+    const { loading: gameLoading, data: gameData } = useQuery(GET_GAME, {
+        variables: {
+            gameId: gameId,
+        },
     });
 
-    const game = data?.game || {};
-    if (loading) {
+    const game = gameData?.game || {};
+
+    const { loading, data: userData } = useQuery(GET_USER, {
+        variables: {
+            username: game.owner,
+        },
+    });
+
+    const user = userData?.user || {};
+
+    console.log(user);
+
+    const sendMail = () => {
+        const email = user.email;
+        const subject = `${Auth.getProfile().data.username} interested in ${game.title}`;
+        const body = '';
+        let link = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = link;
+    }
+
+    const renderPhotos = (source) => {
+        return source.map((photo) => {
+            return <img className='preview m-2' src={photo} key={photo} alt='Preview' />
+        })
+    }
+
+    console.log(game.images);
+    
+    if (gameLoading) {
         return <div>Loading...</div>;
     }
     return (
@@ -72,9 +60,10 @@ const SingleGame = () => {
                         <h1>This one's a beauty... if you've the coin.</h1>
                     </div>
                     <div key={game.title} className="game">
+                        {renderPhotos(game.images)}
                         <div className="card">
                             <div className="title">
-                                <h3>{game.title}</h3>
+                                <h1>{game.title}</h1>
                             </div>
                             <Link to={`/profile/${game.owner}`}>
                                 <div>
@@ -91,11 +80,11 @@ const SingleGame = () => {
                                 <h3>{game.price}</h3>
                             </div>
                             <div>
-                                <ul>
+                                {/* <ul>
                                     {game.tags.map(tag => (
                                         <li>{tag}</li>
                                     ))}
-                                </ul>
+                                </ul> */}
                             </div>
                             <div className='d-flex m-3 justify-content-around'>
                                 <div>

@@ -12,7 +12,7 @@ import Home from './pages/home/Home';
 import GameForm from './components/gameForm/index';
 import Login from './pages/login/Login';
 import Signup from './pages/login/Signup';
-import Header from './components/header/index';
+import Header from './components/Header/index';
 
 import Profile from './pages/profile/Profile';
 import SingleGame from "./components/SingleGame/index";

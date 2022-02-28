@@ -19,7 +19,7 @@ const GameForm = () => {
         title: '',
         description: '',
         platform: '',
-        price: 0
+        price: ''
     });
     const [addGame, { error }] = useMutation(ADD_GAME)
 
@@ -41,28 +41,24 @@ const GameForm = () => {
             Array.from(event.target.files).map(
                 (file) => URL.revokeObjectURL(file)
             )
-            console.log(selectedImages);
         };
 
         setFormState({ ...formState, [name]: value });
     };
 
     const handleFormSubmit = async (event) => {
-        event.preventDefault();
-        console.log(formState)
-        // console.log(title);
+        // event.preventDefault();
         try {
             // eslint-disable-next-line
-
             const { data } = await addGame({
-                variables: { ...formState, price: parseFloat(formState.price) },
+                variables: { ...formState, price: parseFloat(formState.price), images: selectedImages },
             });
 
             setFormState({
                 title: '',
                 description: '',
                 platform: '',
-                price: 0
+                price: ''
             });
         } catch (err) {
             console.log('catch');

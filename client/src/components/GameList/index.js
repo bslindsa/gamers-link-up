@@ -16,28 +16,28 @@ const GameList = ({ games }) => {
             {games.map(game => (
                 <>
                     <div key={game._id} className="dog game">
-                        <div className="card">
+                        <div key={game._id + 'A'} className="card">
                             <Link to={`/games/${game._id}`}>
-                                <div>
+                                <div key={game._id + 'B'}>
                                     <h3>{game.title}</h3>
                                 </div>
                             </Link>
-                            <div>
+                            <div key={game._id + 'C'}>
                                 <h4>{game.owner}</h4>
                             </div>
-                            <div>
+                            <div key={game._id + 'D'}>
                                 <p>{game.description}</p>
                             </div>
-                            <div>
+                            <div key={game._id + 'E'}>
                                 <h3>{game.platform}</h3>
                             </div>
-                            <div>
+                            <div key={game._id + 'F'}>
                                 <h3>{game.price}</h3>
                             </div>
                             {/* Add tags */}
                         </div>
                     </div>
-                    <div className='cat'></div>
+                    <div key={game._id + 'G'} className='cat'></div>
                 </>
             ))}
         </div>

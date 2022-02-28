@@ -35,7 +35,7 @@
 }
 
 .cat {
-    height: 400px;
+    height: 200px;
     background-image: url(./assets/circitorigin.jpg);
     background-attachment: fixed;
     background-size: cover;

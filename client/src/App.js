@@ -59,7 +59,7 @@ function App() {
               component={Signup}
             />
             <Route
-              path="/profile"
+              path="/profile/:username"
               component={Profile}
             />
             <Route

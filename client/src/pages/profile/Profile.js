@@ -9,42 +9,64 @@ import '../profile/Profile.css'
 
 const Profile = () => {
 
-    const { username: userParam } = useParams();
+    const { username } = useParams();
 
-    const { loading, data } = useQuery(userParam ? GET_USER : GET_ME, {
-        variables: { username: userParam },
+    const { loading, data } = useQuery(username ? GET_USER : GET_ME, {
+        variables: { username: username },
     });
-    const games = data?.me.games || data?.user.games || []
     const user = data?.me || data?.user || {};
-
+    const games = user.games || []
+    console.log(data);
     // navigate to personal profile page if username is yours
-    if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-        
+    if (Auth.loggedIn() && Auth.getProfile().data.username === username) {
+        return (
+            <div>
+                <div key='parallax' id="parallax">
+                    <div id="lttp">
+                        <p>Your Inventory</p>
+                    </div>
+                    <div className='post-game-header'>
+                        <h4 className='add-game-header'> Add a new game to your shop!</h4>
+                        <Link to='/gameform'>
+                            <button className='post-game btn-lg btn-light m-2'>Post Game</button>
+                        </Link>
+                    </div>
+                </div>
+                <div>
+                    {loading ? (
+                        <div>Loading...</div>
+                    ) : (
+                        <GameList
+                            games={games} user={user}
+                        />
+                    )}
+                </div>
+            </div>
+        );
     }
     else if (!user?.username) {
         return (
             <h1>We don't recognize you stranger. Please Login or Sign Up so we can add you to our guild.</h1>
         );
-    };
-
-    return (
-        <div>
-            <div className='post-game-header'>
-                <h4 className='add-game-header'> Add a new game to your shop!</h4>
-                <Link to='/gameform'>
-                    <button className='post-game btn-lg btn-light m-2'>Post Game</button>
-                </Link>
-            </div>
+    } else {
+        return (
             <div>
-                {loading ? (
-                    <div>Loading...</div>
-                ) : (
-                    <GameList
-                        games={games} user={user}
-                    />
-                )}
+                <div key='parallax' id="parallax">
+                    <div id="lttp">
+                        <p> {`${username}'s Inventory`} </p>
+                    </div>
+                </div>
+                <div>
+                    {loading ? (
+                        <div>Loading...</div>
+                    ) : (
+                        <GameList
+                            games={games} user={user}
+                        />
+                    )}
+                </div>
             </div>
-        </div>
-    );
+        );
+    };
 };
 export default Profile;

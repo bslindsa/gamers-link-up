@@ -28,6 +28,11 @@ query user($username: String!) {
     games {
       _id
       title
+      owner
+      description
+      platform
+      price
+      datePosted
     }
   }
 }

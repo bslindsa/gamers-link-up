@@ -49,13 +49,14 @@ const resolvers = {
 
       return { token, user };
     },
-    addGame: async (parent, {title, description, platform, price }, context) => {
+    addGame: async (parent, {title, description, platform, price, images }, context) => {
       if (context.user) {
         const game = await Game.create({
           title,
           description,
           platform,
           price,
+          images,
           owner: context.user.username
         });
 
@@ -111,14 +112,15 @@ const resolvers = {
       }
       throw new AuthenticationError('You must be logged in');
     },
-    editGame: async (parent, { gameId, title, description, platform, price }, context) => {
+    editGame: async (parent, { gameId, title, description, platform, price, images }, context) => {
       return await Game.findOneAndUpdate(
         { _id: gameId },
         {
           title,
           description,
           platform,
-          price
+          price,
+          images
         },
         {
           new: true,

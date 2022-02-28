@@ -10,11 +10,11 @@ import { setContext } from '@apollo/client/link/context';
 
 import Home from './pages/Home/Home';
 import GameForm from './components/gameForm/index';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
+import Login from './pages/login/Login';
+import Signup from './pages/login/Signup';
 import Header from './components/Header/index';
 
-import Profile from './pages/Profile';
+import Profile from './pages/profile/Profile';
 import SingleGame from "./components/singleGame/index";
 
 // Construct our main GraphQL API endpoint
@@ -59,7 +59,7 @@ function App() {
               component={Signup}
             />
             <Route
-              path="/profile"
+              path="/profile/:username"
               component={Profile}
             />
             <Route

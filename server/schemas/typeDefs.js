@@ -16,6 +16,7 @@ const typeDefs = gql`
     description: String
     platform: String
     price: Float
+    images: [String]
     datePosted: String
     tags: [String]
     requests: [User]
@@ -42,10 +43,10 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addGame(title: String!, description: String, platform: String, price: Float): Game
+    addGame(title: String!, description: String, platform: String, price: Float, images: [String]): Game
     addTag(gameId: ID!, tagName: String!): Game
     removeTag(gameId: ID! tagName: String!): Game
-    editGame(gameId: ID!, title: String, description: String, price: Float, platform: String): Game
+    editGame(gameId: ID!, title: String, description: String, price: Float, platform: String, images: [String]): Game
     deleteGame(gameId: ID!): Game
     requestGame(gameId: ID!): Game
   }

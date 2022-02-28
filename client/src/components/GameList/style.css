@@ -1,0 +1,48 @@
+.wares {
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+#parallax, .cat, .dog {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+#lttp {
+    font-size: 60px;
+    background: rgb(10, 155, 75);
+    padding: 8px 24px;
+    min-width: 1500px;
+    min-height: 200px;
+    background-image: url(./assets/a-link-to-the-past.png);
+    border-radius: 16px;
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+}
+
+#parallax{
+    background-image: url(./assets/zelda_landscape.jpg);
+    background-size: cover;
+}
+
+.dog {
+    background-image: url(./assets/steel.jpg);
+    background-size: cover;
+    max-height: 300px;
+}
+
+.cat {
+    height: 400px;
+    background-image: url(./assets/circitorigin.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.card{
+    background-color: aqua;
+    background-image: none;
+    background-size: cover;
+}

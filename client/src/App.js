@@ -8,11 +8,19 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
+
 import Home from './pages/Home/Home';
 import GameForm from './components/gameForm/GameForm';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Header from './components/Header';
+
+import Home from './pages/home/Home';
+import GameForm from './components/gameForm/index';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Header from './components/header/index';
+
 import Profile from './pages/Profile';
 import SingleGame from "./components/singleGame/index";
 
@@ -43,7 +51,6 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-
       <Router>
         <Header />
         <div>

@@ -1,15 +1,37 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
+
 import { Link } from 'react-router-dom';
 import { GET_ME } from '../utils/queries';
 import GameList from '../components/GameList/index';
 
+import { Link, useParams } from 'react-router-dom';
+import { GET_ME, GET_USER } from '../utils/queries';
+import GameList from '../components/gameList/index';
+import Auth from '../utils/auth';
+
+
 
 const Profile = () => {
 
-    const { loading, data } = useQuery(GET_ME);
-    const games = data?.me.games || [];
-    console.log(data)
+    const { username: userParam } = useParams();
+
+    const { loading, data } = useQuery(userParam ? GET_USER : GET_ME, {
+        variables: { username: userParam },
+    });
+    const games = data?.me.games || data?.user.games || []
+    const user = data?.me || data?.user || {};
+
+    // navigate to personal profile page if username is yours
+    if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+        
+    }
+    else if (!user?.username) {
+        return (
+            <h1>We don't recognize you stranger. Please Login or Sign Up so we can add you to our guild.</h1>
+        );
+    };
+
     return (
         <div>
             <div>
@@ -18,22 +40,16 @@ const Profile = () => {
                     <button>Post Game</button>
                 </Link>
             </div>
-            <div
-                className="col-12 col-md-10 mb-3 p-3"
-                style={{ border: '4px groove #1a1a1a' }}
-            >
-                <div className="col-12 col-md-8 mb-3">
-                    {loading ? (
-                        <div>Loading...</div>
-                    ) : (
-                        <GameList
-                            games={games}
-                        />
-                    )}
-                </div>
+            <div>
+                {loading ? (
+                    <div>Loading...</div>
+                ) : (
+                    <GameList
+                        games={games} user={user}
+                    />
+                )}
             </div>
         </div>
-
     );
 };
 export default Profile;

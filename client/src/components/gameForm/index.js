@@ -4,8 +4,10 @@ import { useMutation } from '@apollo/client';
 
 import { ADD_GAME } from '../../utils/mutations';
 // import { GET_GAMES, GET_ME } from '../utils/queries';
-
+// dropzone imagekit
+// imagekit ID: b7ythpwldzw
 import Auth from '../../utils/auth';
+import './style.css'
 
 const GameForm = () => {
 
@@ -19,22 +21,19 @@ const GameForm = () => {
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-        // console.log(`${name}: ${value}`);
         setFormState({
             ...formState,
             [name]: value,
         });
-        // console.log(formState);
     };
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log(formState);
         try {
             // eslint-disable-next-line
             const { data } = await addGame({
                 variables: {
-                    ...formState,                  
+                    ...formState,
                 }
             });
             // setFormState({
@@ -50,15 +49,59 @@ const GameForm = () => {
         }
     };
 
+    // Upload and display image
+    const imageInput = document.querySelector("#image_input");
+    // const preview = document.querySelector('.preview');
+    const reader = new FileReader();
+    let uploadedImages = [];
+    // let uploadedImage = '';
+
+    const handleEvent = (event) => {
+        if (imageInput) {
+            if (event.type === 'load') {
+                // preview.src = reader.result;
+                let uploadImage = reader.result;
+                uploadedImages.push(uploadImage);
+            }
+            console.log(`Uploaded Images: ${uploadedImages}`);
+        }
+    };
+
+    const handleSelected = (e) => {
+        const selectedFile = imageInput.files[0];
+        if (selectedFile) {
+            reader.addEventListener('load', handleEvent);
+            reader.readAsDataURL(selectedFile);
+        }
+    };
+
+    if (imageInput) {
+        imageInput.addEventListener('change', handleSelected);
+    }
+
+
     return (
-        <main className="flex-row justify-center mb-4">
+        <main>
             {Auth.loggedIn() ? (
                 <>
-                    <div className="col-12 col-lg-10">
+                    <div>
                         <div className="card">
                             <h4 className="card-header bg-dark text-light p-2">Game</h4>
                             <div className="card-body">
+
+                                <div className='d-flex flex-row'>
+                                    {uploadedImages.map(image => (
+                                        <div>
+                                        <img className='preview' src={image} alt='Preview' />
+                                        </div>
+                                    ))}
+                                </div>
+
+                                {/* <img className='preview' src='' alt='Preview' /> */}
+                                <label>Upload Images</label>
+                                <input type='file' id='image_input' accept='image/png, image/jpg' />
                                 <form onSubmit={handleFormSubmit}>
+                                    <label>Title</label>
                                     <input
                                         className="form-input"
                                         placeholder="Game Title"
@@ -67,6 +110,7 @@ const GameForm = () => {
                                         value={formState.title}
                                         onChange={handleChange}
                                     />
+                                    <label>Description</label>
                                     <input
                                         className="form-input"
                                         placeholder="Game Description"
@@ -75,6 +119,7 @@ const GameForm = () => {
                                         value={formState.description}
                                         onChange={handleChange}
                                     />
+                                    <label>Platform</label>
                                     <input
                                         className="form-input"
                                         placeholder="Platform"
@@ -83,6 +128,7 @@ const GameForm = () => {
                                         value={formState.platform}
                                         onChange={handleChange}
                                     />
+                                    <label>Price</label>
                                     <input
                                         className="form-input"
                                         placeholder="Price"

@@ -13,6 +13,7 @@ query me {
       description
       platform
       price
+      images
       datePosted
     }
   }
@@ -32,6 +33,7 @@ query user($username: String!) {
       description
       platform
       price
+      images
       datePosted
     }
   }

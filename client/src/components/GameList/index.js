@@ -8,6 +8,12 @@ const GameList = ({ games }) => {
     }
     console.log(games);
 
+    // const renderPhotos = (source) => {
+    //     return source.map((photo) => {
+    //         return <img className='preview m-2' src={photo} key={photo} alt='Preview' />
+    //     })
+    // }
+
     return (
         <div className="wares">
             
@@ -33,6 +39,9 @@ const GameList = ({ games }) => {
                             </div>
                             <div>
                                 <h3>{game.price}</h3>
+                            </div>
+                            <div>
+                                {/* {renderPhotos(game.images)} */}
                             </div>
                             {/* Add tags */}
                         </div>

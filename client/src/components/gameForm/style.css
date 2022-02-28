@@ -7,4 +7,8 @@
     gap: 10px;
     border: 1px solid black;
  }
+
+ .custom-card-header {
+     border-radius: 16px 16px 0px 0px;
+ }
  

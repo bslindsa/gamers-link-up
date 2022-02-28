@@ -45,4 +45,5 @@
     background-color: aqua;
     background-image: none;
     background-size: cover;
+    min-width: 500px;
 }

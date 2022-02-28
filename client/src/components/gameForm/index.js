@@ -41,33 +41,7 @@ const GameForm = () => {
         }
     };
 
-    // // Upload and display image
-    // // const reader = new FileReader();
-    // const uploadedImages = [logo, landscape];
-    // let uploadImage = '';
-
-    // // console.log(uploadedImages);
-
-    // function readURL(input) {
-    //     if (input.files && input.files[0]) {
-    //         const reader = new FileReader();
-    //         reader.onload = function (e) {
-    //             console.log(e.target.result);
-    //             $("#imgPreview")
-    //                 .attr("src", e.target.result)
-    //                 .width(100)
-    //                 .height(100);
-    //             uploadImage = e.target.result;
-    //             uploadedImages.push(uploadImage);
-    //         };
-    //         reader.readAsDataURL(input.files[0]);
-    //     }
-    // }
-
-    // $("#img").change(function () {
-    //     console.log(this.files);
-    //     readURL(this);
-    // });
+    // Upload and display image
 
     const [selectedImages, setSelectedImages] = useState([]);
 

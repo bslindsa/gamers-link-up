@@ -10,7 +10,7 @@ import Auth from '../../utils/auth';
 
 const GameForm = () => {
     const [formState, setFormState] = useState({
-        tite: '',
+        title: '',
         description: '',
         platform: '',
         price: 0
@@ -42,13 +42,20 @@ const GameForm = () => {
                 setFormState({...formState, [name]: value});
         };
 
+        // const handleNumberChange = (event) => {
+        //     const { name, value} = event.target;
+            
+        //     setFormState({...formState})
+        // }
+
         const handleFormSubmit = async (event) => {
             event.preventDefault();
+            console.log(formState)
             // console.log(title);
             try {
                 // eslint-disable-next-line
                 const {data} = await addGame({
-                    variables: { ...formState },
+                    variables: { ...formState, price: parseFloat(formState.price) },
                 });
                 setFormState({
                     title: '',
@@ -102,7 +109,8 @@ const GameForm = () => {
                                             className="form-input"
                                             placeholder="Price"
                                             name="price"
-                                            type="number"
+                                            pattern="[0-9]*"
+                                            type="text"
                                             value={formState.price}
                                             onChange={handleChange}
                                         />

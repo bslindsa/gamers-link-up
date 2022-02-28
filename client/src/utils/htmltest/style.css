@@ -48,6 +48,7 @@ h2 {
     background-image: url(./assets/steel.jpg);
     background-size: cover;
     max-height: 300px;
+    
 }
 
 #dog2{
@@ -101,6 +102,7 @@ h2 {
     background-color: aqua;
     background-image: none;
     background-size: cover;
+    min-width: 1000px;
 }
 #dog1 h2{
     background-color: blue;

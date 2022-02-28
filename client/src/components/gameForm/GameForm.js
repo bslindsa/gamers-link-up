@@ -36,16 +36,6 @@ const GameForm = () => {
     //     }    
     // });
 
-        // const handleChange = (event) => {
-        //     const { name, value } = event.target;
-        //     // console.log(`${name}: ${value}`);
-        //     setFormState({
-        //         ...formState,
-        //         [name]: value,
-        //     });
-        //     // console.log(formState);
-        // };
-
         const handleChange = (event) => {
             const { name, value } = event.target;
                 setFormState({...formState, [name]: value});

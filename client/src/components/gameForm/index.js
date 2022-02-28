@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
+import $ from 'jquery';
 
 import { ADD_GAME } from '../../utils/mutations';
-// import { GET_GAMES, GET_ME } from '../utils/queries';
 
 import Auth from '../../utils/auth';
-// import { GET_GAME, GET_ME } from '../../utils/queries';
+import './style.css';
+import logo from './logo192.png';
+import landscape from './zelda_landscape.jpg';
+
 
 const GameForm = () => {
     const [formState, setFormState] = useState({
-        tite: '',
+
+        title: '',
         description: '',
         platform: '',
-        price: 0
+        price: 900,
     });
     const [addGame, { error }] = useMutation(ADD_GAME)
     //     update(cache, { data: { addGame } }) {
@@ -41,8 +45,8 @@ const GameForm = () => {
             const { name, value } = event.target;
                 setFormState({...formState, [name]: value});
         };
-
-        const handleFormSubmit = async (event) => {
+  
+   const handleFormSubmit = async (event) => {
             event.preventDefault();
             // console.log(title);
             try {
@@ -62,64 +66,107 @@ const GameForm = () => {
             }
         };
 
-        
 
-        return(
-        <main className = "flex-row justify-center mb-4" >
-            {
-                Auth.loggedIn() ? (
-                    <>
-                        <div className="col-12 col-lg-10">
-                            <div className="card">
-                                <h4 className="card-header bg-dark text-light p-2">Game</h4>
-                                <div className="card-body">
-                                    <form onSubmit={handleFormSubmit}>
-                                        <input
-                                            className="form-input"
-                                            placeholder="Game Title"
-                                            name="title"
-                                            type="text"
-                                            value={formState.title}
-                                            onChange={handleChange}
-                                        />
-                                        <input
-                                            className="form-input"
-                                            placeholder="Game Description"
-                                            name="description"
-                                            type="text"
-                                            value={formState.description}
-                                            onChange={handleChange}
-                                        />
-                                        <input
-                                            className="form-input"
-                                            placeholder="Platform"
-                                            name="platform"
-                                            type="text"
-                                            value={formState.platform}
-                                            onChange={handleChange}
-                                        />
-                                        <input
-                                            className="form-input"
-                                            placeholder="Price"
-                                            name="price"
-                                            type="number"
-                                            value={formState.price}
-                                            onChange={handleChange}
-                                        />
-                                        <button
-                                            className="btn btn-block btn-primary"
-                                            style={{ cursor: 'pointer' }}
-                                            type="submit"
-                                        >
-                                            Submit
-                                        </button>
-                                    </form>
-                                    {error && (
-                                        <div className="my-3 p-3 bg-danger text-white">
-                                            {error.message}
-                                        </div>
-                                    )}
+    // Upload and display image
+    // const reader = new FileReader();
+    const uploadedImages = [logo, landscape];
+    let uploadImage = '';
+
+
+    console.log(uploadedImages);
+    
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                $("#imgPreview")
+                    .attr("src", e.target.result)
+                    .width(100)
+                    .height(100);
+                uploadImage = e.target.result;
+                uploadedImages.push(uploadImage);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#img").change(function () {
+        console.log(this.files);
+        readURL(this);
+    });
+
+    return (
+        <main>
+            {Auth.loggedIn() ? (
+                <>
+                    <div>
+
+                        <div className="card">
+                            <h4 className="card-header bg-dark text-light p-2">Game</h4>
+                            <div className="card-body">
+
+                                <div className='d-flex flex-row'>
+                                    {uploadedImages.map(image => (
+                                        <img key={image} className='preview' src={image} alt='Preview' />
+                                    ))}
                                 </div>
+
+                                {/* <img src="#" id="imgPreview" alt="" /> */}
+
+                                <label>Upload Images</label>
+                                <input type="file" className="form-control" name="image" id="img" />
+                                <form onSubmit={handleFormSubmit}>
+                                    <label>Title</label>
+                                    <input
+                                        className="form-input"
+                                        placeholder="Game Title"
+                                        name="title"
+                                        type="text"
+                                        value={formState.title}
+                                        onChange={handleChange}
+                                    />
+                                    <label>Description</label>
+                                    <input
+                                        className="form-input"
+                                        placeholder="Game Description"
+                                        name="description"
+                                        type="text"
+                                        value={formState.description}
+                                        onChange={handleChange}
+                                    />
+                                    <label>Platform</label>
+                                    <input
+                                        className="form-input"
+                                        placeholder="Platform"
+                                        name="platform"
+                                        type="text"
+                                        value={formState.platform}
+                                        onChange={handleChange}
+                                    />
+                                    <label>Price</label>
+                                    <input
+                                        className="form-input"
+                                        placeholder="Price"
+                                        name="price"
+                                        type="number"
+                                        value={formState.price}
+                                        onChange={handleChange}
+                                    />
+                                    <button
+                                        className="btn btn-block btn-primary"
+                                        style={{ cursor: 'pointer' }}
+                                        type="submit"
+                                    >
+                                        Submit
+                                    </button>
+                                </form>
+                                {error && (
+                                    <div className="my-3 p-3 bg-danger text-white">
+                                        {error.message}
+                                    </div>
+                                )}
+
+                
                             </div>
                         </div>
                     </>

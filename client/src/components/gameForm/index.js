@@ -23,6 +23,8 @@ const GameForm = () => {
 
     const handleChange = (event) => {
         const { name, value } = event.target;
+            setFormState({...formState, [name]: value});
+    // };
         
         if (event.target.files) {
             const fileArray = Array.from(event.target.files).map((file) => URL.createObjectURL(file));
@@ -70,9 +72,9 @@ const GameForm = () => {
         event.preventDefault();
         try {
             // eslint-disable-next-line
-            const { data } = await addGame({
-                variables: { ...formState },
-            });
+            const {data} = await addGame({
+                variables: { ...formState, price: parseFloat(formState.price) },
+            });  
             console.log(formState);
             setFormState({
                 title: '',
@@ -95,64 +97,64 @@ const GameForm = () => {
     }
 
 
-        // return(
-        // <main className = "flex-row justify-center mb-4" >
-        //     {
-        //         Auth.loggedIn() ?  (
-        //             <>
-        //                 <div className="col-12 col-lg-10">
-        //                     <div className="card">
-        //                         <h4 className="card-header bg-dark text-light p-2">Game</h4>
-        //                         <div className="card-body">
-        //                             <form onSubmit={handleFormSubmit}>
-        //                                 <input
-        //                                     className="form-input"
-        //                                     placeholder="Game Title"
-        //                                     name="title"
-        //                                     type="text"
-        //                                     value={formState.title}
-        //                                     onChange={handleChange}
-        //                                 />
-        //                                 <input
-        //                                     className="form-input"
-        //                                     placeholder="Game Description"
-        //                                     name="description"
-        //                                     type="text"
-        //                                     value={formState.description}
-        //                                     onChange={handleChange}
-        //                                 />
-        //                                 <input
-        //                                     className="form-input"
-        //                                     placeholder="Platform"
-        //                                     name="platform"
-        //                                     type="text"
-        //                                     value={formState.platform}
-        //                                     onChange={handleChange}
-        //                                 />
-        //                                 <input
-        //                                     className="form-input"
-        //                                     placeholder="Price"
-        //                                     name="price"
-        //                                     pattern="[0-9]*"
-        //                                     type="text"
-        //                                     value={formState.price}
-        //                                     onChange={handleChange}
-        //                                 />
-        //                                 <button
-        //                                     className="btn btn-block btn-primary"
-        //                                     style={{ cursor: 'pointer' }}
-        //                                     type="submit"
-        //                                 >
-        //                                     Submit
-        //                                 </button>
-        //                             </form>
-        //                             {error && (
-        //                                 <div className="my-3 p-3 bg-danger text-white">
-        //                                     {error.message}
-        //                                 </div>
-        //                             )}
+        return(
+        <main className = "flex-row justify-center mb-4" >
+            {
+                Auth.loggedIn() ?  (
+                    <>
+                        <div className="col-12 col-lg-10">
+                            <div className="card">
+                                <h4 className="card-header bg-dark text-light p-2">Game</h4>
+                                <div className="card-body">
+                                    <form onSubmit={handleFormSubmit}>
+                                        <input
+                                            className="form-input"
+                                            placeholder="Game Title"
+                                            name="title"
+                                            type="text"
+                                            value={formState.title}
+                                            onChange={handleChange}
+                                        />
+                                        <input
+                                            className="form-input"
+                                            placeholder="Game Description"
+                                            name="description"
+                                            type="text"
+                                            value={formState.description}
+                                            onChange={handleChange}
+                                        />
+                                        <input
+                                            className="form-input"
+                                            placeholder="Platform"
+                                            name="platform"
+                                            type="text"
+                                            value={formState.platform}
+                                            onChange={handleChange}
+                                        />
+                                        <input
+                                            className="form-input"
+                                            placeholder="Price"
+                                            name="price"
+                                            pattern="[0-9]*"
+                                            type="text"
+                                            value={formState.price}
+                                            onChange={handleChange}
+                                        />
+                                        <button
+                                            className="btn btn-block btn-primary"
+                                            style={{ cursor: 'pointer' }}
+                                            type="submit"
+                                        >
+                                            Submit
+                                        </button>
+                                    </form>
+                                    {error && (
+                                        <div className="my-3 p-3 bg-danger text-white">
+                                            {error.message}
+                                        </div>
+                                    )}
 
-    return (
+    {/* return (
         <main>
             {Auth.loggedIn() ? (
                 <>
@@ -221,7 +223,7 @@ const GameForm = () => {
                                     <div className="my-3 p-3 bg-danger text-white">
                                         {error.message}
                                     </div>
-                                )}
+                                )} */}
                             </div>
                         </div>
                     </div>

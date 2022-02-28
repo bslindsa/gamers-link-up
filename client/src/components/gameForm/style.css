@@ -1,0 +1,10 @@
+.preview {
+    width: auto;
+    height: 225px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid black;
+ }
+ 

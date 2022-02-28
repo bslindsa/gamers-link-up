@@ -13,11 +13,10 @@ import landscape from './zelda_landscape.jpg';
 
 const GameForm = () => {
     const [formState, setFormState] = useState({
-
         title: '',
         description: '',
         platform: '',
-        price: 900,
+        price: 0,
     });
     const [addGame, { error }] = useMutation(ADD_GAME)
     //     update(cache, { data: { addGame } }) {

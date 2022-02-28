@@ -24,7 +24,6 @@ const SingleGame = () => {
     });
 
     const game = data?.game || {};
-    console.log(data);
     if (loading) {
         return <div>Loading...</div>;
     }

@@ -1,30 +1,30 @@
 import React from "react";
-import { Link } from "react-router-dom";
-// import { Link } from 'react-router-dom';
-import './style.css';
 
+import { Link } from "react-router-dom";
+import './style.css';
 const GameList = ({ games }) => {
     if (!games.length) {
         return <h3>Sorry, Adventurer. These games are in another castle</h3>
     }
+    console.log(games);
 
     return (
         <div className="wares">
-            <div key='parallax' id="parallax">
-                <h2 id="lttp"> </h2>
-            </div>
+            
             {games.map(game => (
                 <>
                     <div key={game._id} className="dog game">
-                        <div className="card">
+                        <div key={game._id + 'A'} className="card">
                             <Link to={`/games/${game._id}`}>
                                 <div>
                                     <h3>{game.title}</h3>
                                 </div>
                             </Link>
+                            <Link to={`/profile/${game.owner}`}>
                             <div>
                                 <h4>{game.owner}</h4>
                             </div>
+                            </Link>
                             <div>
                                 <p>{game.description}</p>
                             </div>

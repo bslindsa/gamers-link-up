@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-// import $ from 'jquery';
+import $ from 'jquery';
 
 import { ADD_GAME } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 import './style.css';
+
+import Nintendo from './assets/nintendo.jpg';
+import PlayStation from './assets/playstation.png';
+import XBox from './assets/xbox.png';
+import PC from './assets/pc.png';
 
 const GameForm = () => {
     const [formState, setFormState] = useState({
@@ -23,6 +28,9 @@ const GameForm = () => {
     const handleChange = (event) => {
         const { name, value } = event.target;
 
+        $('.icon').removeClass('highlight');
+        $(event.target).addClass('highlight');
+
         if (event.target.files) {
             const fileArray = Array.from(event.target.files).map((file) => URL.createObjectURL(file));
             setSelectedImages((prevImages) => prevImages.concat(fileArray));
@@ -30,40 +38,8 @@ const GameForm = () => {
                 (file) => URL.revokeObjectURL(file)
             )
             console.log(selectedImages);
-
         };
-
-
-        // const handleNumberChange = (event) => {
-        //     const { name, value} = event.target;
-            
-        //     setFormState({...formState})
-        // }
-
-        const handleFormSubmit = async (event) => {
-            event.preventDefault();
-            console.log(formState)
-            // console.log(title);
-            try {
-                // eslint-disable-next-line
-                const {data} = await addGame({
-                    variables: { ...formState, price: parseFloat(formState.price) },
-                });
-                setFormState({
-                    title: '',
-                    description: '',
-                    platform: '',
-                    price: 0
-                });
-            } catch (err) {
-                console.log('catch');
-                console.error(err);
-            }
-        };
-
         setFormState({ ...formState, [name]: value });
-        // console.log(selectedImages);
-        // console.log(formState.images);
     };
 
 
@@ -89,70 +65,10 @@ const GameForm = () => {
 
     // Display image previews
     const renderPhotos = (source) => {
-        // console.log('Render Photos: ' + source);
         return source.map((photo) => {
-            console.log('Render Photos: ' + photo);
             return <img className='preview m-2' src={photo} key={photo} alt='Preview' />
         })
     }
-
-
-        // return(
-        // <main className = "flex-row justify-center mb-4" >
-        //     {
-        //         Auth.loggedIn() ?  (
-        //             <>
-        //                 <div className="col-12 col-lg-10">
-        //                     <div className="card">
-        //                         <h4 className="card-header bg-dark text-light p-2">Game</h4>
-        //                         <div className="card-body">
-        //                             <form onSubmit={handleFormSubmit}>
-        //                                 <input
-        //                                     className="form-input"
-        //                                     placeholder="Game Title"
-        //                                     name="title"
-        //                                     type="text"
-        //                                     value={formState.title}
-        //                                     onChange={handleChange}
-        //                                 />
-        //                                 <input
-        //                                     className="form-input"
-        //                                     placeholder="Game Description"
-        //                                     name="description"
-        //                                     type="text"
-        //                                     value={formState.description}
-        //                                     onChange={handleChange}
-        //                                 />
-        //                                 <input
-        //                                     className="form-input"
-        //                                     placeholder="Platform"
-        //                                     name="platform"
-        //                                     type="text"
-        //                                     value={formState.platform}
-        //                                     onChange={handleChange}
-        //                                 />
-        //                                 <input
-        //                                     className="form-input"
-        //                                     placeholder="Price"
-        //                                     name="price"
-        //                                     pattern="[0-9]*"
-        //                                     type="text"
-        //                                     value={formState.price}
-        //                                     onChange={handleChange}
-        //                                 />
-        //                                 <button
-        //                                     className="btn btn-block btn-primary"
-        //                                     style={{ cursor: 'pointer' }}
-        //                                     type="submit"
-        //                                 >
-        //                                     Submit
-        //                                 </button>
-        //                             </form>
-        //                             {error && (
-        //                                 <div className="my-3 p-3 bg-danger text-white">
-        //                                     {error.message}
-        //                                 </div>
-        //                             )}
 
     return (
         <main>
@@ -172,8 +88,14 @@ const GameForm = () => {
                                     <div className='result'>
                                         {renderPhotos(selectedImages)}
                                     </div>
-
                                 </div>
+
+                                <label>Platform</label>
+                                <input type='image' border='none' className='icon' src={Nintendo} alt='nintendo' name='platform' value='Nintendo' onClick={handleChange} />
+                                <input type='image' border='none' className='icon' src={XBox} alt='Xbox' name='platform' value='XBOX' onClick={handleChange} />
+                                <input type='image' border='none' className='icon' src={PlayStation} alt='playstation' name='platform' value='PlayStation' onClick={handleChange} />
+                                <input type='image' border='none' className='icon' src={PC} alt='PC' name='platform' value='PC' onClick={handleChange} />
+
                                 <form onSubmit={handleFormSubmit}>
                                     <label>Title</label>
                                     <input
@@ -191,15 +113,6 @@ const GameForm = () => {
                                         name="description"
                                         type="text"
                                         value={formState.description}
-                                        onChange={handleChange}
-                                    />
-                                    <label>Platform</label>
-                                    <input
-                                        className="form-input"
-                                        placeholder="Platform"
-                                        name="platform"
-                                        type="text"
-                                        value={formState.platform}
                                         onChange={handleChange}
                                     />
                                     <label>Price</label>

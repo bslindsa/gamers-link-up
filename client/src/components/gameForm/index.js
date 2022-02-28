@@ -7,9 +7,8 @@ import { ADD_GAME } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 import './style.css';
-import logo from './logo192.png';
-import landscape from './zelda_landscape.jpg';
-
+import logo from './assets/logo192.png';
+import landscape from './assets/zelda_landscape.jpg';
 
 const GameForm = () => {
     const [formState, setFormState] = useState({
@@ -19,26 +18,6 @@ const GameForm = () => {
         price: 0,
     });
     const [addGame, { error }] = useMutation(ADD_GAME)
-    //     update(cache, { data: { addGame } }) {
-    //         try {
-    //             const { games } = cache.readQuery({ query: GET_GAME })
-
-    //             cache.writeQuery({
-    //                 query: GET_GAME,
-    //                 data: { games: [addGame, ...games] },
-    //             });
-    //         } catch (err) {
-    //             console.error(err)
-    //         }
-
-    //         const { me } = cache.readQuery({ query:GET_ME });
-    //         cache.writeQuery({
-    //             query: GET_ME,
-    //             data: {me: {...me, games: [...me.games, addGame]}},
-    //         });
-    //     }    
-    // });
-
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -46,8 +25,7 @@ const GameForm = () => {
     };
 
     const handleFormSubmit = async (event) => {
-        event.preventDefault();
-        // console.log(title);
+        // event.preventDefault();
         try {
             // eslint-disable-next-line
             const { data } = await addGame({
@@ -65,19 +43,18 @@ const GameForm = () => {
         }
     };
 
-
     // Upload and display image
     // const reader = new FileReader();
     const uploadedImages = [logo, landscape];
     let uploadImage = '';
 
-
-    console.log(uploadedImages);
+    // console.log(uploadedImages);
 
     function readURL(input) {
         if (input.files && input.files[0]) {
             const reader = new FileReader();
             reader.onload = function (e) {
+                console.log(e.target.result);
                 $("#imgPreview")
                     .attr("src", e.target.result)
                     .width(100)
@@ -99,14 +76,14 @@ const GameForm = () => {
             {Auth.loggedIn() ? (
                 <>
                     <div>
-
                         <div className="card">
-                            <h4 className="card-header bg-dark text-light p-2">Game</h4>
+                            <h4 className="custom-card-header card-header bg-dark text-light p-2">Game</h4>
                             <div className="card-body">
-
                                 <div className='d-flex flex-row'>
                                     {uploadedImages.map(image => (
-                                        <img key={image} className='preview' src={image} alt='Preview' />
+                                        <div>
+                                            <img key={image} className='preview m-2' src={image} alt='Preview' />
+                                        </div>
                                     ))}
                                 </div>
 

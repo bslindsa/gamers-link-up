@@ -25,12 +25,13 @@ mutation login($email: String!, $password: String!) {
 `;
 
 export const ADD_GAME = gql`
-mutation addGame($title: String!, $description: String, $platform: String, $price: Float) {
-  addGame(title: $title, description: $description, platform: $platform, price: $price) {
+mutation addGame($title: String!, $description: String, $platform: String, $price: Float, $images:[String]) {
+  addGame(title: $title, description: $description, platform: $platform, price: $price, images: $images) {
     title
     description
     platform
     price
+    images
     owner
   }
 }
@@ -57,12 +58,14 @@ mutation removeTag($gameId: ID!, $tagName: String!) {
 `;
 
 export const EDIT_GAME = gql`
-mutation editGame($gameId: ID!, $title: String, $description: String, $platform: String) {
-  editGame(gameId: $gameId, title: $title, description: $description, platform: $platform) {
+mutation editGame($gameId: ID!, $title: String, $description: String, $platform: String, $price: Float, $images: [String]) {
+  editGame(gameId: $gameId, title: $title, description: $description, platform: $platform, price: $price, images: $images) {
     _id
     title
     description
     platform
+    price
+    images
   }
 }
 

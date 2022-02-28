@@ -1,0 +1,32 @@
+.available-games {
+    background-color: #4db8ff;
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
+    padding: 12px;
+}
+
+.container {
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
+    padding: 12px;
+}
+
+.see-games {
+    padding-right: 100px;
+}
+
+.content {
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
+}
+
+.m {
+    margin-left: 150px;
+}
+
+.m:hover {
+    background-color: rgb(17, 90, 41);
+}

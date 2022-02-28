@@ -4,7 +4,7 @@
     margin: 0;
 }
 
-#parallax, .cat, .dog {
+.cat, .dog {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14,7 +14,7 @@
 
 #lttp {
     font-size: 60px;
-    background: rgb(10, 155, 75);
+    text-align: center;
     padding: 8px 24px;
     min-width: 1500px;
     min-height: 200px;
@@ -23,9 +23,19 @@
     box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
 }
 
+#lttp p {
+    background-color: rgb(10, 155, 75);
+    border-radius: 16px;
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+}
+
 #parallax{
     background-image: url(./assets/zelda_landscape.jpg);
     background-size: cover;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
 }
 
 .dog {
@@ -35,15 +45,17 @@
 }
 
 .cat {
-    height: 400px;
+    height: 200px;
     background-image: url(./assets/circitorigin.jpg);
     background-attachment: fixed;
     background-size: cover;
 }
 
-.card{
+.card {
     background-color: aqua;
     background-image: none;
     background-size: cover;
-    min-width: 500px;
+    width: 80%;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
 }

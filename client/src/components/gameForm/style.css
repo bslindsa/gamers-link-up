@@ -1,0 +1,14 @@
+.preview {
+    width: auto;
+    height: 225px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid black;
+ }
+
+ .custom-card-header {
+     border-radius: 16px 16px 0px 0px;
+ }
+ 

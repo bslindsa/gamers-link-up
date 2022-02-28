@@ -4,6 +4,8 @@ import { useQuery } from '@apollo/client';
 import { GET_GAMES } from '../../utils/queries';
 import GameList from '../../components/GameList/index';
 
+import './Home.css';
+
 const Home = () => {
   const { loading, data } = useQuery(GET_GAMES);
   const games = data?.games || [];
@@ -15,10 +17,18 @@ const Home = () => {
           <div>Loading...</div>
         ) : (
           <>
-            <h1>It's Dangerous to go Alone. Take these!</h1>
-            <GameList
-              games={games}
-            />
+            <div>
+              <div key='parallax' id="parallax">
+                <div>
+                  <div id="lttp">
+                    <p>It's Dangerous to go Alone. Take these!</p>
+                  </div>
+                </div>
+              </div>
+              <GameList
+                games={games}
+              />
+            </div>
           </>
         )}
       </div>

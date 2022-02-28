@@ -1,0 +1,26 @@
+.post-game {
+    background-color: rgb(39, 132, 175);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 25px;
+    text-align: center;
+    margin: 30px;  
+}
+
+.post-game:hover {
+    cursor: pointer;
+    background-color: aliceblue;
+}
+
+.post-game-header {
+    text-align: center;
+}
+
+.add-game-header {
+    color: rgb(23, 33, 90);
+    background-color: rgb(229, 234, 238);
+    border-radius: 0px 0px 16px 16px;
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 50px;
+    margin: 20px 200px;    
+}

@@ -28,6 +28,11 @@ query user($username: String!) {
     games {
       _id
       title
+      owner
+      description
+      platform
+      price
+      datePosted
     }
   }
 }
@@ -50,6 +55,8 @@ query game($gameId: ID!) {
     owner
     description
     platform
+    price
+    images
     datePosted
     tags
     requests {
@@ -67,6 +74,8 @@ query games {
     owner
     description
     platform
+    price
+    images
     datePosted
     tags
     requests {

@@ -32,10 +32,39 @@ const GameForm = () => {
             )
         };
 
+
+        // const handleNumberChange = (event) => {
+        //     const { name, value} = event.target;
+            
+        //     setFormState({...formState})
+        // }
+
+        const handleFormSubmit = async (event) => {
+            event.preventDefault();
+            console.log(formState)
+            // console.log(title);
+            try {
+                // eslint-disable-next-line
+                const {data} = await addGame({
+                    variables: { ...formState, price: parseFloat(formState.price) },
+                });
+                setFormState({
+                    title: '',
+                    description: '',
+                    platform: '',
+                    price: 0
+                });
+            } catch (err) {
+                console.log('catch');
+                console.error(err);
+            }
+        };
+
         setFormState({ ...formState, [name]: value });
         console.log(selectedImages);
         console.log(formState.images);
     };
+
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
@@ -65,6 +94,64 @@ const GameForm = () => {
         })
     }
 
+
+        return(
+        <main className = "flex-row justify-center mb-4" >
+            {
+                Auth.loggedIn() ? (
+                    <>
+                        <div className="col-12 col-lg-10">
+                            <div className="card">
+                                <h4 className="card-header bg-dark text-light p-2">Game</h4>
+                                <div className="card-body">
+                                    <form onSubmit={handleFormSubmit}>
+                                        <input
+                                            className="form-input"
+                                            placeholder="Game Title"
+                                            name="title"
+                                            type="text"
+                                            value={formState.title}
+                                            onChange={handleChange}
+                                        />
+                                        <input
+                                            className="form-input"
+                                            placeholder="Game Description"
+                                            name="description"
+                                            type="text"
+                                            value={formState.description}
+                                            onChange={handleChange}
+                                        />
+                                        <input
+                                            className="form-input"
+                                            placeholder="Platform"
+                                            name="platform"
+                                            type="text"
+                                            value={formState.platform}
+                                            onChange={handleChange}
+                                        />
+                                        <input
+                                            className="form-input"
+                                            placeholder="Price"
+                                            name="price"
+                                            pattern="[0-9]*"
+                                            type="text"
+                                            value={formState.price}
+                                            onChange={handleChange}
+                                        />
+                                        <button
+                                            className="btn btn-block btn-primary"
+                                            style={{ cursor: 'pointer' }}
+                                            type="submit"
+                                        >
+                                            Submit
+                                        </button>
+                                    </form>
+                                    {error && (
+                                        <div className="my-3 p-3 bg-danger text-white">
+                                            {error.message}
+                                        </div>
+                                    )}
+
     return (
         <main>
             {Auth.loggedIn() ? (
@@ -83,6 +170,7 @@ const GameForm = () => {
                                     <div className='result'>
                                         {renderPhotos(selectedImages)}
                                     </div>
+
                                 </div>
                                 <form onSubmit={handleFormSubmit}>
                                     <label>Title</label>

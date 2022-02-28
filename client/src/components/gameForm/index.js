@@ -28,8 +28,10 @@ const GameForm = () => {
     const handleChange = (event) => {
         const { name, value } = event.target;
 
-        $('.icon').removeClass('highlight');
-        $(event.target).addClass('highlight');
+        if (event.target.type === 'image') {
+            $('.icon').removeClass('highlight');
+            $(event.target).addClass('highlight');
+        }
 
         if (event.target.files) {
             const fileArray = Array.from(event.target.files).map((file) => URL.createObjectURL(file));

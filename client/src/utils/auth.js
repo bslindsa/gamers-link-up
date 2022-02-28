@@ -26,12 +26,10 @@ class AuthService {
   login(idToken) {
     localStorage.setItem('id_token', idToken);
     window.location.assign('/profile');
-    alert('Logged In');
   }
 
   logout() {
     localStorage.removeItem('id_token');
-    alert('logged Out');
     window.location.reload();
   }
 }

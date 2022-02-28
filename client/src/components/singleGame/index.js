@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
 import { GET_GAME } from "../../utils/queries";
@@ -39,9 +39,11 @@ const SingleGame = () => {
                             <div className="title">
                                 <h3>{game.title}</h3>
                             </div>
-                            <div className="title">
+                            <Link to={`/profile/${game.owner}`}>
+                            <div>
                                 <h4>{game.owner}</h4>
                             </div>
+                            </Link>
                             <div className="title">
                                 <p>{game.description}</p>
                             </div>

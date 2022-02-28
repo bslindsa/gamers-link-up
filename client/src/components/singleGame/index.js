@@ -6,8 +6,9 @@ import { GET_GAME, GET_USER } from "../../utils/queries";
 
 import Auth from '../../utils/auth';
 
-import React, {useState } from 'react';
+import React, { useState } from 'react';
 import PayPal from '../Payment/PayPal';
+
 
 const SingleGame = () => {
 
@@ -96,20 +97,22 @@ const SingleGame = () => {
                                     ))}
                                 </ul>
                             </div>
-                            <div>
-                                <button onClick={sendMail}>I Want It!</button>
-                            </div>
-                            <div>
-                                {buy ? (
-                                    <PayPal />
-                                ) : (
-                                    <button onClick={() => {
-                                        setBuy(true);
-                                    }}
-                                    >
-                                        Buy
-                                    </button>
-                                )}
+                            <div className='d-flex m-3 justify-content-around'>
+                                <div>
+                                    <button onClick={sendMail}>I Want It!</button>
+                                </div>
+                                <div>
+                                    {buy ? (
+                                        <PayPal />
+                                    ) : (
+                                        <button onClick={() => {
+                                            setBuy(true);
+                                        }}
+                                        >
+                                            Buy
+                                        </button>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </div>

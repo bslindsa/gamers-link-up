@@ -14,21 +14,37 @@ const GameForm = () => {
         description: '',
         platform: '',
         price: 0,
+        images: []
     });
+
+    const [selectedImages, setSelectedImages] = useState([]);
+
     const [addGame, { error }] = useMutation(ADD_GAME)
 
     const handleChange = (event) => {
         const { name, value } = event.target;
+        
+        if (event.target.files) {
+            const fileArray = Array.from(event.target.files).map((file) => URL.createObjectURL(file));
+            setSelectedImages((prevImages) => prevImages.concat(fileArray));
+            Array.from(event.target.files).map(
+                (file) => URL.revokeObjectURL(file)
+            )
+        };
+
         setFormState({ ...formState, [name]: value });
+        console.log(selectedImages);
+        console.log(formState.images);
     };
 
     const handleFormSubmit = async (event) => {
-        // event.preventDefault();
+        event.preventDefault();
         try {
             // eslint-disable-next-line
             const { data } = await addGame({
                 variables: { ...formState },
             });
+            console.log(formState);
             setFormState({
                 title: '',
                 description: '',
@@ -41,21 +57,9 @@ const GameForm = () => {
         }
     };
 
-    // Upload and display image
-
-    const [selectedImages, setSelectedImages] = useState([]);
-
-    const imageHandleChange = (e) => {
-        if (e.target.files) {
-            const fileArray = Array.from(e.target.files).map((file) => URL.createObjectURL(file));
-            setSelectedImages((prevImages) => prevImages.concat(fileArray));
-            Array.from(e.target.files).map(
-                (file) => URL.revokeObjectURL(file)
-            )
-        }
-    };
-
+    // Display image previews
     const renderPhotos = (source) => {
+        console.log(source);
         return source.map((photo) => {
             return <img className='preview m-2' src={photo} key={photo} alt='Preview'/>
         })
@@ -70,7 +74,7 @@ const GameForm = () => {
                             <h4 className="custom-card-header card-header bg-dark text-light p-2">Game</h4>
                             <div className="card-body">
                                 <div>
-                                    <input type="file" multiple className="form-control label" name="image" id="file" onChange={imageHandleChange}/>
+                                    <input type="file" multiple className="form-control label" name="images"  id="file" onChange={handleChange}/>
                                     <div>
                                         <label htmlFor='file' className='label'>
                                             Add Photos
@@ -113,7 +117,7 @@ const GameForm = () => {
                                         className="form-input"
                                         placeholder="Price"
                                         name="price"
-                                        type="number"
+                                        type="text"
                                         value={formState.price}
                                         onChange={handleChange}
                                     />

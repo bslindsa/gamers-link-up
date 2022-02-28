@@ -55,6 +55,8 @@ query game($gameId: ID!) {
     owner
     description
     platform
+    price
+    images
     datePosted
     tags
     requests {
@@ -72,6 +74,8 @@ query games {
     owner
     description
     platform
+    price
+    images
     datePosted
     tags
     requests {

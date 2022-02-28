@@ -24,6 +24,9 @@ const gameSchema = new Schema({
     price: {
         type: Number,
     },
+    images: {
+        type: [String]
+    },
     datePosted: {
         type: Date,
         default: Date.now(),

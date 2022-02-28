@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 
 import { GET_GAMES } from '../../utils/queries';
-import GameList from '../../components/GameList/index';
+import GameList from '../../components/gameList/index';
 
 const Home = () => {
   const { loading, data } = useQuery(GET_GAMES);

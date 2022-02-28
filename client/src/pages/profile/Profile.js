@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import { Link, useParams } from 'react-router-dom';
 import { GET_ME, GET_USER } from '../../utils/queries';
-import GameList from '../../components/gameList/index';
+import GameList from '../../components/GameList/index.js';
 import Auth from '../../utils/auth';
 import '../profile/Profile.css'
 

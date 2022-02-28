@@ -1,11 +1,12 @@
-import React from "react";
-
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
 import { GET_GAME } from "../../utils/queries";
 
 import Auth from '../../utils/auth';
+
+import React, {useState } from 'react';
+import PayPal from '../Payment/PayPal';
 
 const SingleGame = () => {
 
@@ -16,6 +17,8 @@ const SingleGame = () => {
         let link = `mailto:${email}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         window.location.href = link;
     }
+
+    const [buy, setBuy] = useState(false)
 
     const { gameId } = useParams();
 
@@ -40,9 +43,9 @@ const SingleGame = () => {
                                 <h3>{game.title}</h3>
                             </div>
                             <Link to={`/profile/${game.owner}`}>
-                            <div>
-                                <h4>{game.owner}</h4>
-                            </div>
+                                <div>
+                                    <h4>{game.owner}</h4>
+                                </div>
                             </Link>
                             <div className="title">
                                 <p>{game.description}</p>
@@ -62,6 +65,18 @@ const SingleGame = () => {
                             </div>
                             <div>
                                 <button onClick={sendMail}>I Want It!</button>
+                            </div>
+                            <div>
+                                {buy ? (
+                                    <PayPal />
+                                ) : (
+                                    <button onClick={() => {
+                                        setBuy(true);
+                                    }}
+                                    >
+                                        Buy
+                                    </button>
+                                )}
                             </div>
                         </div>
                     </div>

@@ -3,6 +3,7 @@
     padding: 0;
     margin: 0;
 }
+
 .gtitle{
   font-size: 60px;
   text-align: center;  
@@ -19,6 +20,19 @@
     font-size: 30px;
     text-align: center;
 }
+
+
+.preview {
+    width: auto;
+    height: 225px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid black;
+}
+
+
 .cat, .dog {
     display: flex;
     align-items: center;

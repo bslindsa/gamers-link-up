@@ -2,9 +2,10 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import { Link, useParams } from 'react-router-dom';
 import { GET_ME, GET_USER } from '../../utils/queries';
-import GameList from '../../components/GameList/index';
+import GameList from '../../components/GameList/index.js';
 import Auth from '../../utils/auth';
 import '../profile/Profile.css'
+
 
 
 const Profile = () => {
@@ -16,7 +17,6 @@ const Profile = () => {
     });
     const user = data?.me || data?.user || {};
     const games = user.games || []
-    console.log(data);
     // navigate to personal profile page if username is yours
     if (Auth.loggedIn() && Auth.getProfile().data.username === username) {
         return (

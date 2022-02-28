@@ -11,4 +11,22 @@
  .custom-card-header {
      border-radius: 16px 16px 0px 0px;
  }
+
+ .icon {
+    width: auto;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    margin: 5px;
+ }
+
+ .icon:hover {
+     border: yellow 3px solid;
+ }
+
+ .highlight {
+     border: blue 3px solid;
+ }
  

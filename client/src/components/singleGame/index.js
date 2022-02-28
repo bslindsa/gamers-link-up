@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import $ from 'jquery';
@@ -7,6 +5,9 @@ import $ from 'jquery';
 import { GET_GAME, GET_USER } from "../../utils/queries";
 
 import Auth from '../../utils/auth';
+
+import React, {useState } from 'react';
+import PayPal from '../Payment/PayPal';
 
 const SingleGame = () => {
 
@@ -49,6 +50,8 @@ const SingleGame = () => {
             console.log(response); // if you're into that sorta thing
         });
     }
+
+    const [buy, setBuy] = useState(false)
 
     const { gameId } = useParams();
 
@@ -95,6 +98,18 @@ const SingleGame = () => {
                             </div>
                             <div>
                                 <button onClick={sendMail}>I Want It!</button>
+                            </div>
+                            <div>
+                                {buy ? (
+                                    <PayPal />
+                                ) : (
+                                    <button onClick={() => {
+                                        setBuy(true);
+                                    }}
+                                    >
+                                        Buy
+                                    </button>
+                                )}
                             </div>
                         </div>
                     </div>

@@ -23,23 +23,24 @@ const GameList = ({ games }) => {
                         <div key={game._id + 'A'} className="card">
                             <Link to={`/games/${game._id}`}>
                                 <div>
-                                    <h3>{game.title}</h3>
+                                    <p className="gtitle">{game.title}</p>
                                 </div>
                             </Link>
                             <Link to={`/profile/${game.owner}`}>
                             <div>
-                                <h4>{game.owner}</h4>
+                                <p className="gowner">{game.owner}</p>
                             </div>
                             </Link>
                             <div>
-                                <p>{game.description}</p>
+                                <p className="gdescription">{game.description}</p>
                             </div>
                             <div>
-                                <h3>{game.platform}</h3>
+                                <p className="gplatform">{game.platform}</p>
                             </div>
                             <div>
                                 <h3>{game.price}</h3>
                             </div>
+
                             <div>
                                 {/* {renderPhotos(game.images)} */}
                             </div>

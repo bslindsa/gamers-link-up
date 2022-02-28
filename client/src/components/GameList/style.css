@@ -6,7 +6,8 @@
 
 .gtitle{
   font-size: 60px;
-  text-align: center;  
+  text-align: center;
+  text-decoration: none;  
 }
 .gowner{
     font-size: 30px;
@@ -19,6 +20,7 @@
 .gplatform{
     font-size: 30px;
     text-align: center;
+    color: coral;
 }
 
 

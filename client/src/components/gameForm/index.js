@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import $ from 'jquery';
+// import $ from 'jquery';
 
 import { ADD_GAME } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 import './style.css';
-import logo from './assets/logo192.png';
-import landscape from './assets/zelda_landscape.jpg';
 
 const GameForm = () => {
     const [formState, setFormState] = useState({
@@ -43,33 +41,51 @@ const GameForm = () => {
         }
     };
 
-    // Upload and display image
-    // const reader = new FileReader();
-    const uploadedImages = [logo, landscape];
-    let uploadImage = '';
+    // // Upload and display image
+    // // const reader = new FileReader();
+    // const uploadedImages = [logo, landscape];
+    // let uploadImage = '';
 
-    // console.log(uploadedImages);
+    // // console.log(uploadedImages);
 
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                console.log(e.target.result);
-                $("#imgPreview")
-                    .attr("src", e.target.result)
-                    .width(100)
-                    .height(100);
-                uploadImage = e.target.result;
-                uploadedImages.push(uploadImage);
-            };
-            reader.readAsDataURL(input.files[0]);
+    // function readURL(input) {
+    //     if (input.files && input.files[0]) {
+    //         const reader = new FileReader();
+    //         reader.onload = function (e) {
+    //             console.log(e.target.result);
+    //             $("#imgPreview")
+    //                 .attr("src", e.target.result)
+    //                 .width(100)
+    //                 .height(100);
+    //             uploadImage = e.target.result;
+    //             uploadedImages.push(uploadImage);
+    //         };
+    //         reader.readAsDataURL(input.files[0]);
+    //     }
+    // }
+
+    // $("#img").change(function () {
+    //     console.log(this.files);
+    //     readURL(this);
+    // });
+
+    const [selectedImages, setSelectedImages] = useState([]);
+
+    const imageHandleChange = (e) => {
+        if (e.target.files) {
+            const fileArray = Array.from(e.target.files).map((file) => URL.createObjectURL(file));
+            setSelectedImages((prevImages) => prevImages.concat(fileArray));
+            Array.from(e.target.files).map(
+                (file) => URL.revokeObjectURL(file)
+            )
         }
-    }
+    };
 
-    $("#img").change(function () {
-        console.log(this.files);
-        readURL(this);
-    });
+    const renderPhotos = (source) => {
+        return source.map((photo) => {
+            return <img className='preview m-2' src={photo} key={photo} alt='Preview'/>
+        })
+    }
 
     return (
         <main>
@@ -79,18 +95,17 @@ const GameForm = () => {
                         <div className="card">
                             <h4 className="custom-card-header card-header bg-dark text-light p-2">Game</h4>
                             <div className="card-body">
-                                <div className='d-flex flex-row'>
-                                    {uploadedImages.map(image => (
-                                        <div>
-                                            <img key={image} className='preview m-2' src={image} alt='Preview' />
-                                        </div>
-                                    ))}
+                                <div>
+                                    <input type="file" multiple className="form-control label" name="image" id="file" onChange={imageHandleChange}/>
+                                    <div>
+                                        <label htmlFor='file' className='label'>
+                                            Add Photos
+                                        </label>
+                                    </div>
+                                    <div className='result'>
+                                        {renderPhotos(selectedImages)}
+                                    </div>
                                 </div>
-
-                                {/* <img src="#" id="imgPreview" alt="" /> */}
-
-                                <label>Upload Images</label>
-                                <input type="file" className="form-control" name="image" id="img" />
                                 <form onSubmit={handleFormSubmit}>
                                     <label>Title</label>
                                     <input

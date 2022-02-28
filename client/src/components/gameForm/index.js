@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
+import $ from 'jquery';
 
 import { ADD_GAME } from '../../utils/mutations';
-// import { GET_GAMES, GET_ME } from '../utils/queries';
-// dropzone imagekit
-// imagekit ID: b7ythpwldzw
+
 import Auth from '../../utils/auth';
-import './style.css'
+import './style.css';
+import logo from './logo192.png';
+import landscape from './zelda_landscape.jpg';
 
 const GameForm = () => {
 
     const [formState, setFormState] = useState({
-        title: 'Turok',
-        description: 'Too bloody for my kids',
-        platform: 'N64',
+        title: '',
+        description: '',
+        platform: '',
         price: 900,
     });
     const [addGame, { error }] = useMutation(ADD_GAME);
@@ -50,56 +51,53 @@ const GameForm = () => {
     };
 
     // Upload and display image
-    const imageInput = document.querySelector("#image_input");
-    // const preview = document.querySelector('.preview');
-    const reader = new FileReader();
-    let uploadedImages = [];
-    // let uploadedImage = '';
+    // const reader = new FileReader();
+    const uploadedImages = [logo, landscape];
+    let uploadImage = '';
 
-    const handleEvent = (event) => {
-        if (imageInput) {
-            if (event.type === 'load') {
-                // preview.src = reader.result;
-                let uploadImage = reader.result;
+
+    console.log(uploadedImages);
+    
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                $("#imgPreview")
+                    .attr("src", e.target.result)
+                    .width(100)
+                    .height(100);
+                uploadImage = e.target.result;
                 uploadedImages.push(uploadImage);
-            }
-            console.log(`Uploaded Images: ${uploadedImages}`);
+            };
+            reader.readAsDataURL(input.files[0]);
         }
-    };
-
-    const handleSelected = (e) => {
-        const selectedFile = imageInput.files[0];
-        if (selectedFile) {
-            reader.addEventListener('load', handleEvent);
-            reader.readAsDataURL(selectedFile);
-        }
-    };
-
-    if (imageInput) {
-        imageInput.addEventListener('change', handleSelected);
     }
 
+    $("#img").change(function () {
+        console.log(this.files);
+        readURL(this);
+    });
 
     return (
         <main>
             {Auth.loggedIn() ? (
                 <>
                     <div>
+
                         <div className="card">
                             <h4 className="card-header bg-dark text-light p-2">Game</h4>
                             <div className="card-body">
 
                                 <div className='d-flex flex-row'>
                                     {uploadedImages.map(image => (
-                                        <div>
-                                        <img className='preview' src={image} alt='Preview' />
-                                        </div>
+                                        <img key={image} className='preview' src={image} alt='Preview' />
                                     ))}
                                 </div>
 
-                                {/* <img className='preview' src='' alt='Preview' /> */}
+                                {/* <img src="#" id="imgPreview" alt="" /> */}
+
                                 <label>Upload Images</label>
-                                <input type='file' id='image_input' accept='image/png, image/jpg' />
+                                <input type="file" className="form-control" name="image" id="img" />
                                 <form onSubmit={handleFormSubmit}>
                                     <label>Title</label>
                                     <input

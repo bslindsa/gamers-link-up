@@ -4,6 +4,24 @@
     margin: 0;
 }
 
+.gtitle{
+  font-size: 60px;
+  text-align: center;  
+}
+.gowner{
+    font-size: 30px;
+    text-align: center;
+}
+.gdescription{
+    font-size: 60px;
+    text-align: center;
+}
+.gplatform{
+    font-size: 30px;
+    text-align: center;
+}
+
+
 .preview {
     width: auto;
     height: 225px;
@@ -13,6 +31,7 @@
     gap: 10px;
     border: 1px solid black;
 }
+
 
 .cat, .dog {
     display: flex;
@@ -45,27 +64,29 @@
     display: block;
     align-items: center;
     justify-content: center;
-    height: 400px;
+    height: 500px;
 }
 
 .dog {
     background-image: url(./assets/steel.jpg);
     background-size: cover;
-    max-height: 300px;
+    max-height: 400px;
 }
 
 .cat {
-    height: 200px;
+    height: 400px;
     background-image: url(./assets/circitorigin.jpg);
     background-attachment: fixed;
     background-size: cover;
 }
 
 .card {
+    font-size: 50px;
     background-color: aqua;
     background-image: none;
     background-size: cover;
-    width: 40;
+    background-image: radial-gradient(aqua 30%, rgb(7, 7, 7));
+    width: 40%;
     border-radius: 16px;
     box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
 }

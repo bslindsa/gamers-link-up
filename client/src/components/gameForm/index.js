@@ -25,10 +25,16 @@ const GameForm = () => {
     const handleChange = (event) => {
         const { name, value } = event.target;
 
+            setFormState({...formState, [name]: value});
+    // };
+        
+
+
         if (event.target.type === 'image') {
             $('.icon').removeClass('highlight');
             $(event.target).addClass('highlight');
         }
+
 
         if (event.target.files) {
             const fileArray = Array.from(event.target.files).map((file) => URL.createObjectURL(file));
@@ -48,9 +54,16 @@ const GameForm = () => {
         // console.log(title);
         try {
             // eslint-disable-next-line
+
+            const {data} = await addGame({
+                variables: { ...formState, price: parseFloat(formState.price) },
+            });  
+            console.log(formState);
+
             const { data } = await addGame({
                 variables: { ...formState, price: parseFloat(formState.price) },
             });
+
             setFormState({
                 title: '',
                 description: '',
@@ -129,7 +142,11 @@ const GameForm = () => {
         })
     }
 
+
+
+        
     return (
+
         <main>
             {Auth.loggedIn() ? (
                 <>
@@ -196,7 +213,6 @@ const GameForm = () => {
                                     <div className="my-3 p-3 bg-danger text-white">
                                         {error.message}
                                     </div>
-                                )}
 
                             </div>
                         </div>

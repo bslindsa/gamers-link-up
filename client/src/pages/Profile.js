@@ -2,8 +2,9 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import { Link, useParams } from 'react-router-dom';
 import { GET_ME, GET_USER } from '../utils/queries';
-import GameList from '../components/gameList/index';
+import GameList from '../components/GameList/index';
 import Auth from '../utils/auth';
+import '../pages/Profile.css'
 
 
 const Profile = () => {
@@ -28,10 +29,10 @@ const Profile = () => {
 
     return (
         <div>
-            <div>
-                <h4>Add a new game to your shop!</h4>
+            <div className='post-game-header'>
+                <h4 className='add-game-header'> Add a new game to your shop!</h4>
                 <Link to='/gameform'>
-                    <button>Post Game</button>
+                    <button className='post-game btn-lg btn-light m-2'>Post Game</button>
                 </Link>
             </div>
             <div>

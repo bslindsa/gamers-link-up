@@ -10,45 +10,62 @@ import './style.css';
 import logo from './logo192.png';
 import landscape from './zelda_landscape.jpg';
 
-const GameForm = () => {
 
+const GameForm = () => {
     const [formState, setFormState] = useState({
+
         title: '',
         description: '',
         platform: '',
         price: 900,
     });
-    const [addGame, { error }] = useMutation(ADD_GAME);
+    const [addGame, { error }] = useMutation(ADD_GAME)
+    //     update(cache, { data: { addGame } }) {
+    //         try {
+    //             const { games } = cache.readQuery({ query: GET_GAME })
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setFormState({
-            ...formState,
-            [name]: value,
-        });
-    };
+    //             cache.writeQuery({
+    //                 query: GET_GAME,
+    //                 data: { games: [addGame, ...games] },
+    //             });
+    //         } catch (err) {
+    //             console.error(err)
+    //         }
+        
+    //         const { me } = cache.readQuery({ query:GET_ME });
+    //         cache.writeQuery({
+    //             query: GET_ME,
+    //             data: {me: {...me, games: [...me.games, addGame]}},
+    //         });
+    //     }    
+    // });
 
-    const handleFormSubmit = async (event) => {
-        event.preventDefault();
-        try {
-            // eslint-disable-next-line
-            const { data } = await addGame({
-                variables: {
-                    ...formState,
-                }
-            });
-            // setFormState({
-            //     title: '',
-            //     description: '',
-            //     platform: '',
-            //     price: 0,
-            // });
-            window.location.reload();
-        } catch (err) {
-            console.log('catch');
-            console.error(err);
-        }
-    };
+    
+        const handleChange = (event) => {
+            const { name, value } = event.target;
+                setFormState({...formState, [name]: value});
+        };
+  
+   const handleFormSubmit = async (event) => {
+            event.preventDefault();
+            // console.log(title);
+            try {
+                // eslint-disable-next-line
+                const {data} = await addGame({
+                    variables: { ...formState },
+                });
+                setFormState({
+                    title: '',
+                    description: '',
+                    platform: '',
+                    price: 0
+                });
+            } catch (err) {
+                console.log('catch');
+                console.error(err);
+            }
+        };
+
 
     // Upload and display image
     // const reader = new FileReader();
@@ -148,17 +165,19 @@ const GameForm = () => {
                                         {error.message}
                                     </div>
                                 )}
+
+                
                             </div>
                         </div>
-                    </div>
-                </>
-            ) : (
-                <p>
-                    You need to be logged to share your games. Please{' '}
-                    <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-                </p>
-            )}
-        </main>
+                    </>
+                ) : (
+                    <p>
+                        You need to be logged to share your games. Please{' '}
+                        <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
+                    </p>
+                )
+            }
+        </main >
     );
 };
 

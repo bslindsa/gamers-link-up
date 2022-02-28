@@ -5,6 +5,7 @@ import { GET_ME, GET_USER } from '../utils/queries';
 import GameList from '../components/gameList/index';
 import Auth from '../utils/auth';
 
+
 const Profile = () => {
 
     const { username: userParam } = useParams();

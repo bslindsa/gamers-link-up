@@ -8,14 +8,14 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
-import Home from './pages/Home/Home';
+import Home from './pages/home/Home';
 import GameForm from './components/gameForm/index';
 import Login from './pages/login/Login';
 import Signup from './pages/login/Signup';
 import Header from './components/Header/index';
 
 import Profile from './pages/profile/Profile';
-import SingleGame from "./components/singleGame/index";
+import SingleGame from "./components/SingleGame/index";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({

@@ -13,8 +13,7 @@ const GameForm = () => {
         title: '',
         description: '',
         platform: '',
-        price: 0,
-        images: []
+        price: '',
     });
 
     const [selectedImages, setSelectedImages] = useState([]);
@@ -23,33 +22,35 @@ const GameForm = () => {
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-        
+
         if (event.target.files) {
             const fileArray = Array.from(event.target.files).map((file) => URL.createObjectURL(file));
             setSelectedImages((prevImages) => prevImages.concat(fileArray));
             Array.from(event.target.files).map(
                 (file) => URL.revokeObjectURL(file)
             )
+            console.log(selectedImages);
+
         };
 
         setFormState({ ...formState, [name]: value });
-        console.log(selectedImages);
-        console.log(formState.images);
+        // console.log(selectedImages);
+        // console.log(formState.images);
     };
 
     const handleFormSubmit = async (event) => {
-        event.preventDefault();
+        // event.preventDefault();
         try {
             // eslint-disable-next-line
             const { data } = await addGame({
-                variables: { ...formState },
+                variables: { ...formState, price: parseFloat(formState.price), images: selectedImages },
             });
             console.log(formState);
             setFormState({
                 title: '',
                 description: '',
                 platform: '',
-                price: 0
+                price: ''
             });
         } catch (err) {
             console.log('catch');
@@ -59,9 +60,10 @@ const GameForm = () => {
 
     // Display image previews
     const renderPhotos = (source) => {
-        console.log(source);
+        // console.log('Render Photos: ' + source);
         return source.map((photo) => {
-            return <img className='preview m-2' src={photo} key={photo} alt='Preview'/>
+            console.log('Render Photos: ' + photo);
+            return <img className='preview m-2' src={photo} key={photo} alt='Preview' />
         })
     }
 
@@ -74,7 +76,7 @@ const GameForm = () => {
                             <h4 className="custom-card-header card-header bg-dark text-light p-2">Game</h4>
                             <div className="card-body">
                                 <div>
-                                    <input type="file" multiple className="form-control label" name="images"  id="file" onChange={handleChange}/>
+                                    <input type="file" multiple className="form-control label" name="images" id="file" onChange={handleChange} />
                                     <div>
                                         <label htmlFor='file' className='label'>
                                             Add Photos
@@ -118,6 +120,7 @@ const GameForm = () => {
                                         placeholder="Price"
                                         name="price"
                                         type="text"
+                                        pattern='[0-9]*'
                                         value={formState.price}
                                         onChange={handleChange}
                                     />

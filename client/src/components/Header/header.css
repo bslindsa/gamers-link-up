@@ -6,11 +6,12 @@
     padding: 12px;
 }
 
-.container {
+.container, .headto {
     display: flex;
     list-style-type: none;
     justify-content: center;
-    padding: 12px;
+    padding: 6px;
+    font-family: fantasy;
 }
 
 .see-games {

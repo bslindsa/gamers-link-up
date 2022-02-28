@@ -2,19 +2,52 @@ import React from "react";
 
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
+import $ from 'jquery';
 
-import { GET_GAME } from "../../utils/queries";
+import { GET_GAME, GET_USER } from "../../utils/queries";
 
 import Auth from '../../utils/auth';
 
 const SingleGame = () => {
 
-    const sendMail = () => {
-        const email = 'example@gmail.com';
+    // const sendMail = () => {
+    //     const email = 'example@gmail.com';
+    //     const subject = 'Test Email';
+    //     const body = 'This is a test';
+    //     let link = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    //     window.location.href = link;
+    // }
+
+    function sendMail() {
+
+        const emailFrom = 'gamerslinkup22@gmail.com'
+        const emailTo = 'bslindsa@gmail.com';
+        const toUsername = 'thatguy'
         const subject = 'Test Email';
         const body = 'This is a test';
-        let link = `mailto:${email}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        window.location.href = link;
+
+        $.ajax({
+            type: 'POST',
+            url: 'https://mandrillapp.com/api/1.0/messages/send.json',
+            data: {
+                'key': 'a9e67737038f528468098ad6f2f10b0c-us14',
+                'message': {
+                    'from_email': emailFrom,
+                    'to': [
+                        {
+                            'email': emailTo,
+                            'name': toUsername,
+                            'type': 'to'
+                        }
+                    ],
+                    'autotext': 'true',
+                    'subject': subject,
+                    'html': body
+                }
+            }
+        }).done(function (response) {
+            console.log(response); // if you're into that sorta thing
+        });
     }
 
     const { gameId } = useParams();
@@ -40,9 +73,9 @@ const SingleGame = () => {
                                 <h3>{game.title}</h3>
                             </div>
                             <Link to={`/profile/${game.owner}`}>
-                            <div>
-                                <h4>{game.owner}</h4>
-                            </div>
+                                <div>
+                                    <h4>{game.owner}</h4>
+                                </div>
                             </Link>
                             <div className="title">
                                 <p>{game.description}</p>

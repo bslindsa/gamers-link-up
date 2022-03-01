@@ -38,22 +38,22 @@
     font-size: 60px;
     text-align: center;
     text-decoration: none;  
-  }
-  .sgowner{
-      font-size: 30px;
-      text-align: center;
-  }
-  .sgdescription{
-      font-size: 30px;
-      text-align: center;
-  }
-  .sgplatform{
-      font-size: 30px;
-      text-align: center;
-      color: coral;
-  }
-  .sgprice {
-      font-size: 30px;
-      text-align: center;
-      color: white;
-  }
+}
+.sgowner{
+    font-size: 30px;
+    text-align: center;
+}
+.sgdescription{
+    font-size: 30px;
+    text-align: center;
+}
+.sgplatform{
+    font-size: 30px;
+    text-align: center;
+    color: coral;
+}
+.sgprice {
+    font-size: 30px;
+    text-align: center;
+    color: white;
+}

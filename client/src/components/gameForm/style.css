@@ -1,3 +1,10 @@
+.gf-back {
+    background-image: url(./assets/circitorigin.jpg);
+    font-family: fantasy;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
 .preview {
     width: auto;
     height: 225px;
@@ -19,7 +26,7 @@
     align-items: center;
     flex-direction: column;
     gap: 10px;
-    margin: 5px;
+    margin: 0 10px;
  }
 
  .icon:hover {
@@ -28,5 +35,15 @@
 
  .highlight {
      border: blue 3px solid;
+ }
+
+ input[type=text] {
+     width: 100%;
+     display: inline-block;
+ }
+
+ label {
+     color: aliceblue;
+     margin-top: 5px;
  }
  

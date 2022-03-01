@@ -4,45 +4,6 @@
     margin: 0;
 }
 
-.gtitle{
-    color: aliceblue;
-    font-size: 60px;
-    text-align: center;
-    text-decoration: none;  
-  }
-  .gowner{
-      text-decoration: none;
-      color: maroon;
-      font-size: 30px;
-      text-align: center;
-  }
-  .gdescription{
-      font-size: 30px;
-      text-align: center;
-  }
-  .gplatform{
-      font-size: 30px;
-      text-align: center;
-      color: coral;
-  }
-  .gprice {
-      font-size: 30px;
-      text-align: center;
-      color: white;
-  }
-
-
-.preview {
-    width: auto;
-    height: 225px;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 10px;
-    border: 1px solid black;
-}
-
-
 .cat, .dog {
     display: flex;
     align-items: center;
@@ -52,39 +13,18 @@
 }
 
 #lttp {
-    font-size: 200px;
-    color:antiquewhite;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-style: oblique;
+    font-size: 60px;
     text-align: center;
     padding: 8px 24px;
     min-width: 1500px;
     min-height: 200px;
-    background-image: url(./assets/Its_Dangerous_Out_there_Take_these.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    /* border-radius: 16px;
-    box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7); */
-}
-#Home_lttp {
-    font-size: 200px;
-    color:antiquewhite;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-style: oblique;
-    text-align: center;
-    padding: 8px 24px;
-    min-width: 1500px;
-    height: 500px;
-    background-image: url(./assets/Its_Dangerous_Out_there_Take_these.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    /* border-radius: 16px;
-    box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7); */
+    background-image: url(./assets/a-link-to-the-past.png);
+    border-radius: 16px;
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
 }
 
 #lttp p {
-    background: linear-gradient(#BE0B0B, #19A5B1);
-    height: 350px;
+    background-color: rgb(10, 155, 75);
     border-radius: 16px;
     box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
 }
@@ -95,29 +35,27 @@
     display: block;
     align-items: center;
     justify-content: center;
-    height: 500px;
+    height: 400px;
 }
 
 .dog {
     background-image: url(./assets/steel.jpg);
     background-size: cover;
-    max-height: 400px;
+    max-height: 300px;
 }
 
 .cat {
-    height: 400px;
+    height: 200px;
     background-image: url(./assets/circitorigin.jpg);
     background-attachment: fixed;
     background-size: cover;
 }
 
 .card {
-    font-size: 50px;
     background-color: aqua;
     background-image: none;
     background-size: cover;
-    background-image: radial-gradient(aqua 30%, rgb(7, 7, 7));
-    width: 40%;
+    width: 80%;
     border-radius: 16px;
     box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
 }

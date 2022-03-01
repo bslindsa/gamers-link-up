@@ -3,10 +3,7 @@
     font-family: fantasy;
     background-attachment: fixed;
     background-size: cover;
-}
-
-#container {
-    height: 100%;
+    min-height: 100vh;
 }
 
 .preview {

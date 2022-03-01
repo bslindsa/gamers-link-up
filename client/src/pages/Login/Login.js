@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/client';
 import { LOGIN } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
+import './style.css';
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -38,9 +39,9 @@ const Login = (props) => {
   };
 
   return (
-    <main>
-      <div>
-        <div className="card">
+    <div className='log-back'>
+      <div className='log-card'>
+        <div className="card m-5">
           <h4 className="card-header bg-dark text-light p-2">Login</h4>
           <div className="card-body">
             {data ? (
@@ -49,7 +50,8 @@ const Login = (props) => {
                 <Link to="/gameform">here.</Link>
               </p>
             ) : (
-              <form onSubmit={handleFormSubmit}>
+              <form onSubmit={handleFormSubmit} className="form-style">
+                <label>Email: </label>
                 <input
                   className="form-input"
                   placeholder="Your email"
@@ -58,6 +60,7 @@ const Login = (props) => {
                   value={formState.email}
                   onChange={handleChange}
                 />
+                <label>Password: </label>
                 <input
                   className="form-input"
                   placeholder="******"
@@ -67,7 +70,7 @@ const Login = (props) => {
                   onChange={handleChange}
                 />
                 <button
-                  className="btn btn-block btn-primary"
+                  className="custom-btn btn btn-block btn-primary"
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >
@@ -83,7 +86,7 @@ const Login = (props) => {
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 };
 

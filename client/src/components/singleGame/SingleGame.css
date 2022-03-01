@@ -1,8 +1,25 @@
-#buy-now{
+.custom-btn{
     background-color: rgb(55, 129, 194);
     margin: 20px;
 }
 
 #buy-now:hover {
     background-color: rgb(81, 173, 143);
+}
+
+.card1 {
+    font-size: 50px;
+    background-color: aqua;
+    background-image: none;
+    background-size: cover;
+    background-image: radial-gradient(aqua 30%, rgb(7, 7, 7));
+    border-radius: 16px;
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+    width: 90%;
+    justify-content: center;
+}
+
+#sg-head {
+    text-align: center;
+    /* background-image: ; */
 }

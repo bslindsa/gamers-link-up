@@ -7,7 +7,7 @@ import Auth from '../../utils/auth';
 
 import React, { useState } from 'react';
 import Payment from '../Payment/Payment';
-import '../singleGame/SingleGame.css'
+import '../SingleGame/SingleGame.css'
 
 const SingleGame = () => {
 
@@ -23,15 +23,13 @@ const SingleGame = () => {
 
     const game = gameData?.game || {};
 
-    const { loading, data: userData } = useQuery(GET_USER, {
+    const { data: userData } = useQuery(GET_USER, {
         variables: {
             username: game.owner,
         },
     });
 
     const user = userData?.user || {};
-
-    console.log(user);
 
     const sendMail = () => {
         const email = user.email;
@@ -47,8 +45,6 @@ const SingleGame = () => {
         })
     }
 
-    console.log(game.images);
-    
     if (gameLoading) {
         return <div>Loading...</div>;
     }
@@ -56,12 +52,12 @@ const SingleGame = () => {
         <div>
             {Auth.loggedIn() ? (
                 <>
-                    <div>
+                    <div id='sg-head'>
                         <h1>This one's a beauty... if you've the coin.</h1>
                     </div>
-                    <div key={game.title} className="game">
-                        {renderPhotos(game.images)}
-                        <div className="card">
+                    <div key={game.title} className="game d-flex justify-content-center">
+                        <div className="card1">
+                            {renderPhotos(game.images)}
                             <div className="title">
                                 <h1>{game.title}</h1>
                             </div>
@@ -88,25 +84,24 @@ const SingleGame = () => {
                             </div>
                             <div className='d-flex m-3 justify-content-around'>
                                 <div>
-                                    <button onClick={sendMail}>I Want It!</button>
+                                    <button className='custom-btn btn btn-dark mb-3' onClick={sendMail}>Barter</button>
                                 </div>
                                 <div>
-
-
+                                    {buy ? (
+                                        <Payment />
+                                    ) : (
+                                        <button className="custom-btn btn btn-dark mb-3" onClick={() => {
+                                            setBuy(true);
+                                        }}
+                                        >
+                                            Buy Now
+                                        </button>
+                                    )}
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {buy ? (
-                        <Payment />
-                    ) : (
-                        <button id="buy-now" className="btn btn-dark mb-3" onClick={() => {
-                            setBuy(true);
-                        }}
-                        >
-                            Buy Now
-                        </button>
-                    )}
+
                 </>
             ) : (
                 <>

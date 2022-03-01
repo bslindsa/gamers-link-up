@@ -13,7 +13,7 @@ import GameForm from './components/gameForm/index';
 import Login from './pages/login/Login';
 import Signup from './pages/login/Signup';
 import Header from './components/Header/index';
-
+import Footer from './components/Footer/index';
 import Profile from './pages/profile/Profile';
 import SingleGame from "./components/singleGame/index";
 
@@ -75,6 +75,7 @@ function App() {
               component={Home}
             />
           </Switch>
+          <Footer/>
         </div>
       </Router>
     </ApolloProvider>

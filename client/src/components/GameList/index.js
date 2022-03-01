@@ -14,9 +14,10 @@ const GameList = ({ games }) => {
             {games.map(game => (
                 <>
                     <div key={game._id} className="dog game">
+
                         <div className="card">
                             <div className='thumbnail'>
-                                <img className='preview m-2' src={game.images[0]} alt='Preview' />
+                                <img className='gpreview m-2' src={game.images[0]} alt='Preview' />
                             </div>
                             <div className="gdata">
                                 <Link to={`/games/${game._id}`} className='gtitle'>
@@ -33,7 +34,6 @@ const GameList = ({ games }) => {
                                 </div>
                                 <div>
                                     <p className="gplatform">{game.platform}</p>
-                                    
                                 </div>
                                 <Link to={`/profile/${game.owner}`} className="gowner">
                                     <div>

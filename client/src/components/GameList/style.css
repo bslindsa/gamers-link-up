@@ -31,17 +31,6 @@
    color: rgb(8, 133, 39);
 }
 
-.preview {
-    width: auto;
-    height: 100px;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 10px;
-    border: 1px solid black;
-}
-
-
 .cat, .dog {
     display: flex;
     align-items: center;
@@ -111,21 +100,23 @@
 }
 
 .card {
-    font-size: 50px;
+    /* font-size: 50px; */
     background-color: aqua;
     background-image: none;
     background-size: cover;
     background-image: radial-gradient(aqua 30%, rgb(7, 7, 7));
-    width: 40%;
+    width: 80%;
+    max-height: 90%;
     border-radius: 16px;
     box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
-    
 }
 
 .thumbnail {
     float: left;
 }
 
-.gdata {
-    float: right;
+.gpreview {
+    width: auto;
+    height: 225px;
+    border: 1px solid black;
 }

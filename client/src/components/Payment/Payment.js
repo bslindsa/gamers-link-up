@@ -1,6 +1,7 @@
 import React from "react";
 import '../Payment/Payment.css'
 import { useState } from 'react';
+import Accepted from '../Accepted/Accepted';
 
 const Payment = () => {
     let [error, setError] = useState();
@@ -14,45 +15,65 @@ const Payment = () => {
             return
         }
     }
+
+    const [checkout, setCheckout] = useState(false)
+
+    // const handleChange = (event) => {
+    //     const { name, value } = event.target;
+        
+    //     setFormState({ [name]: value });
+
+    //     if (event.target.type === 'image') {
+    //         $('.icon').removeClass('highlight');
+    //         $(event.target).addClass('highlight');
+    //     }
+
+    // };
+
+    
     return (
         <div>
             <div className='payment-container'>
                 <h4 className='payment-info'>Enter Payment Info.</h4>
                 <form>
                     <div className="form-group">
-                        <label className='first-name-text'>First Name</label>
+                        <label className='name-text'>First Name</label>
+                        <br />
+                        <input
+                            onBlur={handleBlur}
+                            name="name"
+                            type="text"
+                            className="name-text"
+                            placeholder="First Name"
+                            id="name"
+                        />
+                        <span className="error">{error}</span>                      
+                        <br />
+                        <label className='name-text'>Last Name</label>
                         <br />
                         <input
                             onBlur={handleBlur}
                             name="name"
                             type="text"
                             className="form-name"
-                            placeholder="First Name"
-                            id="name"
-                        />
-                        <span className="error">{error}</span>                      
-                        <br />
-                        <label className='last-name-text'>Last Name</label>
-                        <br />
-                        <input
-                            name="name"
-                            type="text"
-                            className="form-name"
                             placeholder="Last Name"
                             id="name"
                         />
+                        <span className="error">{error}</span>   
                         <br />
-                        <label className='card-num-text'>Card Number</label>
+                        <label className='name-text'>Card Number</label>
                         <br />
                         <input
+                            onBlur={handleBlur}
                             name="name"
                             type="text"
                             className="form-name"
                             placeholder="                               💳"
                             id="name"
                         />
+                        <span className="error">{error}</span>   
                         <br />
-                        <label className='card-num-text'>Expires</label>
+                        <label className='name-text'>Expires</label>
                         <br />
                         <input
                             name="name"
@@ -70,7 +91,7 @@ const Payment = () => {
                         />
                         <br />
                         <h4 className='billing-info'>Enter Billing Info.</h4>
-                        <label className='first-name-text'>Country</label>
+                        <label className='name-text'>Country</label>
                         <br />
                         <input
                             name="name"
@@ -80,7 +101,7 @@ const Payment = () => {
                             id="name"
                         />
                         <br />
-                        <label className='first-name-text'>Billing Address</label>
+                        <label className='name-text'>Billing Address</label>
                         <br />
                         <input
                             name="name"
@@ -98,7 +119,7 @@ const Payment = () => {
                             id="name"
                         />
                         <br />
-                        <label className='first-name-text'>City</label>
+                        <label className='name-text'>City</label>
                         <br />
                         <input
                             name="name"
@@ -108,7 +129,7 @@ const Payment = () => {
                             id="name"
                         />
                         <br />
-                        <label className='first-name-text'>State</label>
+                        <label className='name-text'>State</label>
                         <br />
                         <input
                             name="name"
@@ -118,7 +139,7 @@ const Payment = () => {
                             id="name"
                         />
                         <br />
-                        <label className='first-name-text'>Zip Code</label>
+                        <label className='name-text'>Zip Code</label>
                         <br />
                         <input
                             name="name"
@@ -141,12 +162,24 @@ const Payment = () => {
                         
                         <br />
                         {/* Button to Submit Billing Info */}
-                        <button
+                        {checkout ? (
+                            <Accepted />
+                        ) : (
+                            <button id="buy-now" className="btn btn-dark mb-3" onClick={() => {
+                                setCheckout(true);
+                            }}
+                            >
+                                Checkout
+                            </button>
+                        )}
+                        {/* <button
                             className="btn btn-primary"
                             type="submit"
+                            // onClick={handleChange}
                         >
                             Checkout
-                        </button>
+                        </button> */}
+                        
                     </div>
                 </form>
             </div>

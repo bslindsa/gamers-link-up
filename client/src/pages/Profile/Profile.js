@@ -21,10 +21,8 @@ const Profile = () => {
         return (
             <div>
                 <div key='parallax' className="parallax">
-                    <div className='d-flex justify-content-center'>
-                        <div className="lttp">
-                            <p>Your Inventory</p>
-                        </div>
+                    <div className="lttp">
+                        <p>Your Inventory</p>
                     </div>
                     <div className='post-game-header'>
                         <h4 className='add-game-header'> Add a new game to your shop!</h4>
@@ -45,9 +43,28 @@ const Profile = () => {
             </div>
         );
     }
-    else {
+    else if (Auth.getProfile().data.username !== username) {
         return (
-            <Redirect to='/login'/>
+            <div>
+                <div key='parallax' className="parallax">
+                    <div className="lttp">
+                        <p> {`${username}'s Inventory`} </p>
+                    </div>
+                </div>
+                <div>
+                    {loading ? (
+                        <div>Loading...</div>
+                    ) : (
+                        <GameList
+                            games={games} user={user}
+                        />
+                    )}
+                </div>
+            </div>
+        );
+    } else {
+        return (
+            <Redirect to='/login' />
         );
     };
 };

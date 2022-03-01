@@ -5,23 +5,31 @@
 }
 
 .gtitle{
-  font-size: 60px;
-  text-align: center;
-  text-decoration: none;  
-}
-.gowner{
-    font-size: 30px;
-    text-align: center;
-}
-.gdescription{
+    color: aliceblue;
     font-size: 60px;
     text-align: center;
-}
-.gplatform{
-    font-size: 30px;
-    text-align: center;
-    color: coral;
-}
+    text-decoration: none;  
+  }
+  .gowner{
+      text-decoration: none;
+      color: maroon;
+      font-size: 30px;
+      text-align: center;
+  }
+  .gdescription{
+      font-size: 30px;
+      text-align: center;
+  }
+  .gplatform{
+      font-size: 30px;
+      text-align: center;
+      color: coral;
+  }
+  .gprice {
+      font-size: 30px;
+      text-align: center;
+      color: white;
+  }
 
 
 .preview {

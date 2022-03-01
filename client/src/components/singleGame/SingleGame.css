@@ -1,6 +1,12 @@
+.sg-back {
+    background-image: url(./assets/circitorigin.jpg);
+}
+
 .custom-btn{
     background-color: rgb(55, 129, 194);
     margin: 20px;
+    height: 50px;
+    width: auto;
 }
 
 #buy-now:hover {
@@ -17,9 +23,37 @@
     box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
     width: 90%;
     justify-content: center;
+    margin: 50px 0px;
 }
 
 #sg-head {
+    color: aliceblue;
     text-align: center;
-    /* background-image: ; */
+    height: 50px;
+    font-family: fantasy;
+    background-color: #4db8ff;
 }
+
+.gtitle{
+    font-size: 60px;
+    text-align: center;
+    text-decoration: none;  
+  }
+  .gowner{
+      font-size: 30px;
+      text-align: center;
+  }
+  .gdescription{
+      font-size: 30px;
+      text-align: center;
+  }
+  .gplatform{
+      font-size: 30px;
+      text-align: center;
+      color: coral;
+  }
+  .gprice {
+      font-size: 30px;
+      text-align: center;
+      color: white;
+  }

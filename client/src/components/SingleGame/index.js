@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom';
+import { Redirect, Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
 import { GET_GAME, GET_USER } from "../../utils/queries";
@@ -103,7 +103,7 @@ const SingleGame = () => {
                 <>
                     <div className='sg-back'>
                         <div className='card1'>
-                            <h1>We don't recognize you stranger. Please Login or Sign Up so we can add you to our guild.</h1>
+                            <Redirect to="/login"/>
                         </div>
                     </div>
                 </>

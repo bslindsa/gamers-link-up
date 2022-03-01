@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
 import $ from 'jquery';
@@ -47,10 +47,9 @@ const GameForm = () => {
     };
 
     const handleFormSubmit = async (event) => {
-        // event.preventDefault();
         try {
-            // eslint-disable-next-line
             const { data } = await addGame({
+
                 variables: { ...formState, price: parseFloat(formState.price), images: selectedImages },
             });
 
@@ -79,19 +78,15 @@ const GameForm = () => {
                 <>
                     <div className='gf-back d-flex justify-content-center align-items-center'>
                         <div>
-
-
                             <div className="card m-5">
                                 <h4 className="custom-card-header card-header bg-dark text-light p-2">Game</h4>
                                 <div className="card-body">
-                                    <div id='container'>
-                                        <label htmlFor='file' id='add-photo' className='label'>
-                                            Add Photos:
-                                        </label>
-                                        <input type="file" multiple className="form-control label" name="images" id="file" onChange={handleChange} />
-                                        <div className='result'>
-                                            {renderPhotos(selectedImages)}
-                                        </div>
+                                    <label htmlFor='file' id='add-photo' className='label'>
+                                        Add Photos:
+                                    </label>
+                                    <input type="file" multiple className="form-control label" name="images" id="file" onChange={handleChange} />
+                                    <div className='result'>
+                                        {renderPhotos(selectedImages)}
                                     </div>
                                     <div className='mt-2'>
                                         <label>Platform:</label>
@@ -149,10 +144,7 @@ const GameForm = () => {
                 </>
             ) : (
                 <>
-                    <p>
-                        You need to be logged to share your games. Please{' '}
-                        <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-                    </p>
+                    <Redirect to="/login" />
                 </>
             )
             }

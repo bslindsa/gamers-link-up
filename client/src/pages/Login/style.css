@@ -1,0 +1,29 @@
+.log-back {
+    background-image: url(./circitorigin.jpg);
+    font-family: fantasy;
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.form-style {
+    width: 100%;
+}
+
+.form-input {
+    width: 100%;
+    display: block;
+}
+
+label {
+    color: aliceblue;
+    margin-top: 5px;
+}
+
+.log-card {
+    width: 50%;
+}
+
+

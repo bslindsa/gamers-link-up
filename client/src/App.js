@@ -46,7 +46,7 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <Header />
-        <div>
+        {/* <div> */}
           {/* <div className="flex-column justify-center align-center min-100-vh bg-primary"> */}
           <Switch>
 
@@ -76,7 +76,7 @@ function App() {
             />
           </Switch>
           <Footer/>
-        </div>
+        {/* </div> */}
       </Router>
     </ApolloProvider>
   );

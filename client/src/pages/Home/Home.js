@@ -20,8 +20,8 @@ const Home = () => {
             <div>
               <div key='parallax' id="parallax">
                 <div>
-                  <div id="lttp">
-                    <p>It's Dangerous to go Alone. Take these!</p>
+                  <div id="Home_lttp">
+                    <p></p>
                   </div>
                 </div>
               </div>

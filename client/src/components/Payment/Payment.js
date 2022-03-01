@@ -30,10 +30,10 @@ const Payment = () => {
 
     // };
 
-    
+     
     return (
         <div>
-            <div className='payment-container'>
+            <div id="my-form" className='payment-container'>
                 <h4 className='payment-info'>Enter Payment Info.</h4>
                 <form>
                     <div className="form-group">

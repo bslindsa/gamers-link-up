@@ -2,6 +2,8 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 import './style.css';
+import image from './assets/a-link-to-the-past.png';
+
 const GameList = ({ games }) => {
     if (!games.length) {
         return <h3>Sorry, Adventurer. These games are in another castle</h3>
@@ -13,18 +15,16 @@ const GameList = ({ games }) => {
 
             {games.map(game => (
                 <>
-                    <div key={game._id} className="dog game">
+                    <div key={game._id} className="dog">
                         <div className="card">
                             <div className='thumbnail'>
-                                <img className='gpreview m-2' src={game.images[0]} alt='Preview' />
+                                <img className='gpreview m-2' src={image} alt='Preview' />
+                                {/* {game.images[0]} */}
                             </div>
                             <div className="gdata">
                                 <Link to={`/games/${game._id}`} className='gtitle'>
-                                    <div>
                                         <p>{game.title}</p>
-                                    </div>
                                 </Link>
-                                
                                 <div>
                                     <p className="gdescription">{game.description}</p>
                                 </div>

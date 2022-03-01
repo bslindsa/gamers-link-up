@@ -1,7 +1,6 @@
 import React from 'react';
 import '../Footer/footer.css'
 import { Link } from 'react-router-dom';
-import Auth from '../../utils/auth';
 
 const Footer = () => {
     return (

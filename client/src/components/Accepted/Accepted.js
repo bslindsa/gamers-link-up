@@ -1,13 +1,16 @@
 import React from "react";
-import Accept from './assets/accepted.gif';
+import Checkone from './assets/check-mark.png'
+
 
 const Accepted = () => {
 
     return (
         <div>
             <div>
-            <h1>
-            <img className='icon' src={Accept} alt='PC' name='platform'/></h1>
+            <h1> Payment Accepted 
+            <img className='icon' src={Checkone} alt='PC' name='platform'/>
+            
+            </h1>
             </div>
         </div>
     );

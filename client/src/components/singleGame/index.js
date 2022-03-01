@@ -7,8 +7,7 @@ import { GET_GAME, GET_USER } from "../../utils/queries";
 import Auth from '../../utils/auth';
 
 import React, { useState } from 'react';
-import PayPal from '../Payment/PayPal';
-
+import Payment from '../Payment/Payment';
 
 const SingleGame = () => {
 
@@ -102,20 +101,22 @@ const SingleGame = () => {
                                     <button onClick={sendMail}>I Want It!</button>
                                 </div>
                                 <div>
-                                    {buy ? (
-                                        <PayPal />
-                                    ) : (
-                                        <button onClick={() => {
-                                            setBuy(true);
-                                        }}
-                                        >
-                                            Buy
-                                        </button>
-                                    )}
+
+
                                 </div>
                             </div>
                         </div>
                     </div>
+                    {buy ? (
+                        <Payment />
+                    ) : (
+                        <button onClick={() => {
+                            setBuy(true);
+                        }}
+                        >
+                            Buy Now
+                        </button>
+                    )}
                 </>
             ) : (
                 <>

@@ -52,7 +52,7 @@ const SingleGame = () => {
             {Auth.loggedIn() ? (
                 <>
                     <div className='sg-back'>
-                        <div id='sg-head' className=' d-flex justify-content-center align-items-center'>
+                        <div id='sg-head' className='d-flex justify-content-center align-items-center'>
                             <h1>This one's a beauty... if you've the coin.</h1>
                         </div>
                         <div key={game.title} className="game d-flex justify-content-center">
@@ -63,11 +63,7 @@ const SingleGame = () => {
                                 <div className="sgtitle">
                                     <p>{game.title}</p>
                                 </div>
-                                <Link to={`/profile/${game.owner}`}>
-                                    <div className='sgowner'>
-                                        <p>{game.owner}</p>
-                                    </div>
-                                </Link>
+                                
                                 <div className="sgdescription">
                                     <p>{game.description}</p>
                                 </div>
@@ -77,6 +73,11 @@ const SingleGame = () => {
                                 <div className="sgprice">
                                     <p>${game.price}</p>
                                 </div>
+                                <Link to={`/profile/${game.owner}`} className='sgowner'>
+                                    <div>
+                                        <p>{game.owner}</p>
+                                    </div>
+                                </Link>
                                 <div className='d-flex m-3 justify-content-around'>
                                     <div>
                                         <button className='custom-btn btn btn-dark mb-3' onClick={sendMail}>Barter</button>

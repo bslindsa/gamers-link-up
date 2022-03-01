@@ -1,5 +1,8 @@
 .sg-back {
     background-image: url(./assets/circitorigin.jpg);
+    font-family: fantasy;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 .custom-btn{
@@ -36,16 +39,19 @@
 }
 
 .sgtitle{
+    color: rgb(34, 94, 146);
     font-size: 60px;
     text-align: center;
     text-decoration: none;  
 }
 .sgowner{
-    font-size: 30px;
+    text-decoration: none;
+    color: maroon;
+    font-size: 25px;
     text-align: center;
 }
 .sgdescription{
-    font-size: 30px;
+    font-size: 40px;
     text-align: center;
 }
 .sgplatform{
@@ -55,6 +61,6 @@
 }
 .sgprice {
     font-size: 30px;
-    text-align: center;
-    color: white;
+   text-align: center;
+   color: rgb(8, 133, 39);
 }

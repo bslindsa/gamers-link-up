@@ -29,7 +29,7 @@ const GameForm = () => {
         const { name, value } = event.target;
 
         setFormState({ ...formState, [name]: value });
-        
+
         if (event.target.type === 'image') {
             $('.icon').removeClass('highlight');
             $(event.target).addClass('highlight');
@@ -77,30 +77,28 @@ const GameForm = () => {
         <main>
             {Auth.loggedIn() ? (
                 <>
-                    <div>
-                        <div className="card">
+                    <div className='gf-back d-flex justify-content-center align-items-center'>
+                        <div className="card m-5">
                             <h4 className="custom-card-header card-header bg-dark text-light p-2">Game</h4>
                             <div className="card-body">
                                 <div>
+                                    <label htmlFor='file' id='add-photo' className='label'>
+                                        Add Photos:
+                                    </label>
                                     <input type="file" multiple className="form-control label" name="images" id="file" onChange={handleChange} />
-                                    <div>
-                                        <label htmlFor='file' className='label'>
-                                            Add Photos
-                                        </label>
-                                    </div>
                                     <div className='result'>
                                         {renderPhotos(selectedImages)}
                                     </div>
                                 </div>
-
-                                <label>Platform</label>
-                                <input type='image' border='none' className='icon' src={Nintendo} alt='nintendo' name='platform' value='Nintendo' onClick={handleChange} />
-                                <input type='image' border='none' className='icon' src={XBox} alt='Xbox' name='platform' value='XBOX' onClick={handleChange} />
-                                <input type='image' border='none' className='icon' src={PlayStation} alt='playstation' name='platform' value='PlayStation' onClick={handleChange} />
-                                <input type='image' border='none' className='icon' src={PC} alt='PC' name='platform' value='PC' onClick={handleChange} />
-
-                                <form onSubmit={handleFormSubmit}>
-                                    <label>Title</label>
+                                <div className='mt-2'>
+                                    <label>Platform:</label>
+                                    <input type='image' border='none' className='icon' src={Nintendo} alt='nintendo' name='platform' value='Nintendo' onClick={handleChange} />
+                                    <input type='image' border='none' className='icon' src={XBox} alt='Xbox' name='platform' value='XBOX' onClick={handleChange} />
+                                    <input type='image' border='none' className='icon' src={PlayStation} alt='playstation' name='platform' value='PlayStation' onClick={handleChange} />
+                                    <input type='image' border='none' className='icon' src={PC} alt='PC' name='platform' value='PC' onClick={handleChange} />
+                                </div>
+                                <form onSubmit={handleFormSubmit} className='mt-2'>
+                                    <label>Title:</label>
                                     <input
                                         className="form-input"
                                         placeholder="Game Title"
@@ -109,7 +107,7 @@ const GameForm = () => {
                                         value={formState.title}
                                         onChange={handleChange}
                                     />
-                                    <label>Description</label>
+                                    <label>Description:</label>
                                     <input
                                         className="form-input"
                                         placeholder="Game Description"
@@ -118,7 +116,7 @@ const GameForm = () => {
                                         value={formState.description}
                                         onChange={handleChange}
                                     />
-                                    <label>Price</label>
+                                    <label>Price:</label>
                                     <input
                                         className="form-input"
                                         placeholder="Price"
@@ -129,7 +127,7 @@ const GameForm = () => {
                                         onChange={handleChange}
                                     />
                                     <button
-                                        className="btn btn-block btn-primary"
+                                        className="mt-3 btn btn-block btn-primary"
                                         style={{ cursor: 'pointer' }}
                                         type="submit"
                                     >

@@ -77,13 +77,6 @@ const SingleGame = () => {
                                 <div className="gprice">
                                     <p>${game.price}</p>
                                 </div>
-                                <div>
-                                    {/* <ul>
-                                    {game.tags.map(tag => (
-                                        <li>{tag}</li>
-                                    ))}
-                                </ul> */}
-                                </div>
                                 <div className='d-flex m-3 justify-content-around'>
                                     <div>
                                         <button className='custom-btn btn btn-dark mb-3' onClick={sendMail}>Barter</button>

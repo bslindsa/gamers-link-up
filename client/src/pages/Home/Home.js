@@ -19,7 +19,7 @@ const Home = () => {
           <>
             <div>
               <div key='parallax' id="parallax">
-                <div>
+                <div className='d-flex justify-content-center'>
                   <div id="lttp">
                     <p>It's Dangerous To Go Alone. Take These!</p>
                   </div>

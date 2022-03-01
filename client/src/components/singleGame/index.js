@@ -8,6 +8,7 @@ import Auth from '../../utils/auth';
 
 import React, { useState } from 'react';
 import Payment from '../Payment/Payment';
+import '../singleGame/SingleGame.css'
 
 const SingleGame = () => {
 
@@ -110,7 +111,7 @@ const SingleGame = () => {
                     {buy ? (
                         <Payment />
                     ) : (
-                        <button onClick={() => {
+                        <button id="buy-now" className="btn btn-dark mb-3" onClick={() => {
                             setBuy(true);
                         }}
                         >

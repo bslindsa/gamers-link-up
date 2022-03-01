@@ -5,6 +5,9 @@
     margin: 20px;   
     border-style: groove;
     border-width: 6px;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
 }
 
 .form-group {
@@ -20,4 +23,29 @@
 
 .first-name-text{
     display: inline;
+}
+
+.buy-now {
+    background-color: aliceblue;
+}
+
+.payment-info {
+    font-style: bold;
+    font-size: 30px;
+}
+
+.billing-info{
+    font-style: bold;
+    font-size: 30px;
+}
+
+.name-text {
+    display: inline;
+}
+
+form {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
 }

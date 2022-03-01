@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { Link, useParams } from 'react-router-dom';
+import { Redirect, Link, useParams } from 'react-router-dom';
 import { GET_ME, GET_USER } from '../../utils/queries';
 import GameList from '../../components/GameList/index.js';
 import Auth from '../../utils/auth';
@@ -20,9 +20,9 @@ const Profile = () => {
     if (Auth.loggedIn() && Auth.getProfile().data.username === username) {
         return (
             <div>
-                <div key='parallax' id="parallax">
+                <div key='parallax' className="parallax">
                     <div className='d-flex justify-content-center'>
-                        <div id="lttp">
+                        <div className="lttp">
                             <p>Your Inventory</p>
                         </div>
                     </div>
@@ -47,29 +47,8 @@ const Profile = () => {
     }
     else {
         return (
-            <h1>We don't recognize you stranger. Please Login or Sign Up so we can add you to our guild.</h1>
+            <Redirect to='/login'/>
         );
     };
-    //  else {
-    //     return (
-    //         <div>
-    //             <div key='parallax' id="parallax">
-    //                 <div id="lttp">
-    //                     <p> {`${username}'s Inventory`} </p>
-    //                 </div>
-    //             </div>
-    //             <div>
-    //                 {loading ? (
-    //                     <div>Loading...</div>
-    //                 ) : (
-    //                     <GameList
-    //                         games={games} user={user}
-    //                     />
-    //                 )}
-    //             </div>
-    //         </div>
-    //     );
-    // };
-
 };
 export default Profile;

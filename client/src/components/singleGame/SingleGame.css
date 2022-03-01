@@ -34,25 +34,25 @@
     background-color: #4db8ff;
 }
 
-.gtitle{
+.sgtitle{
     font-size: 60px;
     text-align: center;
     text-decoration: none;  
   }
-  .gowner{
+  .sgowner{
       font-size: 30px;
       text-align: center;
   }
-  .gdescription{
+  .sgdescription{
       font-size: 30px;
       text-align: center;
   }
-  .gplatform{
+  .sgplatform{
       font-size: 30px;
       text-align: center;
       color: coral;
   }
-  .gprice {
+  .sgprice {
       font-size: 30px;
       text-align: center;
       color: white;

@@ -60,21 +60,21 @@ const SingleGame = () => {
                                 <div className='d-flex flex-wrap justify-content-center'>
                                     {renderPhotos(game.images)}
                                 </div>
-                                <div className="gtitle">
+                                <div className="sgtitle">
                                     <p>{game.title}</p>
                                 </div>
                                 <Link to={`/profile/${game.owner}`}>
-                                    <div className='gowner'>
+                                    <div className='sgowner'>
                                         <p>{game.owner}</p>
                                     </div>
                                 </Link>
-                                <div className="gdescription">
+                                <div className="sgdescription">
                                     <p>{game.description}</p>
                                 </div>
-                                <div className="gplatform">
+                                <div className="sgplatform">
                                     <p>{game.platform}</p>
                                 </div>
-                                <div className="gprice">
+                                <div className="sgprice">
                                     <p>${game.price}</p>
                                 </div>
                                 <div className='d-flex m-3 justify-content-around'>

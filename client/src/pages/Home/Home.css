@@ -2,7 +2,25 @@
     color: rgb(23, 33, 90);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 50px;
-    margin: 20px;  
-    text-align: center;  
+    margin: 20px;
+    text-align: center;
     background-color: #4db8ff;
+}
+
+.sm {
+    font-size: 60px;
+    text-align: center;
+    padding: 8px 24px;
+    /* min-width: 1500px; */
+    width: 98%;
+    min-height: 200px;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+}
+
+.sm p {
+    background-color: rgb(10, 155, 75);
+    border-radius: 16px;
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+    font-family: fantasy;
 }

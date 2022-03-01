@@ -1,8 +1,8 @@
-.wares {
+/* .wares {
     border: 0;
     padding: 0;
     margin: 0;
-}
+} */
 
 .gtitle{
     color: rgb(34, 94, 146);
@@ -20,6 +20,7 @@
 .gdescription{
     font-size: 40px;
     text-align: center;
+   
 }
 .gplatform{
     font-size: 30px;
@@ -86,20 +87,25 @@
     max-height: 90%;
     border-radius: 16px;
     box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+    margin-left: 10%;
+    margin-top: 4%;
+    font-family: fantasy;
 }
 
 .thumbnail {
-    display: inline-block;
-    /* float: left; */
+    float: left;
+    margin-left: 25%;
+    justify-content: space-between;
+    font-family: fantasy;
+    margin-right: -15%;
 }
 
-.gpreview {
-    width: auto;
+.card .gpreview {
     height: 225px;
-    border: 1px solid black;
+    /*border: 1px solid black; */
+    margin-right: -392px;
+    margin-top: 5%;
 }
 
-.gdata {
-    display: inline-block;
-    /* float: right; */
-}
+
+

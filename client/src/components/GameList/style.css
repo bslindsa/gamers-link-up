@@ -53,6 +53,27 @@
     font-family: fantasy;
 }
 
+#sm {
+    font-size: 60px;
+    text-align: center;
+    padding: 8px 24px;
+    /* min-width: 1500px; */
+    object-fit: cover;
+    width: 98%;
+    min-height: 300px;
+    background-image: url(./assets/another-castle.png);
+    background-size: contain;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+}
+
+#sm p {
+    background-color: rgb(10, 155, 75);
+    border-radius: 16px;
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+    font-family: fantasy;
+}
+
 #parallax{
     background-image: url(./assets/zelda_landscape.jpg);
     background-size: cover;
@@ -60,6 +81,8 @@
     align-items: center;
     justify-content: center;
     height: 500px;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 .dog {

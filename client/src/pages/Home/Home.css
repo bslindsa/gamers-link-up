@@ -6,18 +6,3 @@
     text-align: center;  
     background-color: #4db8ff;
 }
-#Home_lttp {
-    font-size: 200px;
-    color:antiquewhite;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-style: oblique;
-    text-align: center;
-    padding: 8px 24px;
-    min-width: 1500px;
-    min-height: 200px;
-    background-image: url(../../components/GameList/assets/Its_Dangerous_Out_there_Take_these.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    /* border-radius: 16px;
-    box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7); */
-}

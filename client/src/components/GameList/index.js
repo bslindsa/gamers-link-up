@@ -24,20 +24,22 @@ const GameList = ({ games }) => {
                                         <p>{game.title}</p>
                                     </div>
                                 </Link>
+                                
+                                <div>
+                                    <p className="gdescription">{game.description}</p>
+                                </div>
+                                <div>
+                                    <h3 className="gprice">{game.price}</h3>
+                                </div>
+                                <div>
+                                    <p className="gplatform">{game.platform}</p>
+                                    
+                                </div>
                                 <Link to={`/profile/${game.owner}`} className="gowner">
                                     <div>
                                         <p>{game.owner}</p>
                                     </div>
                                 </Link>
-                                <div>
-                                    <p className="gdescription">{game.description}</p>
-                                </div>
-                                <div>
-                                    <p className="gplatform">{game.platform}</p>
-                                </div>
-                                <div>
-                                    <h3>{game.price}</h3>
-                                </div>
                             </div>
                         </div>
                     </div>

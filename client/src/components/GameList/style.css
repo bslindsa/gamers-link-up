@@ -5,7 +5,7 @@
 }
 
 .gtitle{
-    color: aliceblue;
+    color: rgb(34, 94, 146);
     font-size: 60px;
     text-align: center;
     text-decoration: none;  
@@ -13,11 +13,11 @@
 .gowner{
     text-decoration: none;
     color: maroon;
-    font-size: 30px;
+    font-size: 25px;
     text-align: center;
 }
 .gdescription{
-    font-size: 30px;
+    font-size: 40px;
     text-align: center;
 }
 .gplatform{
@@ -28,7 +28,7 @@
 .gprice {
    font-size: 30px;
    text-align: center;
-   color: white;
+   color: rgb(8, 133, 39);
 }
 
 .preview {
@@ -98,6 +98,7 @@
     width: 40%;
     border-radius: 16px;
     box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+    
 }
 
 .thumbnail {

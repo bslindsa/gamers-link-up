@@ -21,14 +21,14 @@ const GameList = ({ games }) => {
                 <>
                     <div key={game._id} className="dog game">
                         <div key={game._id + 'A'} className="card">
-                            <Link to={`/games/${game._id}`}>
+                            <Link to={`/games/${game._id}`} className='gtitle'>
                                 <div>
-                                    <p className="gtitle">{game.title}</p>
+                                    <p>{game.title}</p>
                                 </div>
                             </Link>
-                            <Link to={`/profile/${game.owner}`}>
+                            <Link to={`/profile/${game.owner}`}  className="gowner">
                             <div>
-                                <p className="gowner">{game.owner}</p>
+                                <p>{game.owner}</p>
                             </div>
                             </Link>
                             <div>

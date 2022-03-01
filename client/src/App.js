@@ -7,15 +7,16 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-
-import Home from './pages/home/Home';
-import GameForm from './components/gameForm/index';
+import GameForm from './components/gameForm';
 import Login from './pages/login/Login';
 import Signup from './pages/login/Signup';
 import Header from './components/Header/index';
+import Footer from './components/Footer/index';
+import Home from './pages/Home/Home'
 
 import Profile from './pages/profile/Profile';
-import SingleGame from "./components/SingleGame/index";
+import SingleGame from "./components/singleGame/index";
+
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -75,6 +76,7 @@ function App() {
               component={Home}
             />
           </Switch>
+          <Footer/>
         </div>
       </Router>
     </ApolloProvider>

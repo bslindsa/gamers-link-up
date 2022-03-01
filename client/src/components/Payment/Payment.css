@@ -1,0 +1,51 @@
+.payment-container {
+    color: rgb(23, 33, 90);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 50px;
+    margin: 20px;   
+    border-style: groove;
+    border-width: 6px;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-group {
+    font-size: 20px;
+    margin: 12px;
+    justify-content: center;
+    align-items: center;
+}
+
+.error {
+    color: red
+}
+
+.first-name-text{
+    display: inline;
+}
+
+.buy-now {
+    background-color: aliceblue;
+}
+
+.payment-info {
+    font-style: bold;
+    font-size: 30px;
+}
+
+.billing-info{
+    font-style: bold;
+    font-size: 30px;
+}
+
+.name-text {
+    display: inline;
+}
+
+form {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}

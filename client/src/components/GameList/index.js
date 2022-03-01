@@ -7,14 +7,15 @@ import image from './assets/a-link-to-the-past.png';
 const GameList = ({ games }) => {
     if (!games.length) {
         return (
-            <div key='parallax' id="parallax">
+            <div key='parallax' className="parallax">
                 <div className='d-flex justify-content-center'>
-                  <div id="sm">
-                    <p>Sorry, Adventurer. These games are in another castle</p>
-                  </div>
+                    <div id="sm">
+                        <p>Sorry, Adventurer. These games are in another castle</p>
+                    </div>
                 </div>
-              </div>
-        )}
+            </div>
+        )
+    }
     console.log(games);
 
     return (
@@ -30,7 +31,7 @@ const GameList = ({ games }) => {
                             </div>
                             <div className="gdata">
                                 <Link to={`/games/${game._id}`} className='gtitle'>
-                                        <p>{game.title}</p>
+                                    <p>{game.title}</p>
                                 </Link>
                                 <div>
                                     <p className="gdescription">{game.description}</p>

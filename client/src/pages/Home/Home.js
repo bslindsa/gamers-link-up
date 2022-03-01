@@ -18,9 +18,9 @@ const Home = () => {
         ) : (
           <>
             <div>
-              <div key='parallax' id="parallax">
+              <div key='parallax' className="parallax">
                 <div className='d-flex justify-content-center'>
-                  <div id="lttp">
+                  <div className="lttp">
                     <p>It's Dangerous To Go Alone. Take These!</p>
                   </div>
                 </div>

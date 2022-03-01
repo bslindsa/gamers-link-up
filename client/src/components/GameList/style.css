@@ -54,6 +54,7 @@
     background-color: rgb(10, 155, 75);
     border-radius: 16px;
     box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+    font-family: fantasy;
 }
 
 #parallax{

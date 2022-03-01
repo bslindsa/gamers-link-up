@@ -21,7 +21,7 @@ const Home = () => {
               <div key='parallax' id="parallax">
                 <div>
                   <div id="lttp">
-                    <p>It's Dangerous to go Alone. Take these!</p>
+                    <p>It's Dangerous To Go Alone. Take These!</p>
                   </div>
                 </div>
               </div>

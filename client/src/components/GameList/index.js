@@ -14,7 +14,6 @@ const GameList = ({ games }) => {
             {games.map(game => (
                 <>
                     <div key={game._id} className="dog game">
-
                         <div className="card">
                             <div className='thumbnail'>
                                 <img className='gpreview m-2' src={game.images[0]} alt='Preview' />

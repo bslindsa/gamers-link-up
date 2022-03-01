@@ -7,7 +7,7 @@ import Auth from '../../utils/auth';
 
 import React, { useState } from 'react';
 import Payment from '../Payment/Payment';
-import '../SingleGame/SingleGame.css'
+import './SingleGame.css'
 
 const SingleGame = () => {
 

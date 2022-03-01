@@ -21,8 +21,10 @@ const Profile = () => {
         return (
             <div>
                 <div key='parallax' id="parallax">
-                    <div id="lttp">
-                        <p>Your Inventory</p>
+                    <div className='d-flex justify-content-center'>
+                        <div id="lttp">
+                            <p>Your Inventory</p>
+                        </div>
                     </div>
                     <div className='post-game-header'>
                         <h4 className='add-game-header'> Add a new game to your shop!</h4>
@@ -43,29 +45,31 @@ const Profile = () => {
             </div>
         );
     }
-    else if (!user?.username) {
+    else {
         return (
             <h1>We don't recognize you stranger. Please Login or Sign Up so we can add you to our guild.</h1>
         );
-    } else {
-        return (
-            <div>
-                <div key='parallax' id="parallax">
-                    <div id="lttp">
-                        <p> {`${username}'s Inventory`} </p>
-                    </div>
-                </div>
-                <div>
-                    {loading ? (
-                        <div>Loading...</div>
-                    ) : (
-                        <GameList
-                            games={games} user={user}
-                        />
-                    )}
-                </div>
-            </div>
-        );
     };
+    //  else {
+    //     return (
+    //         <div>
+    //             <div key='parallax' id="parallax">
+    //                 <div id="lttp">
+    //                     <p> {`${username}'s Inventory`} </p>
+    //                 </div>
+    //             </div>
+    //             <div>
+    //                 {loading ? (
+    //                     <div>Loading...</div>
+    //                 ) : (
+    //                     <GameList
+    //                         games={games} user={user}
+    //                     />
+    //                 )}
+    //             </div>
+    //         </div>
+    //     );
+    // };
+
 };
 export default Profile;

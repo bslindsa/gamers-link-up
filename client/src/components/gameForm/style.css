@@ -5,6 +5,10 @@
     background-size: cover;
 }
 
+#container {
+    height: 100%;
+}
+
 .preview {
     width: auto;
     height: 225px;

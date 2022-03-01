@@ -6,8 +6,15 @@ import image from './assets/a-link-to-the-past.png';
 
 const GameList = ({ games }) => {
     if (!games.length) {
-        return <h3>Sorry, Adventurer. These games are in another castle</h3>
-    }
+        return (
+            <div key='parallax' id="parallax">
+                <div className='d-flex justify-content-center'>
+                  <div id="sm">
+                    <p>Sorry, Adventurer. These games are in another castle</p>
+                  </div>
+                </div>
+              </div>
+        )}
     console.log(games);
 
     return (

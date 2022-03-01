@@ -78,67 +78,71 @@ const GameForm = () => {
             {Auth.loggedIn() ? (
                 <>
                     <div className='gf-back d-flex justify-content-center align-items-center'>
-                        <div className="card m-5">
-                            <h4 className="custom-card-header card-header bg-dark text-light p-2">Game</h4>
-                            <div className="card-body">
-                                <div>
-                                    <label htmlFor='file' id='add-photo' className='label'>
-                                        Add Photos:
-                                    </label>
-                                    <input type="file" multiple className="form-control label" name="images" id="file" onChange={handleChange} />
-                                    <div className='result'>
-                                        {renderPhotos(selectedImages)}
+                        <div>
+
+
+                            <div className="card m-5">
+                                <h4 className="custom-card-header card-header bg-dark text-light p-2">Game</h4>
+                                <div className="card-body">
+                                    <div id='container'>
+                                        <label htmlFor='file' id='add-photo' className='label'>
+                                            Add Photos:
+                                        </label>
+                                        <input type="file" multiple className="form-control label" name="images" id="file" onChange={handleChange} />
+                                        <div className='result'>
+                                            {renderPhotos(selectedImages)}
+                                        </div>
                                     </div>
-                                </div>
-                                <div className='mt-2'>
-                                    <label>Platform:</label>
-                                    <input type='image' border='none' className='icon' src={Nintendo} alt='nintendo' name='platform' value='Nintendo' onClick={handleChange} />
-                                    <input type='image' border='none' className='icon' src={XBox} alt='Xbox' name='platform' value='XBOX' onClick={handleChange} />
-                                    <input type='image' border='none' className='icon' src={PlayStation} alt='playstation' name='platform' value='PlayStation' onClick={handleChange} />
-                                    <input type='image' border='none' className='icon' src={PC} alt='PC' name='platform' value='PC' onClick={handleChange} />
-                                </div>
-                                <form onSubmit={handleFormSubmit} className='mt-2'>
-                                    <label>Title:</label>
-                                    <input
-                                        className="form-input"
-                                        placeholder="Game Title"
-                                        name="title"
-                                        type="text"
-                                        value={formState.title}
-                                        onChange={handleChange}
-                                    />
-                                    <label>Description:</label>
-                                    <input
-                                        className="form-input"
-                                        placeholder="Game Description"
-                                        name="description"
-                                        type="text"
-                                        value={formState.description}
-                                        onChange={handleChange}
-                                    />
-                                    <label>Price:</label>
-                                    <input
-                                        className="form-input"
-                                        placeholder="Price"
-                                        name="price"
-                                        type="text"
-                                        pattern='[0-9]*'
-                                        value={formState.price}
-                                        onChange={handleChange}
-                                    />
-                                    <button
-                                        className="mt-3 btn btn-block btn-primary"
-                                        style={{ cursor: 'pointer' }}
-                                        type="submit"
-                                    >
-                                        Submit
-                                    </button>
-                                </form>
-                                {error && (
-                                    <div className="my-3 p-3 bg-danger text-white">
-                                        {error.message}
+                                    <div className='mt-2'>
+                                        <label>Platform:</label>
+                                        <input type='image' border='none' className='icon' src={Nintendo} alt='nintendo' name='platform' value='Nintendo' onClick={handleChange} />
+                                        <input type='image' border='none' className='icon' src={XBox} alt='Xbox' name='platform' value='XBOX' onClick={handleChange} />
+                                        <input type='image' border='none' className='icon' src={PlayStation} alt='playstation' name='platform' value='PlayStation' onClick={handleChange} />
+                                        <input type='image' border='none' className='icon' src={PC} alt='PC' name='platform' value='PC' onClick={handleChange} />
                                     </div>
-                                )}
+                                    <form onSubmit={handleFormSubmit} className='mt-2'>
+                                        <label>Title:</label>
+                                        <input
+                                            className="form-input"
+                                            placeholder="Game Title"
+                                            name="title"
+                                            type="text"
+                                            value={formState.title}
+                                            onChange={handleChange}
+                                        />
+                                        <label>Description:</label>
+                                        <input
+                                            className="form-input"
+                                            placeholder="Game Description"
+                                            name="description"
+                                            type="text"
+                                            value={formState.description}
+                                            onChange={handleChange}
+                                        />
+                                        <label>Price:</label>
+                                        <input
+                                            className="form-input"
+                                            placeholder="Price"
+                                            name="price"
+                                            type="text"
+                                            pattern='[0-9]*'
+                                            value={formState.price}
+                                            onChange={handleChange}
+                                        />
+                                        <button
+                                            className="mt-3 btn btn-block btn-primary"
+                                            style={{ cursor: 'pointer' }}
+                                            type="submit"
+                                        >
+                                            Submit
+                                        </button>
+                                    </form>
+                                    {error && (
+                                        <div className="my-3 p-3 bg-danger text-white">
+                                            {error.message}
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -77,7 +77,7 @@ const GameForm = () => {
             {Auth.loggedIn() ? (
                 <>
                     <div className='gf-back d-flex justify-content-center align-items-center'>
-                        <div className='gf-back d-flex justify-content-center align-items-center mb-5'>
+                        <div className='gf-back d-flex justify-content-center mt-5'>
                             <div className="game-card card ">
                                 <h4 className="custom-card-header card-header bg-dark text-light p-2">Game</h4>
                                 <div className="card-body">

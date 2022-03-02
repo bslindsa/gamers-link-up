@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import './style.css';
 import rupee from './assets/rupee.png';
-// import image from './assets/a-link-to-the-past.png';
+import image from './assets/a-link-to-the-past.png';
 
 const GameList = ({ games }) => {
     if (!games.length) {
@@ -25,8 +25,8 @@ const GameList = ({ games }) => {
                     <div id = "display-card" key={game._id} className="dog">
                         <div  className="card">
                             <div className='thumbnail'>
-                                <img className='gpreview m-2' src={game.images[0]} alt='Preview' />
-                                {/* {image} */}
+                                <img className='gpreview m-2' src={image} alt='Preview' />
+                                {/* {game.images[0]} */}
                             </div>
                             <div className="gdata">
                                 <Link to={`/games/${game._id}`} className='gtitle'>

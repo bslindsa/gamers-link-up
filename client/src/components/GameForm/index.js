@@ -48,6 +48,7 @@ const GameForm = () => {
 
     const handleFormSubmit = async (event) => {
         try {
+            // eslint-disable-next-line
             const { data } = await addGame({
 
                 variables: { ...formState, price: parseFloat(formState.price), images: selectedImages },

@@ -24,7 +24,7 @@
 .gprice {
    font-size: 50px;
    text-align: center;
-   color: rgb(8, 133, 39);
+   color: rgb(82, 185, 82);
 }
 
 .lttp {
@@ -122,6 +122,13 @@
     width: 400px;
     height: auto;
     border-radius: 16px;
+}
+
+.rupee {
+    height: 50px;
+    position: relative;
+    bottom: 5px;
+    left: 5px;
 }
 
 

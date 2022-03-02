@@ -2,6 +2,7 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 import './style.css';
+import rupee from './assets/rupee.png';
 // import image from './assets/a-link-to-the-past.png';
 
 const GameList = ({ games }) => {
@@ -35,7 +36,7 @@ const GameList = ({ games }) => {
                                     <p className="gdescription">{game.description}</p>
                                 </div>
                                 <div>
-                                    <p className="gprice">${game.price}</p>
+                                    <p className="gprice">{game.price}<img className="rupee" src={rupee} alt="green rupee" /></p>
                                 </div>
                                 <div>
                                     <p className="gplatform">{game.platform}</p>

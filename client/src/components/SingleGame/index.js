@@ -32,7 +32,7 @@ const SingleGame = () => {
 
     const user = userData?.user || {};
 
-    const [ deleteGame, {error} ] = useMutation(DELETE_GAME, {
+    const [deleteGame, { error }] = useMutation(DELETE_GAME, {
         variables: {
             gameId: game._id
         }
@@ -46,11 +46,18 @@ const SingleGame = () => {
         window.location.href = link;
     }
 
+    // function blobToFile(theBlob, fileName){
+    //     theBlob.lastModifiedDate = new Date();
+    //     theBlob.name = fileName;
+    //     return theBlob;
+    // }
+
     const renderPhotos = (source) => {
         return source.map((photo) => {
             return <img className='preview m-2' src={photo} key={photo} alt='Preview' />
         })
     }
+    console.log(game.images);
 
     if (gameLoading) {
         return <div>Loading...</div>;
@@ -108,7 +115,7 @@ const SingleGame = () => {
                         </div>
                         {Auth.getProfile().data.username === game.owner ?
                             <div className='delete'>
-                                <button className='btn btn-danger mt-3' onClick={() => {deleteGame(); window.location.assign('/');}}>Drop Game</button>
+                                <button className='btn btn-danger mt-3' onClick={() => { deleteGame(); window.location.assign('/'); }}>Drop Game</button>
                             </div>
                             : <></>}
                     </div>

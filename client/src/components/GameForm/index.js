@@ -17,8 +17,8 @@ import './style.css';
 
 const GameForm = () => {
 
-    const { loading, data } = useQuery(GET_ME);
-    const user = data?.me || {};
+    // const { loading, data } = useQuery(GET_ME);
+    // const user = data?.me || {};
 
     const [formState, setFormState] = useState({
         title: '',
@@ -29,6 +29,7 @@ const GameForm = () => {
     const [addGame, { error }] = useMutation(ADD_GAME)
 
     const [selectedImages, setSelectedImages] = useState([]);
+    const [gameImages, setGameImages] = useState([]);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -41,11 +42,18 @@ const GameForm = () => {
         }
 
         if (event.target.files) {
-            const fileArray = Array.from(event.target.files).map((file) => URL.createObjectURL(file));
-            setSelectedImages((prevImages) => prevImages.concat(fileArray));
+            // const reader = new FileReader();
+            
+            const blobArray = Array.from(event.target.files).map((file) => URL.createObjectURL(file));
+            setSelectedImages((prevImages) => prevImages.concat(blobArray));
+            console.log(selectedImages);
+            
+
+            // setGameImages((prevImages) => reader.readAsDataURL(prevImages));
             Array.from(event.target.files).map(
                 (file) => URL.revokeObjectURL(file)
             )
+
         };
         setFormState({ ...formState, [name]: value });
     };
@@ -56,7 +64,7 @@ const GameForm = () => {
             // eslint-disable-next-line
             const { data } = await addGame({
 
-                variables: { ...formState, price: parseFloat(formState.price), images: selectedImages },
+                variables: { ...formState, price: parseFloat(formState.price), images: gameImages },
             });
 
             setFormState({
@@ -66,7 +74,7 @@ const GameForm = () => {
                 price: ''
             });
             
-            window.location.assign(`/profile/${user.username}`);
+            window.location.assign(`/`);
 
         } catch (err) {
             console.log('catch');

@@ -6,6 +6,7 @@ import rupee from './assets/rupee.png';
 import image from './assets/a-link-to-the-past.png';
 
 const GameList = ({ games }) => {
+
     if (!games.length) {
         return (
             <div key='parallax' className="parallax">

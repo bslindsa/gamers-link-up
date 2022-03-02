@@ -1,1 +1,1 @@
-web: node server/server.js --ignore client
+web: node server/server.js

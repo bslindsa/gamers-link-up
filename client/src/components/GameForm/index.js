@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
+import { Redirect, withRouter } from 'react-router-dom';
+import { useMutation, useQuery } from '@apollo/client';
+import { GET_ME } from '../../utils/queries';
 
 import $ from 'jquery';
 
@@ -12,9 +13,13 @@ import Nintendo from './assets/nintendo.png';
 import PlayStation from './assets/playstation.png';
 import XBox from './assets/xbox.png';
 import PC from './assets/pc.png';
-import './style.css'
+import './style.css';
 
 const GameForm = () => {
+
+    const { loading, data } = useQuery(GET_ME);
+    const user = data?.me || {};
+
     const [formState, setFormState] = useState({
         title: '',
         description: '',
@@ -42,11 +47,11 @@ const GameForm = () => {
                 (file) => URL.revokeObjectURL(file)
             )
         };
-
         setFormState({ ...formState, [name]: value });
     };
 
     const handleFormSubmit = async (event) => {
+        event.preventDefault()
         try {
             // eslint-disable-next-line
             const { data } = await addGame({
@@ -60,6 +65,7 @@ const GameForm = () => {
                 platform: '',
                 price: ''
             });
+            return this.props.history.push(`/profile/${user.username}`)
         } catch (err) {
             console.log('catch');
             console.error(err);
@@ -153,4 +159,4 @@ const GameForm = () => {
     );
 };
 
-export default GameForm;
+export default withRouter(GameForm);

@@ -43,20 +43,29 @@ const GameForm = () => {
 
         if (event.target.files) {
             // const reader = new FileReader();
-            
+            // reader.onload = logFile;
+            // if (event.target.files[0]) {
+            //     const fileArray = reader.readAsDataURL(event.target.files[0]);
+            //     console.log(fileArray);
+
+            // }
+            // function logFile(event) {
+                //     let img = document.createElement('img');
+                //     img.src = str;
+                //     app.append(img);
+                //     console.log(str);
+            // }
+
             const blobArray = Array.from(event.target.files).map((file) => URL.createObjectURL(file));
             setSelectedImages((prevImages) => prevImages.concat(blobArray));
             console.log(selectedImages);
-            
-
-            // setGameImages((prevImages) => reader.readAsDataURL(prevImages));
             Array.from(event.target.files).map(
                 (file) => URL.revokeObjectURL(file)
             )
-
         };
         setFormState({ ...formState, [name]: value });
     };
+
 
     const handleFormSubmit = async (event) => {
         event.preventDefault()
@@ -73,7 +82,7 @@ const GameForm = () => {
                 platform: '',
                 price: ''
             });
-            
+
             window.location.assign(`/`);
 
         } catch (err) {

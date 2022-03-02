@@ -14,7 +14,7 @@ const Profile = () => {
     const { loading, data } = useQuery(username ? GET_USER : GET_ME, {
         variables: { username: username },
     });
-    const user = data?.me || data?.user || {};
+    const user = data?.user || data?.me || {};
     const games = user.games || []
     // navigate to personal profile page if username is yours
     if (Auth.loggedIn() && Auth.getProfile().data.username === username) {

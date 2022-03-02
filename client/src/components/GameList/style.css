@@ -124,10 +124,11 @@
 
 .thumbnail {
     float: left;
-    margin-left: 25%;
+    margin-left: 15%;
     justify-content: space-between;
     font-family: fantasy;
-    margin-right: -15%;
+    margin-right: 10%;
+    padding-top: 10px;
 }
 
 .card .gpreview {

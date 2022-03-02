@@ -1,5 +1,5 @@
 .gtitle{
-    color: rgb(34, 94, 146);
+    color: rgb(126, 188, 243);
     font-size: 60px;
     text-align: center;
     width: auto;
@@ -22,7 +22,7 @@
     color: coral;
 }
 .gprice {
-   font-size: 30px;
+   font-size: 50px;
    text-align: center;
    color: rgb(8, 133, 39);
 }
@@ -80,8 +80,9 @@
 .dog {
     background-image: url(./assets/steel.jpg);
     background-size: cover;
-    min-height: 400px;
+    /* min-height: 400px; */
     /* display: flex; */
+    padding: 1.5% 0%;
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -89,7 +90,7 @@
 }
 
 .cat {
-    height: 400px;
+    height: 300px;
     background-image: url(./assets/circitorigin.jpg);
     background-attachment: fixed;
     background-size: cover;
@@ -111,19 +112,18 @@
 
 .thumbnail {
     float: left;
-    margin-left: 15%;
     justify-content: space-between;
     font-family: fantasy;
-    margin-right: 10%;
     padding-top: 10px;
+    margin: 1%;
 }
 
-/* .card .gpreview {
-    height: 225px;
-    border: 1px solid black;
-    margin-right: -392px;
-    margin-top: 5%;
-} */
+.gpreview {
+    width: 400px;
+    height: auto;
+    border-radius: 16px;
+}
+
 
 
 

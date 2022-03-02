@@ -41,7 +41,7 @@ const Signup = () => {
   return (
     <div className='log-back'>
       <div className='log-card'>
-        <div className="card m-5">
+        <div className="custom-card card m-5">
           <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
           <div className="card-body">
             {data ? (

@@ -6,11 +6,17 @@
     padding-bottom: 100px;
 }
 
+.delete {
+    margin-left: 50%;
+    margin-right: 50%;
+    width: 100%;
+}
+
 .custom-btn{
     background-color: rgb(55, 129, 194);
     margin: 20px;
     height: 50px;
-    width: auto;
+    width: 100px;
 }
 
 #buy-now:hover {

@@ -1,7 +1,8 @@
 import { Redirect, Link, useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 
 import { GET_GAME, GET_USER } from "../../utils/queries";
+import { DELETE_GAME } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 import React, { useState } from 'react';
@@ -30,6 +31,12 @@ const SingleGame = () => {
     });
 
     const user = userData?.user || {};
+
+    const [ deleteGame, {error} ] = useMutation(DELETE_GAME, {
+        variables: {
+            gameId: game._id
+        }
+    })
 
     const sendMail = () => {
         const email = user.email;
@@ -64,7 +71,7 @@ const SingleGame = () => {
                                 <div className="sgtitle">
                                     <p>{game.title}</p>
                                 </div>
-                                
+
                                 <div className="sgdescription">
                                     <p>{game.description}</p>
                                 </div>
@@ -97,14 +104,20 @@ const SingleGame = () => {
                                     </div>
                                 </div>
                             </div>
+
                         </div>
+                        {Auth.getProfile().data.username === game.owner ?
+                            <div className='delete'>
+                                <button className='btn btn-danger mt-3' onClick={() => {deleteGame(); window.location.assign('/');}}>Drop Game</button>
+                            </div>
+                            : <></>}
                     </div>
                 </>
             ) : (
                 <>
                     <div className='sg-back'>
                         <div className='card1'>
-                            <Redirect to="/login"/>
+                            <Redirect to="/login" />
                         </div>
                     </div>
                 </>

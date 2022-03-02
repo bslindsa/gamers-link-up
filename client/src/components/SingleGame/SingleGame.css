@@ -3,6 +3,7 @@
     font-family: fantasy;
     background-attachment: fixed;
     background-size: cover;
+    padding-bottom: 100px;
 }
 
 .custom-btn{
@@ -26,8 +27,7 @@
     box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
     width: 90%;
     justify-content: center;
-    margin: 50px 0px;
-    
+    margin-top: 50px;    
 }
 
 #sg-head {

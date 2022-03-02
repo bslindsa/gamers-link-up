@@ -55,7 +55,7 @@ const SingleGame = () => {
                         <div id='sg-head' className='d-flex justify-content-center align-items-center'>
                             <h1>This one's a beauty... if you've the coin.</h1>
                         </div>
-                        <div key={game.title} className="game d-flex justify-content-center">
+                        <div key={game.title} className=" game d-flex justify-content-center">
                             <div className="card1">
                                 <div className='d-flex flex-wrap justify-content-center'>
                                     {renderPhotos(game.images)}

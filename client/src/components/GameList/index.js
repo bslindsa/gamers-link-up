@@ -2,7 +2,7 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 import './style.css';
-import image from './assets/a-link-to-the-past.png';
+// import image from './assets/a-link-to-the-past.png';
 
 const GameList = ({ games }) => {
     if (!games.length) {
@@ -24,11 +24,10 @@ const GameList = ({ games }) => {
                     <div id = "display-card" key={game._id} className="dog">
                         <div  className="card">
                             <div className='thumbnail'>
-                                <img className='gpreview m-2' src={image} alt='Preview' />
-                                {/* {game.images[0]} */}
+                                <img className='gpreview m-2' src={game.images[0]} alt='Preview' />
+                                {/* {image} */}
                             </div>
                             <div className="gdata">
-                                {/* <img className='gpreview m-2' src={image} alt='Preview' /> */}
                                 <Link to={`/games/${game._id}`} className='gtitle'>
                                     <p>{game.title}</p>
                                 </Link>

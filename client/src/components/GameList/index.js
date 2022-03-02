@@ -36,7 +36,7 @@ const GameList = ({ games }) => {
                                     <p className="gdescription">{game.description}</p>
                                 </div>
                                 <div>
-                                    <h3 className="gprice">{game.price}</h3>
+                                    <p className="gprice">${game.price}</p>
                                 </div>
                                 <div>
                                     <p className="gplatform">{game.platform}</p>

@@ -8,7 +8,7 @@ import { ADD_GAME } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 
-import Nintendo from './assets/nintendo.jpg';
+import Nintendo from './assets/nintendo.png';
 import PlayStation from './assets/playstation.png';
 import XBox from './assets/xbox.png';
 import PC from './assets/pc.png';
@@ -77,8 +77,8 @@ const GameForm = () => {
             {Auth.loggedIn() ? (
                 <>
                     <div className='gf-back d-flex justify-content-center align-items-center'>
-                        <div>
-                            <div className="card m-5">
+                        <div className='gf-back d-flex justify-content-center align-items-center mb-5'>
+                            <div className="game-card card ">
                                 <h4 className="custom-card-header card-header bg-dark text-light p-2">Game</h4>
                                 <div className="card-body">
                                     <label htmlFor='file' id='add-photo' className='label'>

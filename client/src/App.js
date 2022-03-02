@@ -9,6 +9,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import GameForm from './components/GameForm/index';
 import Login from './pages/Login/Login';
+// import Signup from './pages/Login/Signup';
 import Signup from './pages/Login/Signup';
 import Header from './components/Header/index';
 import Footer from './components/Footer/index';

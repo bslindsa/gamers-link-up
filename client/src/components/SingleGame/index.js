@@ -5,6 +5,7 @@ import { GET_GAME, GET_USER } from "../../utils/queries";
 
 import Auth from '../../utils/auth';
 import React, { useState } from 'react';
+import rupee from './assets/rupee.png';
 import Payment from '../Payment/Payment';
 import './SingleGame.css'
 
@@ -71,7 +72,7 @@ const SingleGame = () => {
                                     <p>{game.platform}</p>
                                 </div>
                                 <div className="sgprice">
-                                    <p>${game.price}</p>
+                                    <p>{game.price}<img className="rupee" src={rupee} alt="green rupee" /></p>
                                 </div>
                                 <Link to={`/profile/${game.owner}`} className='sgowner'>
                                     <div>

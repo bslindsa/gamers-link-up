@@ -17,14 +17,13 @@
 #
 ## Inventory Page
 
-<img width="1240" alt="Screen Shot 2022-03-01 at 11 55 26 AM" src="https://user-images.githubusercontent.com/92955084/156231248-71fc3ea3-ac82-4f3c-956c-1831af8f7c22.png">
+![image](https://user-images.githubusercontent.com/92955084/156444033-baf21d60-fde1-4073-a079-0e198d71f964.png)
 
 #
 
   <a name='installation'></a>
 
   ## Installation
-  #
   react | react-dom | concurrently | apollo-server-express | bcrypt | graphql | jasonwebtoken | jquery | jwt-decode | react-scripts
   
 
@@ -45,3 +44,4 @@
 
   ## Heroku
 
+https://gamers-link-up.herokuapp.com/

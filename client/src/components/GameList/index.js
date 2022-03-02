@@ -16,12 +16,10 @@ const GameList = ({ games }) => {
             </div>
         )
     }
-    console.log(games);
 
     return (
         <div className="wares">
-
-            {games.map(game => (
+            {games.slice(0).reverse().map(game => (
                 <>
                     <div id = "display-card" key={game._id} className="dog">
                         <div  className="card">

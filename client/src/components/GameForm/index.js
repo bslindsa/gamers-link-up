@@ -65,7 +65,9 @@ const GameForm = () => {
                 platform: '',
                 price: ''
             });
-            return this.props.history.push(`/profile/${user.username}`)
+            
+            window.location.assign(`/profile/${user.username}`);
+
         } catch (err) {
             console.log('catch');
             console.error(err);

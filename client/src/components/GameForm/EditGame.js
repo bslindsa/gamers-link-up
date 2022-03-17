@@ -85,7 +85,7 @@ const EditForm = () => {
                 variables: { ...formState, price: parseFloat(formState.price), images: gameImages },
             });
 
-            window.location.assign(`/games/${gameId}`);
+            window.location.assign(`/`);
 
         } catch (err) {
             console.log('catch');

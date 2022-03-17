@@ -82,7 +82,7 @@ const EditForm = () => {
         try {
             // eslint-disable-next-line
             const { data } = await editGame({
-                variables: { ...formState, price: parseFloat(formState.price), images: gameImages },
+                variables: { ...formState, price: parseFloat(formState.price), images: selectedImages },
             });
 
             window.location.assign(`/`);

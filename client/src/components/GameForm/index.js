@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Redirect, withRouter } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
-import { GET_ME } from '../../utils/queries';
+// import { GET_ME } from '../../utils/queries';
 
 import $ from 'jquery';
 

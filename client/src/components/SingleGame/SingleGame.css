@@ -4,12 +4,7 @@
     background-attachment: fixed;
     background-size: cover;
     padding-bottom: 100px;
-}
-
-.delete {
-    margin-left: 50%;
-    margin-right: 50%;
-    width: 100%;
+    min-height: 100vh;
 }
 
 .custom-btn{
@@ -17,6 +12,10 @@
     margin: 20px;
     height: 50px;
     width: 100px;
+}
+
+.sg-btn {
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
 }
 
 #buy-now:hover {
@@ -34,6 +33,7 @@
     width: 90%;
     justify-content: center;
     margin-top: 50px;    
+    padding-bottom: 10px;
 }
 
 #sg-head {

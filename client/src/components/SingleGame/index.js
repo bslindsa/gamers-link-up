@@ -57,7 +57,6 @@ const SingleGame = () => {
             return <img className='preview m-2' src={photo} key={photo} alt='Preview' />
         })
     }
-    console.log(game.images);
 
     if (gameLoading) {
         return <div>Loading...</div>;
@@ -68,7 +67,9 @@ const SingleGame = () => {
                 <>
                     <div className='sg-back'>
                         <div id='sg-head' className='d-flex justify-content-center align-items-center'>
-                            <h1>This one's a beauty... if you've the coin.</h1>
+                            {Auth.getProfile().data.username === game.owner ?
+                                <h1>Nice stuff you've got here.</h1> :
+                                <h1>This one's a beauty... if you've the coin.</h1>}
                         </div>
                         <div key={game.title} className=" game d-flex justify-content-center">
                             <div className="card1">
@@ -93,31 +94,36 @@ const SingleGame = () => {
                                         <p>{game.owner}</p>
                                     </div>
                                 </Link>
-                                <div className='d-flex m-3 justify-content-around'>
-                                    <div>
-                                        <button className='custom-btn btn btn-dark mb-3' onClick={sendMail}>Barter</button>
+                                {Auth.getProfile().data.username === game.owner ?
+                                    <div className='delete d-flex m-3 justify-content-around row justify-content-center'>
+                                        <button className='sg-btn col-2 btn btn-danger mt-3' onClick={() => { deleteGame(); window.location.assign('/'); }}>Delete</button>
+                                        <Link to={`/editgame/${game._id}`} className='sg-btn col-2 btn btn-light mt-3'>
+                                            Edit
+                                        </Link>
                                     </div>
-                                    <div>
-                                        {buy ? (
-                                            <Payment />
-                                        ) : (
-                                            <button className="custom-btn btn btn-dark mb-3" onClick={() => {
-                                                setBuy(true);
-                                            }}
-                                            >
-                                                Buy Now
-                                            </button>
-                                        )}
+                                    : <></>}
+                                {Auth.getProfile().data.username !== game.owner ?
+                                    <div className='d-flex m-3 justify-content-around'>
+                                        <div>
+                                            <button className='sg-btn custom-btn btn btn-dark mb-3' onClick={sendMail}>Barter</button>
+                                        </div>
+                                        <div>
+                                            {buy ? (
+                                                <Payment />
+                                            ) : (
+                                                <button className="sg-btn custom-btn btn btn-dark mb-3" onClick={() => {
+                                                    setBuy(true);
+                                                }}
+                                                >
+                                                    Buy Now
+                                                </button>
+                                            )}
+                                        </div>
                                     </div>
-                                </div>
+                                    : <></>}
                             </div>
-
                         </div>
-                        {Auth.getProfile().data.username === game.owner ?
-                            <div className='delete'>
-                                <button className='btn btn-danger mt-3' onClick={() => { deleteGame(); window.location.assign('/'); }}>Drop Game</button>
-                            </div>
-                            : <></>}
+
                     </div>
                 </>
             ) : (

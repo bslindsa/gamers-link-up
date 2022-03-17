@@ -16,6 +16,7 @@ import Footer from './components/Footer/index';
 import Home from './pages/Home/Home'
 import Profile from './pages/Profile/Profile';
 import SingleGame from "./components/SingleGame/index";
+import EditGame from './components/GameForm/EditGame';
 
 
 // Construct our main GraphQL API endpoint
@@ -50,7 +51,6 @@ function App() {
         {/* <div> */}
           {/* <div className="flex-column justify-center align-center min-100-vh bg-primary"> */}
           <Switch>
-
             <Route
               path="/login"
               component={Login}
@@ -70,6 +70,10 @@ function App() {
             <Route
               path="/games/:gameId"
               component={SingleGame}
+            />
+            <Route 
+              path="/editgame/:gameId"
+              component={EditGame}
             />
             <Route
               path="/"

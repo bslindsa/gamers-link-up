@@ -17,7 +17,7 @@ const Profile = () => {
     const user = data?.user || data?.me || {};
     const games = user.games || []
     // navigate to personal profile page if username is yours
-    if (Auth.loggedIn() && Auth.getProfile().data.username === username) {
+    if (Auth.loggedIn() && Auth.getProfile().data.username === user.username) {
         return (
             <div>
                 <div key='parallax' className="parallax">
@@ -43,7 +43,7 @@ const Profile = () => {
             </div>
         );
     }
-    else if (Auth.getProfile().data.username !== username) {
+    else if (Auth.getProfile().data.username !== user.username) {
         return (
             <div>
                 <div key='parallax' className="parallax">

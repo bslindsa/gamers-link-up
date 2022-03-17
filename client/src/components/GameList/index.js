@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import './style.css';
 import rupee from './assets/rupee.png';
 import image from './assets/a-link-to-the-past.png';
+import Auth from '../../utils/auth';
 
 const GameList = ({ games }) => {
 
@@ -23,8 +24,8 @@ const GameList = ({ games }) => {
         <div className="wares">
             {games.slice(0).reverse().map(game => (
                 <>
-                    <div id = "display-card" key={game._id} className="dog">
-                        <div  className="card">
+                    <div id="display-card" key={game._id} className="dog">
+                        <div className="card">
                             <div className='thumbnail'>
                                 <img className='gpreview m-2' src={image} alt='Preview' />
                                 {/* {game.images[0]} */}
@@ -42,11 +43,17 @@ const GameList = ({ games }) => {
                                 <div>
                                     <p className="gplatform">{game.platform}</p>
                                 </div>
-                                <Link to={`/profile/${game.owner}`} className="gowner">
-                                    <div>
-                                        <p>{game.owner}</p>
-                                    </div>
-                                </Link>
+                                {Auth.loggedIn() ?
+                                    <Link to={`/profile/${game.owner}`} className="gowner">
+                                        <div>
+                                            <p>{game.owner}</p>
+                                        </div>
+                                    </Link> : <Link to={`/profile/${game.owner}`} className="gowner">
+                                        <div>
+                                            <p>{game.owner}</p>
+                                        </div>
+                                    </Link>
+                                }
                             </div>
                         </div>
                     </div>

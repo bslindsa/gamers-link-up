@@ -11,7 +11,10 @@ const Home = () => {
   const games = data?.games || [];
   const [inputText, setInputText] = useState("");
   let inputHandler = (event) => {
-    var inputLower = event.target.value.toLowerCase();
+    event.preventDefault();
+
+    let inputLower = document.querySelector('#search').value.toLowerCase();
+    // let inputLower = event.target.value.toLowerCase();
     setInputText(inputLower);
   }
 
@@ -26,13 +29,15 @@ const Home = () => {
               <div className='d-flex justify-content-center'>
                 <div className="lttp">
                   <p>It's Dangerous To Go Alone. Take These!</p>
-                  <div>
-                    <input 
-                    type='text' 
-                    id="search" 
-                    placeholder='Search Games'
-                    onChange={inputHandler} />
-                  </div>
+                  <form onSubmit={inputHandler}>
+                    <input
+                      type='text'
+                      id="search"
+                      placeholder='Search Games'
+                    // onChange={inputHandler} 
+                    />
+                    <button className='search-btn btn btn-dark'>Search</button>
+                  </form>
                 </div>
               </div>
 

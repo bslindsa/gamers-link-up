@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useState } from 'react';
 import { useQuery } from '@apollo/client';
 
 import { GET_GAMES } from '../../utils/queries';
@@ -9,10 +9,14 @@ import './Home.css';
 const Home = () => {
   const { loading, data } = useQuery(GET_GAMES);
   const games = data?.games || [];
+  const [inputText, setInputText] = useState("");
+  let inputHandler = (event) => {
+    var inputLower = event.target.value.toLowerCase();
+    setInputText(event.target.value);
+  }
 
   return (
-    <div>
-      <div>
+      <div id='home-back'>
         {loading ? (
           <div>Loading...</div>
         ) : (
@@ -24,15 +28,20 @@ const Home = () => {
                     <p>It's Dangerous To Go Alone. Take These!</p>
                   </div>
                 </div>
+                <div id="search">
+                  <h1>Search</h1>
+                  <input type='text' onChange={inputHandler}/>
+                  <button type='submit'>Search</button>
+                </div>
               </div>
               <GameList
-                games={games}
+                games={games} search={inputText}
               />
             </div>
           </>
         )}
       </div>
-    </div>
+  
   );
 };
 

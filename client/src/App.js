@@ -48,8 +48,6 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <Header />
-        {/* <div> */}
-          {/* <div className="flex-column justify-center align-center min-100-vh bg-primary"> */}
           <Switch>
             <Route
               path="/login"
@@ -81,7 +79,6 @@ function App() {
             />
           </Switch>
           <Footer/>
-        {/* </div> */}
       </Router>
     </ApolloProvider>
   );

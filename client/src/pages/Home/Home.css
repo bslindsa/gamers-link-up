@@ -24,3 +24,9 @@
     box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
     font-family: fantasy;
 }
+
+#search {
+    color: whitesmoke;
+    width: 50%;
+    /* padding-left: 50%; */
+}

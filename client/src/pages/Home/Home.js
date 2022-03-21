@@ -12,7 +12,7 @@ const Home = () => {
   const [inputText, setInputText] = useState("");
   let inputHandler = (event) => {
     var inputLower = event.target.value.toLowerCase();
-    setInputText(event.target.value);
+    setInputText(inputLower);
   }
 
   return (

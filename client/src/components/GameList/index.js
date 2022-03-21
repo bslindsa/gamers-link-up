@@ -25,7 +25,7 @@ const GameList = ({ games, search }) => {
             return game;
         }
         else {
-            return game.title.includes(search)
+            return game.title.toLowerCase().includes(search)
         }
     })
 

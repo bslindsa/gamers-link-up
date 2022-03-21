@@ -16,32 +16,35 @@ const Home = () => {
   }
 
   return (
-      <div id='home-back'>
-        {loading ? (
-          <div>Loading...</div>
-        ) : (
-          <>
-            <div>
-              <div key='parallax' className="parallax">
-                <div className='d-flex justify-content-center'>
-                  <div className="lttp">
-                    <p>It's Dangerous To Go Alone. Take These!</p>
+    <div id='home-back'>
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <>
+          <div>
+            <div key='parallax' className="parallax">
+              <div className='d-flex justify-content-center'>
+                <div className="lttp">
+                  <p>It's Dangerous To Go Alone. Take These!</p>
+                  <div>
+                    <input 
+                    type='text' 
+                    id="search" 
+                    placeholder='Search Games'
+                    onChange={inputHandler} />
                   </div>
                 </div>
-                <div id="search">
-                  <h1>Search</h1>
-                  <input type='text' onChange={inputHandler}/>
-                  <button type='submit'>Search</button>
-                </div>
               </div>
-              <GameList
-                games={games} search={inputText}
-              />
+
             </div>
-          </>
-        )}
-      </div>
-  
+            <GameList
+              games={games} search={inputText}
+            />
+          </div>
+        </>
+      )}
+    </div>
+
   );
 };
 

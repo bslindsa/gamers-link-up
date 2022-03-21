@@ -34,7 +34,6 @@ const Home = () => {
                       type='text'
                       id="search"
                       placeholder='Search Games'
-                    // onChange={inputHandler} 
                     />
                     <button className='search-btn btn btn-dark'>Search</button>
                   </form>

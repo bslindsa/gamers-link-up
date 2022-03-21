@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { Redirect, Link, useParams } from 'react-router-dom';
 import { GET_ME, GET_USER } from '../../utils/queries';
@@ -16,6 +16,16 @@ const Profile = () => {
     });
     const user = data?.user || data?.me || {};
     const games = user.games || []
+
+    const [inputText, setInputText] = useState("");
+    let inputHandler = (event) => {
+        event.preventDefault();
+
+        let inputLower = document.querySelector('#search').value.toLowerCase();
+        // let inputLower = event.target.value.toLowerCase();
+        setInputText(inputLower);
+    }
+
     // navigate to personal profile page if username is yours
     if (Auth.loggedIn() && Auth.getProfile().data.username === user.username) {
         return (
@@ -23,6 +33,14 @@ const Profile = () => {
                 <div key='parallax' className="parallax">
                     <div className="lttp">
                         <p>Your Inventory</p>
+                        <form onSubmit={inputHandler}>
+                            <input
+                                type='text'
+                                id="search"
+                                placeholder='Search Games'
+                            />
+                            <button className='search-btn btn btn-dark'>Search</button>
+                        </form>
                     </div>
                     <div className='post-game-header'>
                         <h4 className='add-game-header'> Add a new game to your shop!</h4>
@@ -36,7 +54,7 @@ const Profile = () => {
                         <div>Loading...</div>
                     ) : (
                         <GameList
-                            games={games} user={user}
+                            games={games} user={user} search={inputText}
                         />
                     )}
                 </div>

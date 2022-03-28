@@ -120,7 +120,8 @@
 }
 
 .gpreview {
-    width: 400px;
+    width: auto;
+    max-width: 400px;
     height: auto;
     border-radius: 16px;
 }

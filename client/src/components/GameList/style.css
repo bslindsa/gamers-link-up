@@ -1,9 +1,10 @@
 .gtitle{
-    color: rgb(126, 188, 243);
+    color: rgb(34, 94, 146);
     font-size: 60px;
     text-align: center;
     width: auto;
     text-decoration: none;
+    text-shadow: 2px 2px white
 }
 .gowner{
     text-decoration: none;

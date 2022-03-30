@@ -30,12 +30,15 @@ const Home = () => {
                 <div className="lttp">
                   <p>It's Dangerous To Go Alone. Take These!</p>
                   <form onSubmit={inputHandler}>
+                    <div className='d-flex justify-content-center'>
                     <input
                       type='text'
                       id="search"
                       placeholder='Search Games'
                     />
                     <button className='search-btn btn btn-dark'>Search</button>
+                    </div>
+                    
                   </form>
                 </div>
               </div>

@@ -34,12 +34,14 @@ const Profile = () => {
                     <div className="lttp">
                         <p>Your Inventory</p>
                         <form onSubmit={inputHandler}>
-                            <input
-                                type='text'
-                                id="search"
-                                placeholder='Search Games'
-                            />
-                            <button className='search-btn btn btn-dark'>Search</button>
+                            <div className='d-flex justify-content-center'>
+                                <input
+                                    type='text'
+                                    id="search"
+                                    placeholder='Search Games'
+                                />
+                                <button className='search-btn btn btn-dark'>Search</button>
+                            </div>
                         </form>
                     </div>
                     <div className='post-game-header'>

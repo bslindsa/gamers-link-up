@@ -58,7 +58,7 @@ const GameForm = () => {
 
             const blobArray = Array.from(event.target.files).map((file) => URL.createObjectURL(file));
             setSelectedImages((prevImages) => prevImages.concat(blobArray));
-            console.log(selectedImages);
+            // console.log(selectedImages);
             Array.from(event.target.files).map(
                 (file) => URL.revokeObjectURL(file)
             )

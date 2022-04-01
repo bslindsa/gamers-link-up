@@ -9,3 +9,24 @@
     justify-content: center;
     background-color: #4db8ff;
 }
+
+.pop-btn {
+    color: whitesmoke;
+    background-color: green;
+}
+
+#chat-list {
+    font-family: 'Gill Sans';
+    color: whitesmoke;
+    font-size: 20px;
+    position: fixed;
+    bottom: 6%;
+    left: 0;
+    margin: 0;
+    width: 25%;
+    display: inline-block;
+    justify-content: left;
+    /* height: 100px; */
+    background-color: #158237;
+}
+

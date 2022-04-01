@@ -69,6 +69,16 @@ const Profile = () => {
                 <div key='parallax' className="parallax">
                     <div className="lttp">
                         <p> {`${username}'s Inventory`} </p>
+                        <form onSubmit={inputHandler}>
+                            <div className='d-flex justify-content-center'>
+                                <input
+                                    type='text'
+                                    id="search"
+                                    placeholder='Search Games'
+                                />
+                                <button className='search-btn btn btn-dark'>Search</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <div>
@@ -76,7 +86,7 @@ const Profile = () => {
                         <div>Loading...</div>
                     ) : (
                         <GameList
-                            games={games} user={user}
+                            games={games} user={user} search={inputText}
                         />
                     )}
                 </div>

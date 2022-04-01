@@ -22,6 +22,14 @@ const typeDefs = gql`
     requests: [User]
   }
 
+  type Messages {
+    _id: ID!
+    owner: String
+    sendTo: String
+    timeSent: String
+    message: String
+  }
+
   type Tag {
     _id: ID
     name: String

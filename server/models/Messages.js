@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const messageSchema = new Shema({
+const messageSchema = new Schema({
     owner: {
         type: String,
         required: true,
@@ -18,7 +18,6 @@ const messageSchema = new Shema({
     message: {
         type: String,
         required: true,
-        trim: true
     }
 });
 

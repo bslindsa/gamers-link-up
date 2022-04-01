@@ -18,6 +18,10 @@ const messageSchema = new Schema({
     message: {
         type: String,
         required: true,
+    },
+    viewed: {
+        type: Boolean,
+        default: false
     }
 });
 

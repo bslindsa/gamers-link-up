@@ -23,11 +23,12 @@ const typeDefs = gql`
   }
 
   type Messages {
-    _id: ID!
+    _id: ID
     owner: String
     sendTo: String
     timeSent: String
     message: String
+    viewed: Boolean
   }
 
   type Tag {
@@ -60,6 +61,7 @@ const typeDefs = gql`
     deleteGame(gameId: ID!): Game
     requestGame(gameId: ID!): Game
     sendMessage(owner: String!, sentTo:String!, message: String!): Messages
+    viewMessage(messageId: ID!): Messages
   }
 `;
 

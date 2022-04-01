@@ -1,6 +1,7 @@
 const { User, Game } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
+const Messages = require('../models/Messages');
 
 const resolvers = {
   Query: {
@@ -23,6 +24,18 @@ const resolvers = {
       }
       throw new AuthenticationError('You must be logged in');
     },
+    inbox: async (parent, { arg }, context) => {
+      if (context.user) {
+        return Messages.find({ sendTo: context.user.username }).populate('messages');
+      }
+      throw new AuthenticationError('You have no messages');
+    },
+    outbox: async (parent, { arg }, context) => {
+      if (context.user) {
+        return Messages.find({ owner: context.user.username }).populate('messages');
+      }
+      throw new AuthenticationError('You have no messages');
+    }
   },
 
 
@@ -49,7 +62,7 @@ const resolvers = {
 
       return { token, user };
     },
-    addGame: async (parent, {title, description, platform, price, images }, context) => {
+    addGame: async (parent, { title, description, platform, price, images }, context) => {
       if (context.user) {
         const game = await Game.create({
           title,
@@ -127,6 +140,28 @@ const resolvers = {
           runValidators: true,
         }
       );
+    },
+    sendMessage: async (parent, { sendTo, message }, context) => {
+        if(context.user) {
+        const game = await Messages.create({
+          owner: context.user.username,
+          sendTo,
+          message
+        });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { messages: messages._id } }
+        );
+
+        await User.findOneAndUpdate(
+          { username: sendTo },
+          { $addToSet: { messages: messages._id } }
+        );
+
+        return messages;
+      }
+      throw new AuthenticationError('You must be logged in.');
     }
   },
 };

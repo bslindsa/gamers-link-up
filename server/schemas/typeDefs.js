@@ -38,6 +38,8 @@ const typeDefs = gql`
     games: [Game]
     game(gameId: ID!): Game
     me: User
+    inbox(owner: String!, sentTo: String!): Messages 
+    outbox(owner: String!, sentTo: String!): Messages 
   }
 
   type Mutation {
@@ -49,6 +51,7 @@ const typeDefs = gql`
     editGame(gameId: ID!, title: String, description: String, price: Float, platform: String, images: [String]): Game
     deleteGame(gameId: ID!): Game
     requestGame(gameId: ID!): Game
+    sendMessage(owner: String!, sentTo:String!, message: String!): Messages
   }
 `;
 
